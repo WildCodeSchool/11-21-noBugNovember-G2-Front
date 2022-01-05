@@ -13,27 +13,28 @@ const Bookmark = ({isFavorite, setIsFavorite}) => {
 
 	let temp = [];
 
-	const selectData = () => {
-		temp = [];
-		for (let i = 0; i < isFavorite.length; i++) {
-			for (let y = 0; y < api.length; y++) {
-				if (isFavorite[i] == api[y].id)
-				{
-					temp.push(api[y])
+	useEffect(() => {
+
+		const getData = () => {
+			axios
+				.get("https://yannick-cousin.github.io/veille-api/api/all.json")
+				.then((response) => response.data)
+				.then((data) => setApi(data))
+		}
+
+		const selectData = () => {
+			temp = [];
+			for (let i = 0; i < isFavorite.length; i++) {
+				for (let y = 0; y < api.length; y++) {
+					if (isFavorite[i] == api[y].id)
+					{
+						temp.push(api[y])
+					}
 				}
 			}
+			setDb(temp);
 		}
-		setDb(temp);
-	}
 
-	const getData = () => {
-		axios
-			.get("https://yannick-cousin.github.io/veille-api/api/all.json")
-			.then((response) => response.data)
-			.then((data) => setApi(data))
-	}
-
-	useEffect(() => {
 		getData()
 		selectData()
 	},[])
