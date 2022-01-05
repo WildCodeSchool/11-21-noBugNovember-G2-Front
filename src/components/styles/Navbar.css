@@ -1,0 +1,122 @@
+/* Icon Menu  */
+
+i {width:45px}
+
+
+/* Icon Slide for Menu ****Close****   */
+
+#ion-icon {
+    position: absolute;
+    top: 78px;
+    left: 48px;
+    width: 46px;
+    height: 42px;
+    opacity: 0.65;
+    transition: 0.5s;
+    z-index: 20000;
+}
+
+#ion-icon:hover {
+    opacity: 1;
+}
+
+/* Icon Slide for Menu ****Open****   */
+
+#ion-icon-open {
+    position: absolute;
+    top: 78px;
+    left: 248px;
+    width: 46px;
+    height: 42px;
+    opacity: 0.65;
+    transition: 0.5s;
+    z-index: 20000;
+    transform: rotate(180deg);
+}
+
+#ion-icon-open:hover {
+    opacity: 1;
+}
+
+/* Icon - Dark/Light mode - Close */
+
+#NavDarkMode {
+    position: absolute; 
+    bottom: 15px;
+    left: 11px;
+    color: black;
+    opacity: 0.35;
+    transition: 0.5s;
+}
+
+#NavDarkMode:hover {
+    color: black;
+    opacity: 1
+}
+
+
+
+/* Bloc Navigation ****Close**** */
+
+.Nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
+    text-decoration: none;
+    font-style: none; 
+    transition: 0.5s;
+    width: 70px;
+    backdrop-filter: blur(30px);
+    z-index: 20000;
+}
+
+/* Bloc Navigation ****Open**** */
+
+.NavOpen {
+    width: 270px;
+}
+
+/*   Bloc Link (Icons / Text) ****Close**** */
+
+.NavLink {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px 14px;
+    margin: 20px 0;
+    color: black;
+    opacity: 0.35;
+    transition: 0.5s;
+    text-decoration: none;
+    z-index: 20000;
+
+}
+
+.NavLink:hover {
+    color: black;
+    opacity: 1;
+    transition: 0.45s
+}
+
+
+/* Text Menu ****Open / Close**** */
+
+.TextMenu {
+    position: absolute;
+    margin : 7px 0 0 0;
+    left: 90px;
+    transition:0.8s;
+    opacity: 1;
+}
+
+.TextMenuOpen {
+    left:70px;
+    transition:0.2s;
+    opacity: 0;
+}
