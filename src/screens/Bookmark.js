@@ -14,7 +14,6 @@ const Bookmark = ({isFavorite, setIsFavorite}) => {
 	let temp = [];
 
 	useEffect(() => {
-
 		const getData = () => {
 			axios
 				.get("https://yannick-cousin.github.io/veille-api/api/all.json")
