@@ -4,10 +4,12 @@ import Home from './screens/Home'
 import Bookmark from './screens/Bookmark'
 import Team from './screens/Team'
 import Navbar from './components/Navbar'
+import Header from './components/Header'
 
 function App() {
   return (
     <div className='App'>
+      <Header />
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />}/>
