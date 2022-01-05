@@ -6,7 +6,7 @@ import Gallery from '../components/Gallery';
     return (
         <div>
             <h1>Home</h1>
-            <Gallery />
+            {/* <Gallery /> */}
         </div>
     )
 }

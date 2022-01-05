@@ -6,6 +6,8 @@ import Team from './screens/Team'
 import Navbar from './components/Navbar'
 
 function App() {
+
+  
   return (
     <div className='App'>
       <Navbar />
