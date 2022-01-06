@@ -1,20 +1,23 @@
 .Header {
     display: flex;
     justify-content: center;
-    width: 100vw;
+    width: 97vw;
     height: 115px;
 }
 
 #HeaderBorder {
     position: absolute;
-    width: 75vw;
+    width: 80vw;
     height: 2px;
     background-color: var(--thirdColor);
     top: 115px;
+    transform: translateX(35px);
+    
 }
 
 #HeaderLogo {
-    width: 250px
+    width: 250px;
+    margin-left: 80px;
 }
 
 #HeaderUser {
