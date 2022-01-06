@@ -1,0 +1,36 @@
+.Header {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 115px;
+}
+
+#HeaderBorder {
+    position: absolute;
+    width: 75vw;
+    height: 2px;
+    background-color: var(--thirdColor);
+    top: 115px;
+}
+
+#HeaderLogo {
+    width: 250px
+}
+
+#HeaderUser {
+    position: absolute;
+    right: 30px;
+    top: 22px;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    border: 2px var(--thirdColor) solid;
+    overflow: hidden;
+}
+
+#HeaderUserPicture {
+    position: absolute;
+    right: -2px;
+    top: -10px;
+    width: 66px;
+}

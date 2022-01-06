@@ -1,0 +1,22 @@
+.gallery{
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0vw 10vw 0vw 10vw;
+/*     margin: 100px auto 0;
+    padding: 0 20px;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(300px,0.4fr));
+    grid-gap: 45px;
+    justify-content: center; */
+}
+
+.item{
+/*     min-height:200px;
+    background: crimson;
+    color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px; */
+}
