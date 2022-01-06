@@ -6,15 +6,15 @@ export default function CardArticle(props) {
   const { card } = props
   return (
     <>
-      <div className='CardMembre' key={card.id}>
+      <div className='CardMembre' key={props.id}>
         <div className='GaleryCharacters'>
           <div className='cardMemberSolo'>
             <div className='hautCard'>
               <div className='hautCardAvatar'>
                 <img
                   className='CardImgHautCard'
-                  src={card.avatar}
-                  alt={card.member}
+                  src={props.avatar}
+                  alt={props.member}
                 />
               </div>
               <div className='titreArticleHautCard'>
@@ -25,7 +25,7 @@ export default function CardArticle(props) {
             <img className='CardImg' src='../logo512.png' alt='' />
             <div className='basCard'>
               <div className='basCardDescri'>
-                <p>{card.description}....</p>
+                <p>{props.description}....</p>
               </div>
 
               <div className='containerBottomTrucs'>
@@ -33,7 +33,7 @@ export default function CardArticle(props) {
                   <a
                     className='voirPlusLien'
                     target='_blank'
-                    href={card.url}
+                    href={props.url}
                     rel='noreferrer'
                   >
                     Voir plus
@@ -44,7 +44,7 @@ export default function CardArticle(props) {
                   <a
                     className='sousCard'
                     target='_blank'
-                    href={card.url}
+                    href={props.url}
                     rel='noreferrer'
                   >
                     ⛬
@@ -52,12 +52,12 @@ export default function CardArticle(props) {
                   <a
                     className='sousCard'
                     target='_blank'
-                    href={card.url}
+                    href={props.url}
                     rel='noreferrer'
                   >
                     🔖
                   </a>
-                 <LikeButton favorite={card.favorite} />
+                  <LikeButton favorite={props.favorite} />
                 </div>
               </div>
             </div>
