@@ -57,14 +57,6 @@ export default function CardArticle(props) {
                   >
                     🔖
                   </a>
-                  <a
-                    className='sousCard'
-                    target='_blank'
-                    href={props.url}
-                    rel='noreferrer'
-                  >
-                    🔥
-                  </a>
                   <LikeButton favorite={card.favorite} />
                 </div>
               </div>
