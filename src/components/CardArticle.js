@@ -3,17 +3,21 @@ import LikeButton from './LikeButton'
 import './styles/CardArticle.css'
 
 export default function CardArticle(props) {
-  const { card } = props
+  // const { card } = props
 
   const goUrl = () => {
-    window.open(card.url)
+    window.open(props.url)
   }
 
   return (
     <>
-      <article className='card' key={card.id}>
+      <article className='card' key={props.id}>
         <div className='cardContentTop' onClick={goUrl}>
-          <img className='cardTopAvatar' src={card.avatar} alt={card.member} />
+          <img
+            className='cardTopAvatar'
+            src={props.avatar}
+            alt={props.member}
+          />
           {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
            */}{' '}
           <div className='cardImgBox'>
@@ -23,14 +27,14 @@ export default function CardArticle(props) {
 
         <div className='cardBottom'>
           <div className='cardBottomDescritption'>
-            <p>{card.description}....</p>
+            <p>{props.description}....</p>
           </div>
 
           <div className='cardBottomFooter'>
             <a
               className='cardBottomLink'
               target='_blank'
-              href={card.url}
+              href={props.url}
               rel='noreferrer'
             >
               ⛬
@@ -38,7 +42,7 @@ export default function CardArticle(props) {
             <a
               className='cardBottomLink'
               target='_blank'
-              href={card.url}
+              href={props.url}
               rel='noreferrer'
             >
               🔖
