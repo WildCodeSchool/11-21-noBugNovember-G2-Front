@@ -16,7 +16,7 @@
 }
 a {text-decoration: none;}
 
-body{ background:var(--gradientColor); font-family: var(--fontBody); }
+body{ background:var(--gradientColor); font-family: var(--fontBody); height: 100vh;}
 
 input,
 button,
