@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Gallery from '../components/Gallery'
 import '../components/styles/Bookmark.css'
