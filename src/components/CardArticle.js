@@ -1,4 +1,5 @@
 import React from 'react'
+import LikeButton from './LikeButton'
 import './styles/CardArticle.css'
 
 export default function CardArticle(props) {
@@ -64,6 +65,7 @@ export default function CardArticle(props) {
                   >
                     🔥
                   </a>
+                  <LikeButton favorite={card.favorite} />
                 </div>
               </div>
             </div>
