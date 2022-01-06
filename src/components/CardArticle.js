@@ -57,7 +57,7 @@ export default function CardArticle(props) {
                   >
                     🔖
                   </a>
-                  <LikeButton favorite={card.favorite} />
+                  <LikeButton favorite={props.favorite} />
                 </div>
               </div>
             </div>
