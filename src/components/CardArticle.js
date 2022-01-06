@@ -1,4 +1,5 @@
 import React from 'react'
+import LikeButton from './LikeButton'
 import './styles/CardArticle.css'
 
 export default function CardArticle(props) {
@@ -42,14 +43,7 @@ export default function CardArticle(props) {
             >
               🔖
             </a>
-            <a
-              className='cardBottomLink'
-              target='_blank'
-              href={card.url}
-              rel='noreferrer'
-            >
-              🔥
-            </a>
+            <LikeButton favorite={props.favorite} />
           </div>
         </div>
       </article>

@@ -9,14 +9,19 @@ import Navbar from './components/Navbar'
 import Team from './screens/Team'
 
 function App() {
-  const [isFavorite, setIsFavorite] = useState([])
+  const [isFavorite, setIsFavorite] = useState([10, 15, 35, 54]) // id objet API
 
   return (
     <div className='App'>
       <Header />
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route
+          path='/'
+          element={
+            <Home isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+          }
+        />
         <Route
           path='/bookmark'
           element={
