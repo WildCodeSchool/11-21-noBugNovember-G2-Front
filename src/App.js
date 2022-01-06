@@ -1,11 +1,12 @@
 import './App.css'
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Home from './screens/Home'
 import Bookmark from './screens/Bookmark'
-import Team from './screens/Team'
-import Navbar from './components/Navbar'
+import Error from './screens/Error'
 import Header from './components/Header'
+import Home from './screens/Home'
+import Navbar from './components/Navbar'
+import Team from './screens/Team'
 
 function App() {
   
@@ -19,10 +20,9 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/bookmark' element={<Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} />}/>
         <Route path='/team' element={<Team />}/>
-        <Route path='*' element={<Home />}/>
+        <Route path='*' element={<Error />}/>
      </Routes>
     </div>
-  )
-}
+  ) };
 
 export default App
