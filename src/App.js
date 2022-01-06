@@ -9,7 +9,7 @@ import Navbar from './components/Navbar'
 import Team from './screens/Team'
 
 function App() {
-  const [isFavorite, setIsFavorite] = useState([0, 5, 15, 98])
+  const [isFavorite, setIsFavorite] = useState([10, 15, 35, 54]) // id objet API
 
   return (
     <div className='App'>
