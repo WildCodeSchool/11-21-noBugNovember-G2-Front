@@ -4,7 +4,8 @@ import './styles/Gallery.css'
 export default function Gallery() {
     return (
         <>
-            <div className="gallery">
+            <div className="big-gallery">
+                 <div className="gallery">
                 <div className="item">1</div>
                 <div className="item">2</div>
                 <div className="item">3</div>
@@ -15,6 +16,7 @@ export default function Gallery() {
                 <div className="item">8</div>
                 <div className="item">9</div>
                 <div className="item">10</div>
+            </div>
             </div>
         </>
     )
