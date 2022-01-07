@@ -4,7 +4,7 @@ import CardArticle from './CardArticle'
 
 export default function Gallery({ isFavorite, setIsFavorite }) {
   return (
-    <div>
+    <div className='bigGallery'>
       <div className='gallery'>
         {isFavorite.map(card => (
           <CardArticle
