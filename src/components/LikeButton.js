@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import './styles/CardArticle.css'
 
 const LikeButton = (props) => {
     const { favorite } = props
@@ -10,7 +11,7 @@ const LikeButton = (props) => {
         console.log(likeCounter);
     return (
             <a
-            className='sousCard'
+            className='cardBottomLink'
             target='_blank'
             rel='noreferrer'
             onClick={() => incrementationLike()}
