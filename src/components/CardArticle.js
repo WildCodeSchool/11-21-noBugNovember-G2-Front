@@ -1,6 +1,7 @@
 import React from 'react'
 import LikeButton from './LikeButton'
 import './styles/CardArticle.css'
+import Im from '../assets/placeholder.jpg'
 
 export default function CardArticle(props) {
   // const { card } = props
@@ -22,7 +23,7 @@ export default function CardArticle(props) {
           {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
            */}{' '}
           <div className='cardImgBox'>
-            <img className='cardImg' src='../logo512.png' alt='' />
+            <img className='cardImg' src={Im} alt='' />
           </div>
         </div>
 
