@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import './styles/CardArticle.css'
 
 const LikeButton = (props) => {
     const { favorite } = props
