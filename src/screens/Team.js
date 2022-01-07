@@ -19,6 +19,7 @@ const Team = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
+      <h2 className='teamTitle'>Articles de la semaine</h2>
       <TeamGallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
     </div>
   )
