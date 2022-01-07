@@ -18,7 +18,6 @@ const Home = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
-      <h1>Home</h1>
       <Gallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
     </div>
   )

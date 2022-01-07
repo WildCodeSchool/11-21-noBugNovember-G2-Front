@@ -9,13 +9,16 @@ const LikeButton = (props) => {
     }
         console.log(likeCounter);
     return (
+            <div className='cardBottomLike'>
+            <p>{likeCounter}</p>    
             <a
-            className='sousCard'
+            className='cardBottomLink'
             target='_blank'
             rel='noreferrer'
             onClick={() => incrementationLike()}
             >🔥 
             </a>
+            </div>
       )
 }
 

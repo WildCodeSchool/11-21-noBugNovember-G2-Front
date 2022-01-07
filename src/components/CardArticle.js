@@ -4,7 +4,7 @@ import './styles/CardArticle.css'
 
 export default function CardArticle(props) {
   // const { card } = props
-
+  console.log('api : ', props)
   const goUrl = () => {
     window.open(props.url)
   }
@@ -18,6 +18,7 @@ export default function CardArticle(props) {
             src={props.avatar}
             alt={props.member}
           />
+          <p className='cardDate'>{props.week} - {props.year}</p>
           {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
            */}{' '}
           <div className='cardImgBox'>

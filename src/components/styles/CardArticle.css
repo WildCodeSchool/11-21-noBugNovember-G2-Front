@@ -50,6 +50,12 @@
     overflow:hidden;
  
 }
+
+.cardDate{
+    position: absolute;
+    top: 20px;
+    right: 22px;
+}
   
   
     .cardImgBox{
@@ -68,10 +74,10 @@
     }
   
     .card p {
-        color: black;
-        font-weight: bold;
-        font-size: small;
-        
+        font-family: var(--fontBody);
+        /* color: rgba(0, 0, 0, 0.794); */
+        color: var(--thirdColor);   
+        font-size: .8rem;     
         }
 
        
@@ -103,17 +109,25 @@
     .cardBottomFooter {
         display: flex;
         justify-content: space-around;
-        align-items: center;
+        align-items: flex-end;
         padding: 0px 5px 10px ;
     }
 
     .cardBottomLink{
-        font-size: 30px;
+        font-size: 20px;
     }
     
     .cardBottomLink:hover {
     transform: scale(1.5);
     cursor: pointer;
-      }
+    }
     
-   
+    .cardBottomLike{
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+    }
+
+    .cardBottomLike p{
+        font-size: 0.7rem;
+    }
