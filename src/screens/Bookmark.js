@@ -5,23 +5,27 @@ import '../components/styles/Bookmark.css'
 
 const Bookmark = ({ isFavorite, setIsFavorite }) => {
   const [api, setApi] = useState([]) //stock first data API
-  const [db, setDb] = useState([]) // stock final data API
-  const [visibility, setVisibility] = useState(false) //
+  const [db, setDb] = useState([]) // stock final Bookmark
+  const [filter, setFilter] = useState([]) //stock des donnes triées par date
+  const [isFilter, setIsFilter] = useState(false) //si un tri a lieu, sert à changer les données envoyer en gallery
+  const [visibility, setVisibility] = useState(false) //sert à cacher ou non l'ensemble de la barre de recherche
   const [year, setYear] = useState([])
   const [week, setWeek] = useState([])
   const [selectWeek, setSelectWeek] = useState(0)
   const [selectYear, setSelectYear] = useState(0)
   let temp = [] // stock temporaire
-  let tempWeek = [] //stock temporaire tri par date
-  let tempYear = [] //stock temporaire tri par date
+  let tempWeek = [] //stock temporaire tri par semaine
+  let tempYear = [] //stock temporaire tri par annee
 
+  //selectData permet de filtrer les données en favoris
+  //On enregistre aussi les semaines et années des favoris
   const selectData = () => {
     temp = []
+    setIsFilter(false)
     for (let i = 0; i < isFavorite.length; i++) {
       for (let y = 0; y < api.length; y++) {
         if (isFavorite[i] === api[y].id) {
           temp.push(api[y])
-          /*console.log(api[y].week.indexOf(api[y].week))*/
           if (tempWeek.indexOf(api[y].week) === -1) {
             tempWeek.push(api[y].week)
           }
@@ -34,8 +38,12 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
     setDb(temp)
     setYear(tempYear)
     setWeek(tempWeek)
+    setSelectYear(tempYear[0])
+    setSelectWeek(tempWeek[0])
   }
 
+  //Axios nous permet de récupérer toutes les données de l'API
+  //et nous stoctons tout dans la state api
   useEffect(() => {
     axios
       .get('https://yannick-cousin.github.io/veille-api/api/all.json')
@@ -43,14 +51,17 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
       .then(data => setApi(data))
   }, [])
 
+  //Ecoute de la state API, quand elle modifié, on lance le premier tri, celle des favoris
   useEffect(() => {
     selectData()
   }, [api])
 
+  //Affiche ou non les élements de recherches
   const deroule = () => {
     setVisibility(!visibility)
   }
 
+  //Lance un tri dans DB sur les dates sélectionnées
   const selectDate = () => {
     temp = []
     for (let i = 0; i < db.length; i++) {
@@ -58,11 +69,9 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
         temp.push(db[i])
       }
     }
-    setDb(temp)
+    setFilter(temp)
+    setIsFilter(true)
   }
-  console.log('setDb')
-  console.log(selectYear)
-  console.log(selectWeek)
 
   return (
     <div className='bookmark'>
@@ -70,45 +79,49 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
       <div className='rowbutton'>
         <div className='buttonselect'>
           <i className='fas fa-search' onClick={() => deroule()} />
-          <form onSubmit={() => selectDate()}>
-            <div className={visibility ? 'year active' : 'cache'}>
-              <select name='year'>
-                {year.map(options => (
-                  <option
-                    onClick={e => setSelectYear(e.target.value)}
-                    value={selectYear}
-                  >
-                    {options}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className={visibility ? 'week active' : 'cache'}>
-              <select name='week'>
-                {week.map(options => (
-                  <option
-                    onClick={e => setSelectWeek(e.target.value)}
-                    value={selectWeek}
-                  >
-                    {options}
-                  </option>
-                ))}
-              </select>
-            </div>
+          {/*Selection de l'année et de la semaine*/}
+          <form>
+            <select
+              className={visibility ? 'year' : 'cache'}
+              name='choixyear'
+              id='choixyear'
+              onChange={e => setSelectYear(parseInt(e.target.value))}
+            >
+              {year.map((options, i) => (
+                <option key={i} value={options}>
+                  {options}
+                </option>
+              ))}
+            </select>
+            <select
+              className={visibility ? 'year' : 'cache'}
+              name='choixweek'
+              id='choixweek'
+              onChange={e => setSelectWeek(parseInt(e.target.value))}
+            >
+              {week.map((options, i) => (
+                <option key={i} value={options}>
+                  {options}
+                </option>
+              ))}
+            </select>
+            <i
+              className={visibility ? 'fas fa-arrow-circle-right' : 'cache'}
+              type='button'
+              onClick={() => selectDate()}
+            />
           </form>
-          <i
-            className={visibility ? 'fas fa-arrow-circle-right' : 'cache'}
-            type='submit'
-            onClick={() => selectDate()}
-          />
           <div className={visibility ? 'separateur' : 'cache'}> || </div>
           <i
-            onClick={() => selectData()}
+            onClick={() => selectData()} //on recharge tous les favoris
             className={visibility ? 'fas fa-times-circle' : 'cache'}
           />
         </div>
       </div>
-      {db != [] && <Gallery isFavorite={db} setIsFavorite={setIsFavorite} />}
+      <Gallery
+        isFavorite={isFilter ? filter : db}
+        setIsFavorite={setIsFavorite}
+      />
     </div>
   )
 }
