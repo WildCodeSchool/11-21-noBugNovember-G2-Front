@@ -28,7 +28,7 @@ function App() {
             <Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
           }
         />
-        <Route path='/team' element={<Team />} />
+        <Route path='/team' element={<Team isFavorite={isFavorite} setIsFavorite={setIsFavorite}/>} />
         <Route path='*' element={<Error />} />
       </Routes>
     </div>
