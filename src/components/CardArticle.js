@@ -19,7 +19,10 @@ export default function CardArticle(props) {
             src={props.avatar}
             alt={props.member}
           />
-          <p className='cardDate'>{props.week} - {props.year}</p>
+          <div className='cardDate'>
+          <p >{props.week} - {props.year}</p>
+          <p>{props.member}</p>
+          </div>
           {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
            */}{' '}
           <div className='cardImgBox'>
