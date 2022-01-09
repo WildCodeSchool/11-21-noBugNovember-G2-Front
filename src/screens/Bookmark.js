@@ -4,9 +4,9 @@ import Gallery from '../components/Gallery'
 import '../components/styles/Bookmark.css'
 
 const Bookmark = ({ isFavorite, setIsFavorite }) => {
-  const [api, setApi] = useState([]) //stock first data API
-  const [db, setDb] = useState([]) // stock final Bookmark
-  const [filter, setFilter] = useState([]) //stock des donnes triées par date
+  const [api, setApi] = useState([]) //stock data API
+  const [db, setDb] = useState([]) // stock data si favoris par rapport à API
+  const [filter, setFilter] = useState([]) //stock des donnes triées par date par rapport à DB
   const [isFilter, setIsFilter] = useState(false) //si un tri a lieu, sert à changer les données envoyer en gallery
   const [visibility, setVisibility] = useState(false) //sert à cacher ou non l'ensemble de la barre de recherche
   const [year, setYear] = useState([])
@@ -43,7 +43,7 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
   }
 
   //Axios nous permet de récupérer toutes les données de l'API
-  //et nous stoctons tout dans la state api
+  //et nous stockons tout dans la state api
   useEffect(() => {
     axios
       .get('https://yannick-cousin.github.io/veille-api/api/all.json')
@@ -56,7 +56,7 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
     selectData()
   }, [api])
 
-  //Affiche ou non les élements de recherches
+  //Affiche ou non la barre de recherche
   const deroule = () => {
     setVisibility(!visibility)
   }
@@ -77,10 +77,10 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
     <div className='bookmark'>
       <h1>Bookmark</h1>
       <div className='rowbutton'>
-        <div className='buttonselect'>
+        <div className={visibility ? 'buttonselect active' : 'buttonselect'}>
           <i className='fas fa-search' onClick={() => deroule()} />
           {/*Selection de l'année et de la semaine*/}
-          <form>
+          <form className={visibility ? 'formulaire' : 'cache'}>
             <select
               className={visibility ? 'year' : 'cache'}
               name='choixyear'
