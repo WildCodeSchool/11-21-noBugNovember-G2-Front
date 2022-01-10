@@ -119,7 +119,8 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
         </div>
       </div>
       <Gallery
-        isFavorite={isFilter ? filter : db}
+        articles={isFilter ? filter : db}
+        isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
       />
     </div>

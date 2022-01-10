@@ -2,11 +2,11 @@ import React from 'react'
 import './styles/Gallery.css'
 import CardArticle from './CardArticle'
 
-export default function Gallery({ isFavorite, setIsFavorite }) {
+export default function Gallery({ isFavorite, setIsFavorite, articles }) {
   return (
     <div className='bigGallery'>
       <div className='gallery'>
-        {isFavorite.map(card => (
+        {articles.map(card => (
           <CardArticle
             key={card.id}
             id={card.id}
@@ -17,6 +17,8 @@ export default function Gallery({ isFavorite, setIsFavorite }) {
             description={card.description}
             avatar={card.avatar}
             favorite={card.favorite}
+            isFavorite={isFavorite}
+            setIsFavorite={setIsFavorite}
           />
         ))}
       </div>

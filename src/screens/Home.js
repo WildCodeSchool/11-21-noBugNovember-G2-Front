@@ -16,7 +16,11 @@ const Home = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
-      <Gallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
+      <Gallery
+        isFavorite={isFavorite}
+        setIsFavorite={setIsFavorite}
+        articles={tableau}
+      />
     </div>
   )
 }
