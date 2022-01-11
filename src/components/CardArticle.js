@@ -5,7 +5,6 @@ import Im from '../assets/placeholder.jpg'
 
 export default function CardArticle(props) {
   // const { card } = props
-  console.log('api : ', props)
   const goUrl = () => {
     window.open(props.url)
   }
@@ -20,8 +19,10 @@ export default function CardArticle(props) {
             alt={props.member}
           />
           <div className='cardDate'>
-          <p >{props.week} - {props.year}</p>
-          <p>{props.member}</p>
+            <p>
+              {props.week} - {props.year}
+            </p>
+            <p>{props.member}</p>
           </div>
           {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
            */}{' '}

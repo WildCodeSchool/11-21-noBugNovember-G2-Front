@@ -9,7 +9,9 @@ import Navbar from './components/Navbar'
 import Team from './screens/Team'
 
 function App() {
-  const [isFavorite, setIsFavorite] = useState([10, 15, 35, 54]) // id objet API
+  const [isFavorite, setIsFavorite] = useState([
+    10, 15, 35, 54, 75, 127, 106, 16
+  ]) // id objet API
 
   return (
     <div className='App'>
@@ -28,7 +30,12 @@ function App() {
             <Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
           }
         />
-        <Route path='/team' element={<Team isFavorite={isFavorite} setIsFavorite={setIsFavorite}/>} />
+        <Route
+          path='/team'
+          element={
+            <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+          }
+        />
         <Route path='*' element={<Error />} />
       </Routes>
     </div>

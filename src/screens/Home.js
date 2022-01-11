@@ -14,11 +14,13 @@ const Home = ({ isFavorite, setIsFavorite }) => {
       })
   }, [])
 
-  console.log(isFavorite)
-
   return (
     <div>
-      <Gallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
+      <Gallery
+        isFavorite={isFavorite}
+        setIsFavorite={setIsFavorite}
+        articles={tableau}
+      />
     </div>
   )
 }
