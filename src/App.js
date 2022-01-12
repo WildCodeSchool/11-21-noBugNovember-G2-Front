@@ -7,6 +7,7 @@ import Header from './components/Header'
 import Home from './screens/Home'
 import Navbar from './components/Navbar'
 import Team from './screens/Team'
+import AddArticle from './screens/AddArticle'
 
 function App() {
   const [isFavorite, setIsFavorite] = useState([
@@ -34,6 +35,12 @@ function App() {
           path='/team'
           element={
             <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+          }
+        />
+        <Route
+          path='/addArticle'
+          element={
+            <AddArticle isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
           }
         />
         <Route path='*' element={<Error />} />
