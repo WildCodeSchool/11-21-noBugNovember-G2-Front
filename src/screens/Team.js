@@ -20,6 +20,7 @@ const Team = ({ isFavorite, setIsFavorite }) => {
   return (
     <div>
       <h2 className='teamTitle'>Articles de la semaine</h2>
+      <button className='buttonAjoutArticle'>Ajouter une veille</button>
       <TeamGallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
     </div>
   )

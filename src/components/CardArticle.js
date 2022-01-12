@@ -24,10 +24,12 @@ export default function CardArticle(props) {
             </p>
             <p>{props.member}</p>
           </div>
-          {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
-           */}{' '}
+          <p className='cardTopTitle' maxLength='10'>
+            {props.url}
+          </p>
+
           <div className='cardImgBox'>
-            <img className='cardImg' src={Im} alt='' />
+            <img className='cardImg' src={props.img} alt='' />
           </div>
         </div>
 

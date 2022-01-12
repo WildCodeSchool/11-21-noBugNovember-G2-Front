@@ -1,0 +1,20 @@
+.addArticle {
+    position: relative;
+    top: 50%;
+    left: 35%;
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.addArticle input {
+
+    margin: 20px;
+    min-width: 20vw;
+
+
+}
+
