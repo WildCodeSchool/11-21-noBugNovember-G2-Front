@@ -54,7 +54,7 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
   //Ecoute de la state API, quand elle modifié, on lance le premier tri, celle des favoris
   useEffect(() => {
     selectData()
-  }, [api])
+  }, [api , isFavorite])
 
   //Affiche ou non la barre de recherche
   const deroule = () => {

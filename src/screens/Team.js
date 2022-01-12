@@ -3,6 +3,8 @@ import Gallery from '../components/Gallery'
 import TeamGallery from '../components/TeamGallery'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import '../components/styles/TextScroll.css'
+
 
 const Team = ({ isFavorite, setIsFavorite }) => {
   const [tableau, setTableau] = useState([])
@@ -19,8 +21,13 @@ const Team = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
-      <h2 className='teamTitle'>Articles de la semaine</h2>
-      <TeamGallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
+      <section className="titleScroll">
+        <div className="conteneurH2" data-text="Articles de la semaine">
+          <span>Articles de la semaine</span>
+          
+        </div>
+        <TeamGallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
+      </section>
     </div>
   )
 }
