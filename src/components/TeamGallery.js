@@ -26,8 +26,10 @@ export default function TeamGallery({ isFavorite, setIsFavorite }) {
       <div className='gallery'>
         {isFavorite
           .filter(card => card.week != 1)
-          .map(card => (
+          .sort((a, b) => (a.itemM > b.itemM ? 1 : -1))
+          .map((card, i) => (
             <CardArticle
+              order={i}
               key={card.id}
               id={card.id}
               week={card.week}

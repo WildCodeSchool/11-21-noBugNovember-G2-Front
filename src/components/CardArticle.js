@@ -11,8 +11,12 @@ export default function CardArticle(props) {
   }
 
   // OPEN GRAPH *******************
-  let url = props.url
 
+  let cors = 'https://cors-anywhere.herokuapp.com/'
+
+  // afficher le site en cas d'erreurs
+  let cors2 = props.url.split('/')
+  let url = cors.concat(props.url)
   let req = new Request(url)
 
   const [harry, setHarry] = useState([])
@@ -65,13 +69,22 @@ export default function CardArticle(props) {
           </p>
 
           <div className='cardImgBox'>
-            <img className='cardImg' src={imageArticle} alt='' />
+            <img
+              className='cardImg'
+              src={imageArticle ? imageArticle : Im}
+              alt=''
+            />
           </div>
         </div>
 
         <div className='cardBottom'>
           <div className='cardBottomDescritption'>
-            <p>{descriArticle}....</p>
+            <p>
+              {descriArticle
+                ? descriArticle
+                : `Ce contenue ne peut pas être afficher en localhost, le site renvoie vers 
+                ${cors2[2]}`}
+            </p>
           </div>
 
           <div className='cardBottomFooter'>
