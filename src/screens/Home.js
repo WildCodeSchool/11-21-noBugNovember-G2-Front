@@ -1,6 +1,8 @@
 import React from 'react'
 import Gallery from '../components/Gallery'
+import TexteDefile from '../components/TexteDefile'
 import axios from 'axios'
+
 import { useState, useEffect } from 'react'
 import Preview from '../components/Preview'
 
@@ -17,6 +19,8 @@ const Home = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
+
+      <TexteDefile title="les veilleurs de news |"/>
       <Gallery
         isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
