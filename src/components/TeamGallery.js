@@ -7,7 +7,12 @@ export default function TeamGallery({ isFavorite, setIsFavorite, articles }) {
     <div className='bigGallery'>
       <div className='gallery'>
         {articles
-          .filter(card => card.week == 1)
+          .sort((a, b) => {
+            if (a.member.toLowerCase() < b.member.toLowerCase()) return -1
+            if (a.member.toLowerCase() > b.member.toLowerCase()) return 1
+            return 0
+          })
+          .filter(card => card.week == 2)
           .map(card => (
             <CardArticle
               key={card.id}
@@ -27,7 +32,17 @@ export default function TeamGallery({ isFavorite, setIsFavorite, articles }) {
 
       <div className='gallery'>
         {articles
-          .filter(card => card.week != 1)
+          .sort((a, b) => {
+            if (a.week > b.week) return -1
+            if (a.week < b.week) return 1
+            return 0
+          })
+          .sort((a, b) => {
+            if (a.year > b.year) return -1
+            if (a.year < b.year) return 1
+            return 0
+          })
+          .filter(card => card.week != 2)
           .map(card => (
             <CardArticle
               key={card.id}
