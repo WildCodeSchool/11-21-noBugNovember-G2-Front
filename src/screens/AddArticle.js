@@ -36,7 +36,6 @@ function AddArticle() {
         const content = meta.getAttribute('content')
         if (property != null) {
           if (property == 'og:description') {
-            // console.log('content', content)
             setDescriArticle(content)
           } else if (property == 'og:image') {
             setImageArticle(content)
@@ -55,7 +54,11 @@ function AddArticle() {
         <h1>Test</h1>
         <input placeholder='https://votreurl.ici'></input>
         <Preview />
-        <CardArticle description={descriArticle} img={imageArticle} />
+        <CardArticle
+          description={descriArticle}
+          img={imageArticle}
+          titre={titleArticle}
+        />
       </div>
     </div>
   )

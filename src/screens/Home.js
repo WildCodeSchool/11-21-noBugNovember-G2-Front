@@ -17,7 +17,6 @@ const Home = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
-      <Preview />
       <Gallery
         isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
