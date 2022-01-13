@@ -8,6 +8,7 @@ import Home from './screens/Home'
 import Navbar from './components/Navbar'
 import Team from './screens/Team'
 
+
 function App() {
   const [isFavorite, setIsFavorite] = useState([
     10, 15, 35, 54, 75, 127, 106, 16
@@ -16,7 +17,7 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <Navbar />
+      <Navbar /> 
       <Routes>
         <Route
           path='/'

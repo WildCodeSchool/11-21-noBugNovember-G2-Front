@@ -1,10 +1,13 @@
 import React from 'react'
 import './styles/Gallery.css'
 import CardArticle from './CardArticle'
+import Search from './Search'
+
 
 export default function Gallery({ isFavorite, setIsFavorite, articles }) {
   return (
     <div className='bigGallery'>
+      <Search />
       <div className='gallery'>
         {articles.map(card => (
           <CardArticle
