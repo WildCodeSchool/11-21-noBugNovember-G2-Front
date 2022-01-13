@@ -4,8 +4,8 @@ import Gallery from '../components/Gallery'
 import '../components/styles/Bookmark.css'
 
 const Bookmark = ({ isFavorite, setIsFavorite }) => {
-  const [api, setApi] = useState([]) //stock data API
   const [db, setDb] = useState([]) // stock data si favoris par rapport à API
+  const [bdd, setBdd] = useState([]) //stock data venant de la base de données
   const [filter, setFilter] = useState([]) //stock des donnes triées par date par rapport à DB
   const [isFilter, setIsFilter] = useState(false) //si un tri a lieu, sert à changer les données envoyer en gallery
   const [visibility, setVisibility] = useState(false) //sert à cacher ou non l'ensemble de la barre de recherche
@@ -20,53 +20,50 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
   //selectData permet de filtrer les données en favoris
   //On enregistre aussi les semaines et années des favoris
   const selectData = () => {
-    temp = []
+    tempWeek = []
+    tempYear = []
     setIsFilter(false)
-    for (let i = 0; i < isFavorite.length; i++) {
-      for (let y = 0; y < api.length; y++) {
-        if (isFavorite[i] === api[y].id) {
-          temp.push(api[y])
-          if (tempWeek.indexOf(api[y].week) === -1) {
-            tempWeek.push(api[y].week)
-          }
-          if (tempYear.indexOf(api[y].year) === -1) {
-            tempYear.push(api[y].year)
-          }
-        }
+    for (let i = 0; i < bdd.length; i++) {
+      if (tempWeek.indexOf(bdd[i].week) === -1) {
+        tempWeek.push(bdd[i].week)
+      }
+      if (tempYear.indexOf(bdd[i].year) === -1) {
+        tempYear.push(bdd[i].year)
       }
     }
-    setDb(temp)
     setYear(tempYear)
     setWeek(tempWeek)
     setSelectYear(tempYear[0])
     setSelectWeek(tempWeek[0])
   }
 
-  //Axios nous permet de récupérer toutes les données de l'API
-  //et nous stockons tout dans la state api
-  useEffect(() => {
-    axios
-      .get('https://yannick-cousin.github.io/veille-api/api/all.json')
-      .then(response => response.data)
-      .then(data => setApi(data))
-  }, [])
-
   //Ecoute de la state API, quand elle modifié, on lance le premier tri, celle des favoris
   useEffect(() => {
     selectData()
-  }, [api , isFavorite])
+  }, [bdd])
+
+  useEffect(() => {
+    axios
+      .put("http://localhost:3030/favorite/bookmark", {
+        id_user: localStorage.getItem('id_user')
+      })
+      //.then(response => console.log("response ",response.data))
+      .then(response => response.data)
+      .then(data => setBdd(data))
+      console.log(bdd)
+  }, [])
 
   //Affiche ou non la barre de recherche
   const deroule = () => {
     setVisibility(!visibility)
   }
 
-  //Lance un tri dans DB sur les dates sélectionnées
+  //Lance un tri dans DB par rapport aux dates sélectionnées
   const selectDate = () => {
     temp = []
-    for (let i = 0; i < db.length; i++) {
-      if (db[i].year === selectYear && db[i].week === selectWeek) {
-        temp.push(db[i])
+    for (let i = 0; i < bdd.length; i++) {
+      if (bdd[i].year === selectYear && bdd[i].week === selectWeek) {
+        temp.push(bdd[i])
       }
     }
     setFilter(temp)
@@ -119,7 +116,7 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
         </div>
       </div>
       <Gallery
-        articles={isFilter ? filter : db}
+        articles={isFilter ? filter : bdd}
         isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
       />

@@ -1,14 +1,15 @@
 import "./styles/Header.css"
 import Blacklogo from "../assets/blacklogo.svg"
+import {useState, useEffect} from 'react'
 
-function Header() {
+function Header({avatar, setAvatar}) {
 
-    return (
+	return (
     <header className="Header"> 
         <img id="HeaderLogo" src={Blacklogo} alt="logo"></img>
         <div id="HeaderBorder"></div>
         <div id="HeaderUser">
-            <img id="HeaderUserPicture" src="https://storage.googleapis.com/quest_editor_uploads/PVfhQLMVOrmJrJYi6dvMUIE775V00sIu.png" alt="logo"></img>
+            <img id="HeaderUserPicture" src={avatar} alt="logo"></img>
         </div>
     </header>
 );}
