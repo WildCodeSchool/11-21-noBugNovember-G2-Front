@@ -16,7 +16,7 @@ export default function Gallery({ isFavorite, setIsFavorite, articles }) {
             url={card.url}
             description={card.description}
             avatar={card.avatar}
-            favorite={card.favorite}
+            favorite={card.likes}
             isFavorite={isFavorite}
             setIsFavorite={setIsFavorite}
           />

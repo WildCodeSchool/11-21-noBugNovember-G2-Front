@@ -1,0 +1,45 @@
+.titleScroll {
+  perspective: 100vw;
+  perspective-origin: 25vh 256px;
+  overflow: hidden;
+  padding: 80px 0 192px;
+}
+
+.titleScroll .conteneurH2 {
+  display: flex;
+  align-items: center;
+  grid-gap: 40px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  padding: 0 0 32px;
+  margin-bottom: 24px;
+  font-size: 200px;
+  letter-spacing: -10px;
+}
+ 
+.titleScroll div span, 
+.titleScroll div:after {
+  position: relative;
+  top:0;
+}
+ 
+.titleScroll div span {
+  animation: defilement 30s infinite linear;
+}
+ 
+.titleScroll div:after {
+  position: absolute;
+  top:80px; left:0;
+  content:attr(data-text);
+  animation: defilement2 30s infinite linear;
+}
+ 
+@keyframes defilement {
+  0% { margin-left: 0; }
+  100% { margin-left: -100%; }
+}
+ 
+@keyframes defilement2 {
+  0% { margin-left: 100%; }
+  100% { margin-left: 0%; }
+}

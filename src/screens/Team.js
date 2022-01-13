@@ -15,12 +15,10 @@ const Team = ({ isFavorite, setIsFavorite }) => {
       })
   }, [])
 
-  console.log(isFavorite)
-
   return (
     <div>
       <h2 className='teamTitle'>Articles de la semaine</h2>
-      <TeamGallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
+      <TeamGallery articles={tableau} isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
     </div>
   )
 }

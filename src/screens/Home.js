@@ -4,22 +4,26 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 const Home = ({ isFavorite, setIsFavorite }) => {
-  const [tableau, setTableau] = useState([])
-  useEffect(() => {
-    // Send the request
-    axios
-      .get('https://yannick-cousin.github.io/veille-api/api/all.json')
-      .then(response => {
-        setTableau(response.data)
-      })
-  }, [])
+  const [dbArticles, setDbArticles] = useState([])
+  const [members, setMembers] = useState([])
+  const [result, setResult] = useState([])
 
+  useEffect(() => {
+    axios
+    .get('http://localhost:3030/articles/read/all')
+    .then(response => {
+      setResult(response.data)
+    })
+    console.log("Axios members")
+
+  }, [])
+  
   return (
     <div>
       <Gallery
         isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
-        articles={tableau}
+        articles={result}
       />
     </div>
   )
