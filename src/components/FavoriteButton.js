@@ -25,8 +25,6 @@ const FavoriteButton = (props) => {
           setIsBookFull(!isBookFull)
           } 
       }, [])
-  
-    console.log(props.isFavorite)
 
   return (
     <div className='cardBottomFavorite'>
