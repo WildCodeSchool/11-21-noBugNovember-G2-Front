@@ -1,5 +1,8 @@
-    /* Container Card */
     
+    /* Container Card */
+
+    .bookmarkIcon {width: 15px;}
+
     .card {
         display: flex;
         position: relative;
@@ -22,7 +25,7 @@
     .card:hover {
         border-top:1px solid rgba(255,255,255,1) ;
         border-left:1px solid rgba(255,255,255,1) ;
-        transform : scale(1.1);     
+        transform : scale(1.02);     
     }
    
 

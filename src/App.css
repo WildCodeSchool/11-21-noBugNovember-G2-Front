@@ -8,9 +8,7 @@
   --gradientColorDark: linear-gradient(218.33deg, #6667AB 15.4%, #2b2b2b 69.39%, rgba(102, 103, 171, 0.53) 116.5%); /*gradient dark mode*/
   --fontTitle: IvyJournal;
   --fontBody: 'comic sans ms', sans-serif;
-
 }
-
 
 
 *, ::before, ::after {
