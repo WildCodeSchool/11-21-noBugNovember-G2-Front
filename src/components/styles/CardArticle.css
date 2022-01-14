@@ -1,30 +1,51 @@
-    /* Container Card */
-    
-    .card {
-        display: flex;
-        position: relative;
-        background: rgba(255,255,255,0.05);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        border-top:1px solid rgba(255,255,255,0.5) ;
-        border-left:1px solid rgba(255,255,255,0.5) ;
-        border-radius: 15px;
-        height: 350px;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: flex-start;
-        overflow: hidden;
-        backdrop-filter: blur(10px);
-        transition: 0.3s;
-              
+/* Container Card */
 
-    }
+.card {
+    display: flex;
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border-top:1px solid rgba(255,255,255,0.5) ;
+    border-left:1px solid rgba(255,255,255,0.5) ;
+    border-radius: 15px;
+    height: 320px;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
 
-    .card:hover {
-        border-top:1px solid rgba(255,255,255,1) ;
-        border-left:1px solid rgba(255,255,255,1) ;
-        transform : scale(1.1);     
-    }
-   
+.card:hover {
+    border-top:1px solid rgba(255,255,255,1) ;
+    border-left:1px solid rgba(255,255,255,1) ;
+    transform : scale(1.02); 
+    -webkit-font-smoothing: subpixel-antialiased;    
+    backface-visibility: hidden;
+}
+
+.cardImgBox{
+    position: absolute;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+
+.cardImg {
+    width: 100%;
+        height: 100%;
+    position: absolute;
+    object-fit: center;
+    z-index: -1;
+}
+  
+.card p {
+    font-family: var(--fontBody);
+    /* color: rgba(0, 0, 0, 0.794); */
+    /*         color: var(--thirdColor);    */
+    font-size: .8rem;     
+}
 
     /* Haut de la Card */
 
@@ -38,50 +59,97 @@
         cursor: pointer;
   }
 
-     
- .cardTopAvatar {
+/*  .cardTopAvatar {
     
-    height: 20%;
-    width: 15%;
+    height: 100%;
+    min-width: 15%;
     border-top: none;
     border-right: 1px solid rgba(255,255,255,0.5);
     border-bottom: 1px solid rgba(255,255,255,0.5);
     border-radius: 0% 0% 25% 0%;
     overflow:hidden;
  
+} */
+
+.cardTopBanner {
+height: 20%;  
+width: 100%;  
+display: flex;
+}
+
+.cardContainerTopAvatar {
+    height: 100%;
+    display: flex;
+    min-width: 15%;
+    max-width: 15%;
+    border-top: none;
+    border-right: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    border-radius: 0% 0% 0% 0%;
+    overflow: hidden;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.cardTopAvatar {
+
+width:100%;
+overflow:hidden;
+background-color:rgba(0, 0, 0, 0.5);
+ 
+} 
+
+.cardTopTitle {
+
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    background-color:rgba(0, 0, 0, 0.5);
+
+}
+
+.cardTopTitleP {
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    color: whitesmoke;
+    margin-right: 20px;
+
 }
 
 .cardDate{
     position: absolute;
-    top: 20px;
-    right: 22px;
+    bottom: 0%;
+    right: 0%;
+    padding: 7px 10px 5px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 15%;
+    background-color:rgba(0, 0, 0, 0.5);
+    border-radius:  20px 0px 0px 0px;
+    color: whitesmoke;
 }
-  
-  
-    .cardImgBox{
-        position: absolute;
-        width:100%;
-        height:100%;
-        overflow: hidden;
-    }
-    
-    .cardImg {
-        width: 100%;
-         height: 100%;
-        position: absolute;
-        object-fit: center;
-        z-index: -1;
-    }
-  
-    .card p {
-        font-family: var(--fontBody);
-        /* color: rgba(0, 0, 0, 0.794); */
-        color: var(--thirdColor);   
-        font-size: .8rem;     
-        }
 
-       
+.cardMember {
 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.checkMarkIcon {
+    width: 25px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    margin: 7px;
+    border-radius: 50%;
+    box-shadow: 7px -7px 11px 0px rgb(255 255 255 / 20%) inset;;
+  }
 
     /* Bas de la Card */
 
@@ -102,7 +170,10 @@
         flex-direction: column;
         padding: 1px;
         height: 50%;
+        white-space: normal;
         overflow: hidden;
+        text-overflow: ellipsis;
+        
     
     }
       
@@ -119,6 +190,7 @@
     
     .cardBottomLink:hover {
     transform: scale(1.5);
+    transition: 0.2s;
     cursor: pointer;
     }
     
@@ -131,3 +203,5 @@
     .cardBottomLike p{
         font-size: 0.7rem;
     }
+
+    .bookmarkIcon {width: 15px;}

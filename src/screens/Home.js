@@ -1,9 +1,11 @@
 import React from 'react'
 import Gallery from '../components/Gallery'
+import TexteDefile from '../components/TexteDefile'
 import axios from 'axios'
+
 import { useState, useEffect } from 'react'
 
-const Home = ( props ) => {
+const Home = (props) => {
   const [tableau, setTableau] = useState([])
   useEffect(() => {
     // Send the request
@@ -16,10 +18,14 @@ const Home = ( props ) => {
 
   return (
     <div>
+      <TexteDefile title="les veilleurs de news |" />
       <Gallery
         articles={tableau}
         isFavorite={props.isFavorite}
         setIsFavorite={props.setIsFavorite}
+        isRead={props.isRead}
+        setIsrRead={props.setIsRead}
+        changeIsRead={props.changeIsRead}
       />
     </div>
   )

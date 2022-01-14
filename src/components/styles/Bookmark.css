@@ -5,6 +5,12 @@
   align-items: center;
   margin-top: 20px;
 }
+/* .checkMarkIcon {
+  width: 25px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+} */
 
 .buttonselect {
   display: flex;

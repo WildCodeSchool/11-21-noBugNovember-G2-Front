@@ -15,7 +15,6 @@ export default function Gallery(props) {
   const clickClosePartage = () => {
     setOpenPartage(false)    
   }
-
   return (
     <div className='bigGallery'>
       <PopupSocial openPartage={openPartage} 
@@ -38,6 +37,9 @@ export default function Gallery(props) {
             setIsFavorite={props.setIsFavorite}
             setUrlPartage={setUrlPartage}
             clickOpenPartage={clickOpenPartage} 
+            isRead={props.isRead}
+            setIsRead={props.setIsRead}
+            changeIsRead={props.changeIsRead}
           />
         ))}
       </div>
