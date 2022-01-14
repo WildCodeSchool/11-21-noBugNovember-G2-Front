@@ -18,8 +18,12 @@ const Team = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
-        <TexteDefile title=" ma promo |  ma promo | "/>
-        <TeamGallery  articles={tableau} setIsFavorite={setIsFavorite} isFavorite={isFavorite}/>
+      <TexteDefile title=' ma promo |  ma promo | ' />
+      <TeamGallery
+        isFavorite={isFavorite}
+        setIsFavorite={setIsFavorite}
+        articles={tableau}
+      />
     </div>
   )
 }

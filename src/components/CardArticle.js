@@ -6,7 +6,6 @@ import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
 
 export default function CardArticle(props) {
-  // const { card } = props
   const goUrl = () => {
     window.open(props.url)
   }
@@ -15,19 +14,27 @@ export default function CardArticle(props) {
     <>
       <article className='card' key={props.id}>
         <div className='cardContentTop' onClick={goUrl}>
-          <img
-            className='cardTopAvatar'
-            src={props.avatar}
-            alt={props.member}
-          />
-          <div className='cardDate'>
-            <p>
-              {props.week} - {props.year}
-            </p>
-            <p>{props.member}</p>
+          <div className='cardTopBanner'>
+            <div className='cardContainerTopAvatar'>
+              <img
+                className='cardTopAvatar'
+                src={props.avatar}
+                alt={props.member}
+              />
+            </div>
+            <div className='cardTopTitle'>
+              <p className='cardTopTitleP' maxLength='10'>
+                {props.url}
+              </p>
+            </div>
+            <div className='cardDate'>
+              <p>
+                S{props.week} - {props.year}
+              </p>
+              <p className='cardMember'>{props.member}</p>
+            </div>
           </div>
-          {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
-           */}{' '}
+
           <div className='cardImgBox'>
             <img className='cardImg' src={Im} alt='' />
           </div>
@@ -35,7 +42,7 @@ export default function CardArticle(props) {
 
         <div className='cardBottom'>
           <div className='cardBottomDescritption'>
-            <p>{props.description}....</p>
+            <p>{props.description}</p>
           </div>
 
           <div className='cardBottomFooter'>
@@ -47,7 +54,11 @@ export default function CardArticle(props) {
             >
               ⛬
             </a>
-            <FavoriteButton id={props.id} isFavorite={props.isFavorite} setIsFavorite={props.setIsFavorite}/>
+            <FavoriteButton
+              id={props.id}
+              isFavorite={props.isFavorite}
+              setIsFavorite={props.setIsFavorite}
+            />
             <LikeButton favorite={props.favorite} />
           </div>
         </div>
