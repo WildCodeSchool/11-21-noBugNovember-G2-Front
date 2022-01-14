@@ -35,7 +35,7 @@ export default function CardArticle(props) {
             </div>
             <div className='cardTopTitle'>
               <p className='cardTopTitleP' maxLength='10'>
-                {props.description}
+                {openGraph.title ? openGraph.title : props.description}
               </p>
             </div>
             <div className='cardDate'>
