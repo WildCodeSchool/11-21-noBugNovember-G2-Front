@@ -2,6 +2,7 @@ import './App.css'
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Bookmark from './screens/Bookmark'
+import Connect from './screens/Connect'
 import Error from './screens/Error'
 import Header from './components/Header'
 import Home from './screens/Home'
@@ -37,6 +38,13 @@ function App() {
             <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
           }
         />
+        <Route 
+          path='/connect'
+          element={
+          <Connect /> 
+          }
+          />
+
         <Route path='*' element={<Error />} />
       </Routes>
     </div>

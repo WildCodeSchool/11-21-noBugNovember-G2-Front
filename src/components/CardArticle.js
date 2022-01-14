@@ -1,5 +1,7 @@
 import React from 'react'
 import LikeButton from './LikeButton'
+import FavoriteButton from './FavoriteButton'
+
 import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
 
@@ -45,14 +47,7 @@ export default function CardArticle(props) {
             >
               ⛬
             </a>
-            <a
-              className='cardBottomLink'
-              target='_blank'
-              href={props.url}
-              rel='noreferrer'
-            >
-              🔖
-            </a>
+            <FavoriteButton id={props.id} isFavorite={props.isFavorite} setIsFavorite={props.setIsFavorite}/>
             <LikeButton favorite={props.favorite} />
           </div>
         </div>

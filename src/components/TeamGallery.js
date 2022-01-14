@@ -2,12 +2,17 @@ import React from 'react'
 import './styles/TeamGallery.css'
 import CardArticle from './CardArticle'
 
-export default function TeamGallery({ isFavorite, setIsFavorite }) {
+export default function TeamGallery({ isFavorite, setIsFavorite, articles }) {
   return (
     <div className='bigGallery'>
       <div className='gallery'>
-        {isFavorite
-          .filter(card => card.week == 1)
+        {articles
+          .sort((a, b) => {
+            if (a.member.toLowerCase() < b.member.toLowerCase()) return -1
+            if (a.member.toLowerCase() > b.member.toLowerCase()) return 1
+            return 0
+          })
+          .filter(card => card.week == 2)
           .map(card => (
             <CardArticle
               key={card.id}
@@ -19,13 +24,25 @@ export default function TeamGallery({ isFavorite, setIsFavorite }) {
               description={card.description}
               avatar={card.avatar}
               favorite={card.favorite}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
             />
           ))}
       </div>
 
       <div className='gallery'>
-        {isFavorite
-          .filter(card => card.week != 1)
+        {articles
+          .sort((a, b) => {
+            if (a.week > b.week) return -1
+            if (a.week < b.week) return 1
+            return 0
+          })
+          .sort((a, b) => {
+            if (a.year > b.year) return -1
+            if (a.year < b.year) return 1
+            return 0
+          })
+          .filter(card => card.week != 2)
           .map(card => (
             <CardArticle
               key={card.id}
@@ -37,6 +54,8 @@ export default function TeamGallery({ isFavorite, setIsFavorite }) {
               description={card.description}
               avatar={card.avatar}
               favorite={card.favorite}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
             />
           ))}
       </div>

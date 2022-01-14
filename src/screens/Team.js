@@ -1,6 +1,7 @@
 import React from 'react'
 import Gallery from '../components/Gallery'
 import TeamGallery from '../components/TeamGallery'
+import TexteDefile from '../components/TexteDefile'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
@@ -15,12 +16,10 @@ const Team = ({ isFavorite, setIsFavorite }) => {
       })
   }, [])
 
-  console.log(isFavorite)
-
   return (
     <div>
-      <h2 className='teamTitle'>Articles de la semaine</h2>
-      <TeamGallery isFavorite={tableau} setIsFavorite={setIsFavorite} />
+        <TexteDefile title=" ma promo |  ma promo | "/>
+        <TeamGallery  articles={tableau} setIsFavorite={setIsFavorite} isFavorite={isFavorite}/>
     </div>
   )
 }
