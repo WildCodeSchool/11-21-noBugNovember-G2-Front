@@ -65,11 +65,15 @@ export default function CardArticle(props) {
               <p className='cardMember'>{props.member}</p>
             </div>
           </div>
-          <img className='checkMarkIcon' src={isReadMark ? check : ''} alt='' />
           <div className='cardImgBox'>
             <img
               className='cardImg'
               src={openGraph.image ? openGraph.image : Im}
+              alt=''
+            />
+            <img
+              className='checkMarkIcon'
+              src={isReadMark ? check : ''}
               alt=''
             />
           </div>
