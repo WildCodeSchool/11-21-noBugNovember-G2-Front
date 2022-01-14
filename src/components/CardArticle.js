@@ -4,11 +4,22 @@ import FavoriteButton from './FavoriteButton'
 
 import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 export default function CardArticle(props) {
   const goUrl = () => {
     window.open(props.url)
   }
+
+  const [openGraph, setOpenGraph] = useState('')
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3030/?url=${props.url}`)
+      .then(response => response.data)
+      .then(data => setOpenGraph(data))
+  }, [])
 
   return (
     <>
@@ -36,13 +47,20 @@ export default function CardArticle(props) {
           </div>
 
           <div className='cardImgBox'>
-            <img className='cardImg' src={Im} alt='' />
+            <img
+              className='cardImg'
+              src={openGraph.image ? openGraph.image : Im}
+              alt=''
+            />
           </div>
         </div>
 
         <div className='cardBottom'>
           <div className='cardBottomDescritption'>
-            <p>{props.description}</p>
+            <p>
+              {openGraph.title ? openGraph.title : props.description}
+              ....
+            </p>
           </div>
 
           <div className='cardBottomFooter'>
