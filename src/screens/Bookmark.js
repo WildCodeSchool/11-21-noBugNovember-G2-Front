@@ -4,7 +4,7 @@ import Gallery from '../components/Gallery'
 import TexteDefile from '../components/TexteDefile'
 import '../components/styles/Bookmark.css'
 
-const Bookmark = ({ isFavorite, setIsFavorite }) => {
+const Bookmark = ({ isFavorite, setIsFavorite, changeIsRead, isRead, setIsRead}) => {
   const [api, setApi] = useState([]) //stock data API
   const [db, setDb] = useState([]) // stock data si favoris par rapport à API
   const [filter, setFilter] = useState([]) //stock des donnes triées par date par rapport à DB
@@ -123,6 +123,9 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
         articles={isFilter ? filter : db}
         isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
+        isRead={isRead} 
+        setIsRead={setIsRead}
+        changeIsRead={changeIsRead}
       />
     </div>
   )

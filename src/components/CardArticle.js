@@ -1,16 +1,36 @@
 import React from 'react'
-import LikeButton from './LikeButton'
+import { useEffect, useState } from 'react'
+import check from '../assets/check.png'
 import FavoriteButton from './FavoriteButton'
+import LikeButton from './LikeButton'
 
 import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
-import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export default function CardArticle(props) {
+  const [isReadMark, setIsReadMark] = useState(false)
+
   const goUrl = () => {
     window.open(props.url)
   }
+  const showCheck = () => {
+    goUrl()
+    let temp = props.isRead
+    if (!temp.includes(props.id)) {
+      temp.push(props.id)
+      props.changeIsRead(temp)
+      setIsReadMark(true)
+      //props.setIsRead(temp)
+    }
+  }
+
+  useEffect(() => {
+    if (props.isRead.includes(props.id)) {
+      setIsReadMark(true)
+    }
+  }, [])
+  // useEffect(() => {} ,[props.isRead])
 
   const [openGraph, setOpenGraph] = useState('')
 
@@ -24,7 +44,7 @@ export default function CardArticle(props) {
   return (
     <>
       <article className='card' key={props.id}>
-        <div className='cardContentTop' onClick={goUrl}>
+        <div className='cardContentTop' onClick={() => showCheck()}>
           <div className='cardTopBanner'>
             <div className='cardContainerTopAvatar'>
               <img
@@ -45,7 +65,7 @@ export default function CardArticle(props) {
               <p className='cardMember'>{props.member}</p>
             </div>
           </div>
-
+          <img className='checkMarkIcon' src={isReadMark ? check : ''} alt='' />
           <div className='cardImgBox'>
             <img
               className='cardImg'
