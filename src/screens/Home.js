@@ -3,7 +3,7 @@ import Gallery from '../components/Gallery'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-const Home = ({ isFavorite, setIsFavorite }) => {
+const Home = ( props ) => {
   const [tableau, setTableau] = useState([])
   useEffect(() => {
     // Send the request
@@ -17,9 +17,9 @@ const Home = ({ isFavorite, setIsFavorite }) => {
   return (
     <div>
       <Gallery
-        isFavorite={isFavorite}
-        setIsFavorite={setIsFavorite}
         articles={tableau}
+        isFavorite={props.isFavorite}
+        setIsFavorite={props.setIsFavorite}
       />
     </div>
   )

@@ -7,6 +7,8 @@ import Header from './components/Header'
 import Home from './screens/Home'
 import Navbar from './components/Navbar'
 import Team from './screens/Team'
+import PopupSocial from './components/PopupSocial'
+
 
 function App() {
   const [isFavorite, setIsFavorite] = useState([
@@ -37,7 +39,9 @@ function App() {
           }
         />
         <Route path='*' element={<Error />} />
+        <Route path='popup' element={<PopupSocial />} />
       </Routes>
+      
     </div>
   )
 }

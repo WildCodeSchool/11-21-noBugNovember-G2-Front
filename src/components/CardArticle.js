@@ -1,10 +1,12 @@
 import React from 'react'
 import LikeButton from './LikeButton'
+import PopupSocial from './PopupSocial'
 import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
 
 export default function CardArticle(props) {
   // const { card } = props
+
   const goUrl = () => {
     window.open(props.url)
   }
@@ -40,11 +42,14 @@ export default function CardArticle(props) {
             <a
               className='cardBottomLink'
               target='_blank'
-              href={props.url}
               rel='noreferrer'
+              onClick={() => props.clickOpenPartage(props.url)}
             >
               ⛬
             </a>
+            {/* <PopupSocial open={open} timeout={1000}/> */}
+                {/* <ClickAwayListener onClickAway={() => { setOpen(false); }}></ClickAwayListener> */}
+
             <a
               className='cardBottomLink'
               target='_blank'

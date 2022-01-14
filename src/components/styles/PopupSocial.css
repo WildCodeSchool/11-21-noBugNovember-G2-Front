@@ -1,0 +1,74 @@
+/* .HolderShare {
+    opacity: 0;
+    display: none;
+    transition: 2s;
+} */
+
+.globalPage {
+    display: block;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    padding: 100%;
+    z-index: 20000;
+}
+
+#HolderShareActive {
+    display: block;
+    opacity: 1;
+    position: fixed;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.5);
+    /* z-index: 20000; */
+    padding: 30px;
+    border-radius: 12px;
+    margin: 0px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50% + 45px), -50%);
+}
+
+.popupButtonExit {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.popupButtonExit img{
+    width: 26px;
+}
+.ShareSocial{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+.Clipboard{
+    margin-top: 2vh;
+}
+
+.Clipboard button {
+    cursor: pointer;
+}
+#PopupLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+}
+
+#PopupLineLeft {
+    width: 5vw;
+    height: 2px;
+    background-color: var(--thirdColor);
+}
+
+#PopupLineRight {
+    width: 5vw;
+    height: 2px;
+    background-color: var(--thirdColor);
+}
+
