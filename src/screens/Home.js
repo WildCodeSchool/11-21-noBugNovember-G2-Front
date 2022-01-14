@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import { useState, useEffect } from 'react'
 
-const Home = ({ isFavorite, setIsFavorite, isRead, changeIsRead, setIsRead }) => {
+const Home = (props) => {
   const [tableau, setTableau] = useState([])
   useEffect(() => {
     // Send the request
@@ -18,15 +18,14 @@ const Home = ({ isFavorite, setIsFavorite, isRead, changeIsRead, setIsRead }) =>
 
   return (
     <div>
-
-      <TexteDefile title="les veilleurs de news |"/>
+      <TexteDefile title="les veilleurs de news |" />
       <Gallery
-        isFavorite={isFavorite}
-        setIsFavorite={setIsFavorite}
-        isRead={isRead} 
-        setIsrRead={setIsRead}
-        changeIsRead={changeIsRead}
         articles={tableau}
+        isFavorite={props.isFavorite}
+        setIsFavorite={props.setIsFavorite}
+        isRead={props.isRead}
+        setIsrRead={props.setIsRead}
+        changeIsRead={props.changeIsRead}
       />
     </div>
   )

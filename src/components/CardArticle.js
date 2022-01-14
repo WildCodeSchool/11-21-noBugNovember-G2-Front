@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import check from '../assets/check.png'
 import FavoriteButton from './FavoriteButton'
 import LikeButton from './LikeButton'
-
+import PopupSocial from './PopupSocial'
 import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
 import axios from 'axios'
@@ -88,8 +88,8 @@ export default function CardArticle(props) {
             <a
               className='cardBottomLink'
               target='_blank'
-              href={props.url}
               rel='noreferrer'
+              onClick={() => props.clickOpenPartage(props.url)}
             >
               ⛬
             </a>

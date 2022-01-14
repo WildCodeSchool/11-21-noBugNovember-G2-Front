@@ -1,12 +1,28 @@
 import React from 'react'
 import './styles/Gallery.css'
 import CardArticle from './CardArticle'
+import PopupSocial from './PopupSocial'
+import { useState } from 'react'
 
-export default function Gallery({ isFavorite, setIsFavorite, articles, isRead, setIsRead, changeIsRead }) {
+export default function Gallery(props) {
+  const [openPartage, setOpenPartage] = useState(false);
+  const [urlPartage, setUrlPartage] = useState("");
+  
+  const clickOpenPartage = (url) => {
+    setOpenPartage(true)
+    setUrlPartage(url)
+  }
+  const clickClosePartage = () => {
+    setOpenPartage(false)    
+  }
   return (
     <div className='bigGallery'>
+      <PopupSocial openPartage={openPartage} 
+      urlPartage={urlPartage}
+      clickClosePartage={clickClosePartage}
+      />
       <div className='gallery'>
-        {articles.map(card => (
+        {props.articles.map(card => (
           <CardArticle
             key={card.id}
             id={card.id}
@@ -17,11 +33,13 @@ export default function Gallery({ isFavorite, setIsFavorite, articles, isRead, s
             description={card.description}
             avatar={card.avatar}
             favorite={card.favorite}
-            isFavorite={isFavorite}
-            setIsFavorite={setIsFavorite}
-            isRead={isRead}
-            setIsRead={setIsRead}
-            changeIsRead={changeIsRead}
+            isFavorite={props.isFavorite}
+            setIsFavorite={props.setIsFavorite}
+            setUrlPartage={setUrlPartage}
+            clickOpenPartage={clickOpenPartage} 
+            isRead={props.isRead}
+            setIsRead={props.setIsRead}
+            changeIsRead={props.changeIsRead}
           />
         ))}
       </div>
