@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import { useState, useEffect } from 'react'
 
-const Home = (props) => {
+const Home = props => {
   const [tableau, setTableau] = useState([])
   useEffect(() => {
     // Send the request
@@ -18,7 +18,7 @@ const Home = (props) => {
 
   return (
     <div>
-      <TexteDefile title="les veilleurs de news |" />
+      <TexteDefile title='les veilleurs de news |' />
       <Gallery
         articles={tableau}
         isFavorite={props.isFavorite}
@@ -26,6 +26,11 @@ const Home = (props) => {
         isRead={props.isRead}
         setIsrRead={props.setIsRead}
         changeIsRead={props.changeIsRead}
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+        setUrlPartage={props.setUrlPartage}
+        clickOpenPartage={props.clickOpenPartage}
       />
     </div>
   )

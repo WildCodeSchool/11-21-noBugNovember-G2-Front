@@ -4,7 +4,7 @@ import Gallery from '../components/Gallery'
 import TexteDefile from '../components/TexteDefile'
 import '../components/styles/Bookmark.css'
 
-const Bookmark = ({ isFavorite, setIsFavorite, changeIsRead, isRead, setIsRead}) => {
+const Bookmark = props => {
   const [api, setApi] = useState([]) //stock data API
   const [db, setDb] = useState([]) // stock data si favoris par rapport à API
   const [filter, setFilter] = useState([]) //stock des donnes triées par date par rapport à DB
@@ -23,9 +23,9 @@ const Bookmark = ({ isFavorite, setIsFavorite, changeIsRead, isRead, setIsRead})
   const selectData = () => {
     temp = []
     setIsFilter(false)
-    for (let i = 0; i < isFavorite.length; i++) {
+    for (let i = 0; i < props.isFavorite.length; i++) {
       for (let y = 0; y < api.length; y++) {
-        if (isFavorite[i] === api[y].id) {
+        if (props.isFavorite[i] === api[y].id) {
           temp.push(api[y])
           if (tempWeek.indexOf(api[y].week) === -1) {
             tempWeek.push(api[y].week)
@@ -55,7 +55,7 @@ const Bookmark = ({ isFavorite, setIsFavorite, changeIsRead, isRead, setIsRead})
   //Ecoute de la state API, quand elle modifié, on lance le premier tri, celle des favoris
   useEffect(() => {
     selectData()
-  }, [api , isFavorite])
+  }, [api, props.isFavorite])
 
   //Affiche ou non la barre de recherche
   const deroule = () => {
@@ -76,7 +76,7 @@ const Bookmark = ({ isFavorite, setIsFavorite, changeIsRead, isRead, setIsRead})
 
   return (
     <div className='bookmark'>
-      <TexteDefile title=" mes bookmarks | mes bookmarks | " />
+      <TexteDefile title=' mes bookmarks | mes bookmarks | ' />
       <div className='rowbutton'>
         <div className={visibility ? 'buttonselect active' : 'buttonselect'}>
           <i className='fas fa-search' onClick={() => deroule()} />
@@ -121,11 +121,16 @@ const Bookmark = ({ isFavorite, setIsFavorite, changeIsRead, isRead, setIsRead})
       </div>
       <Gallery
         articles={isFilter ? filter : db}
-        isFavorite={isFavorite}
-        setIsFavorite={setIsFavorite}
-        isRead={isRead} 
-        setIsRead={setIsRead}
-        changeIsRead={changeIsRead}
+        isFavorite={props.isFavorite}
+        setIsFavorite={props.setIsFavorite}
+        isRead={props.isRead}
+        setIsRead={props.setIsRead}
+        changeIsRead={props.changeIsRead}
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+        setUrlPartage={props.setUrlPartage}
+        clickOpenPartage={props.clickOpenPartage}
       />
     </div>
   )
