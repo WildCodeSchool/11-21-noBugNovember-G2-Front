@@ -9,9 +9,8 @@ import Im from '../assets/placeholder.jpg'
 import axios from 'axios'
 
 export default function CardArticle(props) {
-  // const { card } = props
-
   const [isReadMark, setIsReadMark] = useState(false)
+
   const goUrl = () => {
     window.open(props.url)
   }
@@ -26,13 +25,12 @@ export default function CardArticle(props) {
     }
   }
 
-    useEffect(() => {
+  useEffect(() => {
     if (props.isRead.includes(props.id)) {
       setIsReadMark(true)
     }
-    }, [])
+  }, [])
   // useEffect(() => {} ,[props.isRead])
-
 
   const [openGraph, setOpenGraph] = useState('')
 
@@ -47,25 +45,35 @@ export default function CardArticle(props) {
     <>
       <article className='card' key={props.id}>
         <div className='cardContentTop' onClick={() => showCheck()}>
-        <img className='checkMarkIcon' src={isReadMark ? check :''} alt='' />  
-        {/* <Checkmark isRead={props.isRead} setIsRead={props.setIsRead} id={props.id} /> */}
-          <img
-            className='cardTopAvatar'
-            src={props.avatar}
-            alt={props.member}
-          />
-          <div className='cardDate'>
-            <p>
-              {props.week} - {props.year}
-            </p>
-            <p>{props.member}</p>
+          <div className='cardTopBanner'>
+            <div className='cardContainerTopAvatar'>
+              <img
+                className='cardTopAvatar'
+                src={props.avatar}
+                alt={props.member}
+              />
+            </div>
+            <div className='cardTopTitle'>
+              <p className='cardTopTitleP' maxLength='10'>
+                {openGraph.title ? openGraph.title : props.description}
+              </p>
+            </div>
+            <div className='cardDate'>
+              <p>
+                S{props.week} - {props.year}
+              </p>
+              <p className='cardMember'>{props.member}</p>
+            </div>
           </div>
-          {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
-           */}{' '}
           <div className='cardImgBox'>
             <img
               className='cardImg'
               src={openGraph.image ? openGraph.image : Im}
+              alt=''
+            />
+            <img
+              className='checkMarkIcon'
+              src={isReadMark ? check : ''}
               alt=''
             />
           </div>
@@ -73,10 +81,7 @@ export default function CardArticle(props) {
 
         <div className='cardBottom'>
           <div className='cardBottomDescritption'>
-            <p>
-              {openGraph.title ? openGraph.title : props.description}
-              ....
-            </p>
+            <p>{openGraph.title ? openGraph.title : props.description}</p>
           </div>
 
           <div className='cardBottomFooter'>

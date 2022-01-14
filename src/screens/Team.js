@@ -5,7 +5,13 @@ import TexteDefile from '../components/TexteDefile'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-const Team = ({ isFavorite, setIsFavorite, isRead, setIsRead, changeIsRead}) => {
+const Team = ({
+  isFavorite,
+  setIsFavorite,
+  isRead,
+  setIsRead,
+  changeIsRead
+}) => {
   const [tableau, setTableau] = useState([])
   useEffect(() => {
     // Send the request
@@ -18,8 +24,15 @@ const Team = ({ isFavorite, setIsFavorite, isRead, setIsRead, changeIsRead}) => 
 
   return (
     <div>
-        <TexteDefile title=" ma promo |  ma promo | "/>
-        <TeamGallery  articles={tableau} setIsFavorite={setIsFavorite} isFavorite={isFavorite} isRead={isRead} setIsRead={setIsRead} changeIsRead={changeIsRead}/>
+      <TexteDefile title=' ma promo |  ma promo | ' />
+      <TeamGallery
+        articles={tableau}
+        setIsFavorite={setIsFavorite}
+        isFavorite={isFavorite}
+        isRead={isRead}
+        setIsRead={setIsRead}
+        changeIsRead={changeIsRead}
+      />
     </div>
   )
 }
