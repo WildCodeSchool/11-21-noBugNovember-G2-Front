@@ -14,6 +14,9 @@ function App() {
     10, 15, 35, 54, 75, 127, 106, 16
   ]) // id objet API
 
+  const [isRead, setIsRead] = useState([0, 1, 2, 3]) 
+  const changeIsRead = (temp) => setIsRead(temp)
+
   return (
     <div className='App'>
       <Header />
@@ -22,19 +25,19 @@ function App() {
         <Route
           path='/'
           element={
-            <Home isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+            <Home isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead} />
           }
         />
         <Route
           path='/bookmark'
           element={
-            <Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+            <Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead}/>
           }
         />
         <Route
           path='/team'
           element={
-            <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+            <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead}/>
           }
         />
         <Route 
