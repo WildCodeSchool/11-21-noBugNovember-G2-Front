@@ -13,9 +13,7 @@ import Test from './screens/Test'
 import noavatar from './assets/croix_rouge.png'
 
 function App() {
-  const [isFavorite, setIsFavorite] = useState([
-    10, 15, 35, 54, 75, 127, 106, 16
-  ]) // id objet API
+  const [isFavorite, setIsFavorite] = useState([]) // id objet API
   const [avatar, setAvatar] = useState(noavatar)
 
   useEffect(() => {

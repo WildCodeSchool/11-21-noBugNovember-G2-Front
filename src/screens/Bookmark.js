@@ -4,7 +4,6 @@ import Gallery from '../components/Gallery'
 import '../components/styles/Bookmark.css'
 
 const Bookmark = ({ isFavorite, setIsFavorite }) => {
-  const [db, setDb] = useState([]) // stock data si favoris par rapport à API
   const [bdd, setBdd] = useState([]) //stock data venant de la base de données
   const [filter, setFilter] = useState([]) //stock des donnes triées par date par rapport à DB
   const [isFilter, setIsFilter] = useState(false) //si un tri a lieu, sert à changer les données envoyer en gallery
@@ -51,7 +50,7 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
       .then(response => response.data)
       .then(data => setBdd(data))
       console.log(bdd)
-  }, [])
+  }, [isFavorite])
 
   //Affiche ou non la barre de recherche
   const deroule = () => {
