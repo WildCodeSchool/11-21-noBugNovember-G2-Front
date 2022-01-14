@@ -47,9 +47,6 @@ export default function CardArticle(props) {
             >
               ⛬
             </a>
-            {/* <PopupSocial open={open} timeout={1000}/> */}
-                {/* <ClickAwayListener onClickAway={() => { setOpen(false); }}></ClickAwayListener> */}
-
             <a
               className='cardBottomLink'
               target='_blank'

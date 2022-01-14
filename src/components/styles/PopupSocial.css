@@ -4,23 +4,23 @@
     transition: 2s;
 } */
 
-.globalPage {
+.globalPopupPage {
     display: block;
     position: fixed;
     top: 0%;
-    left: 0%;
+    left: 180px;
     padding: 100%;
     z-index: 20000;
 }
 
-#HolderShareActive {
+#holderShareActive {
     display: block;
     opacity: 1;
     position: fixed;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     background: rgba(255,255,255,0.5);
-    /* z-index: 20000; */
+    z-index: 30000;
     padding: 30px;
     border-radius: 12px;
     margin: 0px;
@@ -30,43 +30,43 @@
     transform: translate(calc(-50% + 45px), -50%);
 }
 
-.popupButtonExit {
+#popupButtonExit {
     position: absolute;
     right: 10px;
     top: 10px;
     cursor: pointer;
 }
 
-.popupButtonExit img{
+#popupButtonExit img{
     width: 26px;
 }
-.ShareSocial{
+#shareSocial{
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vh;
     margin-top: 2vh;
 }
 
-.Clipboard{
+#clipboard{
     margin-top: 2vh;
 }
 
-.Clipboard button {
+#clipboard button {
     cursor: pointer;
 }
-#PopupLine {
+#popupLine {
     display: flex;
     justify-content: space-between;
     align-items: center;  
 }
 
-#PopupLineLeft {
+#popupLineLeft {
     width: 5vw;
     height: 2px;
     background-color: var(--thirdColor);
 }
 
-#PopupLineRight {
+#popupLineRight {
     width: 5vw;
     height: 2px;
     background-color: var(--thirdColor);

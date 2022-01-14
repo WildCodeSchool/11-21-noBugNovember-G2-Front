@@ -22,24 +22,24 @@ import {
         return null
       }
       return (
-        <div className="globalPage" onClick={props.clickClosePartage}>
-          <div id="HolderShareActive" onClick={e => e.stopPropagation()}> 
+        <div className="globalPopupPage" onClick={props.clickClosePartage}>
+          <div id="holderShareActive" onClick={e => e.stopPropagation()}> 
               {/* <div className={props.openPartage ? "HolderShareActive" : "HolderShare"} >  */}
-                  <a className="popupButtonExit"
+                  <a id="popupButtonExit"
                   onClick={() => props.clickClosePartage()}><img src={cross}/></a>
                   <p> Partagez ! </p>
-                <div className='ShareSocial'>
+                <div id='shareSocial'>
                     <EmailShareButton  url={props.urlPartage}><EmailIcon size={32} round={true} /></EmailShareButton>
                     <FacebookShareButton  url={props.urlPartage}><FacebookIcon size={32} round={true} /></FacebookShareButton>
                     <TwitterShareButton  url={props.urlPartage}><TwitterIcon size={32} round={true} /></TwitterShareButton>
                     <LinkedinShareButton  url={props.urlPartage}><LinkedinIcon size={32} round={true} /></LinkedinShareButton>
                 </div>
-                <div id="PopupLine">
-                    <div id="PopupLineLeft"></div>  
+                <div id="popupLine">
+                    <div id="popupLineLeft"></div>  
                     <p> OU </p>
-                    <div id="PopupLineRight"></div> 
+                    <div id="popupLineRight"></div> 
                 </div>                
-                <div className="Clipboard">
+                <div id="clipboard">
                     <input value={props.urlPartage} id="myInput"/>
                     <button onClick={() => CopyClipboard()}>Copy link</button>
                 </div>
