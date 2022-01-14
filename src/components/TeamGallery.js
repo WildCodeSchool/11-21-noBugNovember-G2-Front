@@ -2,7 +2,7 @@ import React from 'react'
 import './styles/TeamGallery.css'
 import CardArticle from './CardArticle'
 
-export default function TeamGallery({ isFavorite, setIsFavorite, articles }) {
+export default function TeamGallery({ isFavorite, setIsFavorite, articles, isRead, setIsRead, changeIsRead  }) {
   return (
     <div className='bigGallery'>
       <div className='gallery'>
@@ -26,6 +26,9 @@ export default function TeamGallery({ isFavorite, setIsFavorite, articles }) {
               favorite={card.favorite}
               isFavorite={isFavorite}
               setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}
             />
           ))}
       </div>
@@ -56,6 +59,9 @@ export default function TeamGallery({ isFavorite, setIsFavorite, articles }) {
               favorite={card.favorite}
               isFavorite={isFavorite}
               setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}
             />
           ))}
       </div>
