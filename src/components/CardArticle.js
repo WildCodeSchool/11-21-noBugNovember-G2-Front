@@ -98,7 +98,11 @@ export default function CardArticle(props) {
             >
               ⛬
             </a>
-            <FavoriteButton id={props.id} isFavorite={props.isFavorite} setIsFavorite={props.setIsFavorite}/>
+            <FavoriteButton
+              id={props.id}
+              isFavorite={props.isFavorite}
+              setIsFavorite={props.setIsFavorite}
+            />
             <LikeButton favorite={props.favorite} />
           </div>
         </div>
