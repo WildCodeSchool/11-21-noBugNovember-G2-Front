@@ -24,7 +24,7 @@ export default function CardArticle(props) {
             </div>
             <div className='cardTopTitle'>
               <p className='cardTopTitleP' maxLength='10'>
-                {props.url}
+                {props.description}
               </p>
             </div>
             <div className='cardDate'>
