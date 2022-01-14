@@ -6,7 +6,6 @@ import LikeButton from './LikeButton'
 
 import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
-import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export default function CardArticle(props) {
