@@ -50,10 +50,7 @@ export default function CardArticle(props) {
 
         <div className='cardBottom'>
           <div className='cardBottomDescritption'>
-            <p>
-              {openGraph.title ? openGraph.title : props.description}
-              ....
-            </p>
+            <p>{openGraph.title ? openGraph.title : props.description}</p>
           </div>
 
           <div className='cardBottomFooter'>
