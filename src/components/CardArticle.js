@@ -4,12 +4,23 @@ import FavoriteButton from './FavoriteButton'
 
 import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 export default function CardArticle(props) {
   // const { card } = props
   const goUrl = () => {
     window.open(props.url)
   }
+
+  const [openGraph, setOpenGraph] = useState('')
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3030/?url=${props.url}`)
+      .then(response => response.data)
+      .then(data => setOpenGraph(data))
+  }, [])
 
   return (
     <>
@@ -29,13 +40,20 @@ export default function CardArticle(props) {
           {/*                 <p className='cardTopTitle'maxLength='10'>{card.url}</p>
            */}{' '}
           <div className='cardImgBox'>
-            <img className='cardImg' src={Im} alt='' />
+            <img
+              className='cardImg'
+              src={openGraph.image ? openGraph.image : Im}
+              alt=''
+            />
           </div>
         </div>
 
         <div className='cardBottom'>
           <div className='cardBottomDescritption'>
-            <p>{props.description}....</p>
+            <p>
+              {openGraph.title ? openGraph.title : props.description}
+              ....
+            </p>
           </div>
 
           <div className='cardBottomFooter'>
@@ -47,7 +65,11 @@ export default function CardArticle(props) {
             >
               ⛬
             </a>
-            <FavoriteButton id={props.id} isFavorite={props.isFavorite} setIsFavorite={props.setIsFavorite}/>
+            <FavoriteButton
+              id={props.id}
+              isFavorite={props.isFavorite}
+              setIsFavorite={props.setIsFavorite}
+            />
             <LikeButton favorite={props.favorite} />
           </div>
         </div>
