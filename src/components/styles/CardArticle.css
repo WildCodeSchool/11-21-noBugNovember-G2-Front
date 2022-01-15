@@ -26,10 +26,14 @@
 }
 
 .cardImgBox{
-    position: absolute;
-    width:100%;
-    height:100%;
-    overflow: hidden;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .cardImg {
@@ -142,13 +146,14 @@ background-color:rgba(0, 0, 0, 0.5);
 }
 
 .checkMarkIcon {
-    width: 25px;
-    height: auto;
-    position: absolute;
-    bottom: 0;
-    margin: 7px;
-    border-radius: 50%;
-    box-shadow: 7px -7px 11px 0px rgb(255 255 255 / 20%) inset;;
+  width: 50px;
+  height: auto;
+  /* position: absolute; */
+  /* bottom: 30%; */
+  /* left: 50%; */
+  transform: translate(0%, 40%);
+  border-radius: 50%;
+  background-color: rgb(61, 183, 61);
   }
 
     /* Bas de la Card */
