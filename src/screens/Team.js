@@ -1,10 +1,17 @@
 import React from 'react'
 import Gallery from '../components/Gallery'
 import TeamGallery from '../components/TeamGallery'
+import TexteDefile from '../components/TexteDefile'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-const Team = ({ isFavorite, setIsFavorite }) => {
+const Team = ({
+  isFavorite,
+  setIsFavorite,
+  isRead,
+  setIsRead,
+  changeIsRead
+}) => {
   const [tableau, setTableau] = useState([])
   useEffect(() => {
     // Send the request
@@ -17,8 +24,15 @@ const Team = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
-      <h2 className='teamTitle'>Articles de la semaine</h2>
-      <TeamGallery articles={tableau} isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+      <TexteDefile title=' ma promo |  ma promo | ' />
+      <TeamGallery
+        articles={tableau}
+        setIsFavorite={setIsFavorite}
+        isFavorite={isFavorite}
+        isRead={isRead}
+        setIsRead={setIsRead}
+        changeIsRead={changeIsRead}
+      />
     </div>
   )
 }

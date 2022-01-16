@@ -9,8 +9,9 @@ import Home from './screens/Home'
 import Navbar from './components/Navbar'
 import Team from './screens/Team'
 import Test from './screens/Test'
-
 import noavatar from './assets/croix_rouge.png'
+import PopupSocial from './components/PopupSocial'
+
 
 function App() {
   const [isFavorite, setIsFavorite] = useState([]) // id objet API
@@ -22,6 +23,9 @@ function App() {
     }
   }, [])
 
+  const [isRead, setIsRead] = useState([0, 1, 2, 3]) 
+  const changeIsRead = (temp) => setIsRead(temp)
+
   return (
     <div className='App'>
       <Header avatar={avatar} setAvatar={setAvatar}/>
@@ -30,25 +34,27 @@ function App() {
         <Route
           path='/'
           element={
-            <Home isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+            <Home isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead} />
           }
         />
         <Route
           path='/bookmark'
           element={
-            <Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+            <Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead}/>
           }
         />
         <Route
           path='/team'
           element={
-            <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+            <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead}/>
           }
         />
         <Route path='/connect' element={<Connect avatar={avatar} setAvatar={setAvatar}/> }/>
         <Route path='/test' element={<Test />} />
         <Route path='*' element={<Error />} />
+        <Route path='popup' element={<PopupSocial />} />
       </Routes>
+      
     </div>
   )
 }

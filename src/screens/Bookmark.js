@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Gallery from '../components/Gallery'
+import TexteDefile from '../components/TexteDefile'
 import '../components/styles/Bookmark.css'
 
-const Bookmark = ({ isFavorite, setIsFavorite }) => {
+const Bookmark = (props) => {
   const [bdd, setBdd] = useState([]) //stock data venant de la base de données
   const [filter, setFilter] = useState([]) //stock des donnes triées par date par rapport à DB
   const [isFilter, setIsFilter] = useState(false) //si un tri a lieu, sert à changer les données envoyer en gallery
@@ -50,7 +51,7 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
       .then(response => response.data)
       .then(data => setBdd(data))
       console.log(bdd)
-  }, [isFavorite])
+  }, [])
 
   //Affiche ou non la barre de recherche
   const deroule = () => {
@@ -71,7 +72,7 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div className='bookmark'>
-      <h1>Bookmark</h1>
+      <TexteDefile title=" mes bookmarks | mes bookmarks | " />
       <div className='rowbutton'>
         <div className={visibility ? 'buttonselect active' : 'buttonselect'}>
           <i className='fas fa-search' onClick={() => deroule()} />
@@ -116,8 +117,11 @@ const Bookmark = ({ isFavorite, setIsFavorite }) => {
       </div>
       <Gallery
         articles={isFilter ? filter : bdd}
-        isFavorite={isFavorite}
-        setIsFavorite={setIsFavorite}
+        isFavorite={props.isFavorite}
+        setIsFavorite={props.setIsFavorite}
+        isRead={props.isRead}
+        setIsRead={props.setIsRead}
+        changeIsRead={props.changeIsRead}
       />
     </div>
   )
