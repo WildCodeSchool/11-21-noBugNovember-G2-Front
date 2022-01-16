@@ -6,8 +6,6 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 const Home = (props) => {
-  const [dbArticles, setDbArticles] = useState([])
-  const [members, setMembers] = useState([])
   const [result, setResult] = useState([])
 
   useEffect(() => {

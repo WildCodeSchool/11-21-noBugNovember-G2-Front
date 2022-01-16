@@ -32,7 +32,7 @@ export default function Gallery(props) {
             url={card.url}
             description={card.description}
             avatar={card.avatar}
-            favorite={card.favorite}
+            likes={card.likes}
             isFavorite={props.isFavorite}
             setIsFavorite={props.setIsFavorite}
             setUrlPartage={setUrlPartage}
