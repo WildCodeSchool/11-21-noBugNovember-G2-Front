@@ -154,6 +154,7 @@ background-color:rgba(0, 0, 0, 0.5);
   transform: translate(0%, 40%);
   border-radius: 50%;
   background-color: rgb(61, 183, 61);
+  border: 3px solid white;
   }
 
     /* Bas de la Card */
