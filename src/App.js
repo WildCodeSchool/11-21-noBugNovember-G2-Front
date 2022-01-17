@@ -8,16 +8,25 @@ import Header from './components/Header'
 import Home from './screens/Home'
 import Navbar from './components/Navbar'
 import Team from './screens/Team'
-import PopupSocial from './components/PopupSocial'
-
 
 function App() {
   const [isFavorite, setIsFavorite] = useState([
     10, 15, 35, 54, 75, 127, 106, 16
   ]) // id objet API
 
-  const [isRead, setIsRead] = useState([0, 1, 2, 3]) 
-  const changeIsRead = (temp) => setIsRead(temp)
+  const [isRead, setIsRead] = useState([0, 1, 2, 3])
+  const changeIsRead = temp => setIsRead(temp)
+
+  const [openPartage, setOpenPartage] = useState(false)
+  const [urlPartage, setUrlPartage] = useState('')
+
+  const clickOpenPartage = url => {
+    setOpenPartage(true)
+    setUrlPartage(url)
+  }
+  const clickClosePartage = () => {
+    setOpenPartage(false)
+  }
 
   return (
     <div className='App'>
@@ -27,32 +36,57 @@ function App() {
         <Route
           path='/'
           element={
-            <Home isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead} />
+            <Home
+              openPartage={openPartage}
+              urlPartage={urlPartage}
+              clickClosePartage={clickClosePartage}
+              setUrlPartage={setUrlPartage}
+              clickOpenPartage={clickOpenPartage}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}
+            />
           }
         />
         <Route
           path='/bookmark'
           element={
-            <Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead}/>
+            <Bookmark
+              openPartage={openPartage}
+              urlPartage={urlPartage}
+              clickClosePartage={clickClosePartage}
+              setUrlPartage={setUrlPartage}
+              clickOpenPartage={clickOpenPartage}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}
+            />
           }
         />
         <Route
           path='/team'
           element={
-            <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead}/>
+            <Team
+              openPartage={openPartage}
+              urlPartage={urlPartage}
+              clickClosePartage={clickClosePartage}
+              setUrlPartage={setUrlPartage}
+              clickOpenPartage={clickOpenPartage}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}
+            />
           }
         />
-        <Route 
-          path='/connect'
-          element={
-          <Connect /> 
-          }
-          />
-
+        <Route path='/connect' element={<Connect />} />
         <Route path='*' element={<Error />} />
-        <Route path='popup' element={<PopupSocial />} />
       </Routes>
-      
     </div>
   )
 }
