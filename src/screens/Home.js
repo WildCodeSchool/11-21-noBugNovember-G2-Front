@@ -5,22 +5,24 @@ import axios from 'axios'
 
 import { useState, useEffect } from 'react'
 
-const Home = props => {
-  const [tableau, setTableau] = useState([])
-  useEffect(() => {
-    // Send the request
-    axios
-      .get('https://yannick-cousin.github.io/veille-api/api/all.json')
-      .then(response => {
-        setTableau(response.data)
-      })
-  }, [])
+const Home = (props) => {
+  const [result, setResult] = useState([])
 
+  useEffect(() => {
+    axios
+    .get('http://localhost:3030/articles/read/all')
+    .then(response => {
+      setResult(response.data)
+    })
+    console.log("Axios members")
+
+  }, [])
+  
   return (
     <div>
       <TexteDefile title='les veilleurs de news |' />
       <Gallery
-        articles={tableau}
+        articles={result}
         isFavorite={props.isFavorite}
         setIsFavorite={props.setIsFavorite}
         isRead={props.isRead}

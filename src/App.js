@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Bookmark from './screens/Bookmark'
 import Connect from './screens/Connect'
@@ -8,11 +8,20 @@ import Header from './components/Header'
 import Home from './screens/Home'
 import Navbar from './components/Navbar'
 import Team from './screens/Team'
+import Test from './screens/Test'
+import noavatar from './assets/croix_rouge.png'
+import PopupSocial from './components/PopupSocial'
+
 
 function App() {
-  const [isFavorite, setIsFavorite] = useState([
-    10, 15, 35, 54, 75, 127, 106, 16
-  ]) // id objet API
+  const [isFavorite, setIsFavorite] = useState([]) // id objet API
+  const [avatar, setAvatar] = useState(noavatar)
+
+  useEffect(() => {
+    if (localStorage.getItem('id_user') !== null) {
+      setAvatar(localStorage.getItem('avatar'))
+    }
+  }, [])
 
   const [isRead, setIsRead] = useState([0, 1, 2, 3])
   const changeIsRead = temp => setIsRead(temp)
@@ -30,7 +39,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
+      <Header avatar={avatar} setAvatar={setAvatar}/>
       <Navbar />
       <Routes>
         <Route
@@ -84,7 +93,8 @@ function App() {
             />
           }
         />
-        <Route path='/connect' element={<Connect />} />
+        <Route path='/connect' element={<Connect avatar={avatar} setAvatar={setAvatar}/> }/>
+        <Route path='/test' element={<Test />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </div>

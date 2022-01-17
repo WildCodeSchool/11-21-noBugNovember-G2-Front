@@ -22,9 +22,9 @@ const FavoriteButton = props => {
   useEffect(() => {
     if (props.isFavorite.includes(props.id)) {
       setIsBookFull(!isBookFull)
-    }
+    } 
   }, [])
-
+  
   return (
     <div className='cardBottomFavorite'>
       <a className='cardBottomLink' target='_blank' rel='noreferrer'>
