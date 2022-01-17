@@ -19,11 +19,11 @@ const FavoriteButton = props => {
     }
   }
 
-      useEffect(() => {
-        if (props.isFavorite.includes(props.id)) {
-          setIsBookFull(!isBookFull)
-          } 
-      }, [])
+  useEffect(() => {
+    if (props.isFavorite.includes(props.id)) {
+      setIsBookFull(!isBookFull)
+    } 
+  }, [])
   
   return (
     <div className='cardBottomFavorite'>
