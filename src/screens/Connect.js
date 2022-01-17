@@ -35,9 +35,6 @@ const Connect = ({setAvatar}) => {
       //.then(response => console.log("response ",response.data))
       .then(response => response.data)
       .then(data => setReponse(data))
-      .then(setIsConnected(true))
-      .then(localStorage.setItem('id_user', reponse[0].id))
-      .then(localStorage.setItem('avatar', reponse[0].avatar))
     }
     else {
       setIsConnected(true)
@@ -64,6 +61,7 @@ const Connect = ({setAvatar}) => {
       localStorage.setItem('id_user', reponse[0].id)
       localStorage.setItem('avatar', reponse[0].avatar)
       setAvatar(reponse[0].avatar)
+      setIsConnected(true)
     }
   }, [reponse])
 
