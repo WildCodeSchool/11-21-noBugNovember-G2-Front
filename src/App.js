@@ -23,8 +23,19 @@ function App() {
     }
   }, [])
 
-  const [isRead, setIsRead] = useState([0, 1, 2, 3]) 
-  const changeIsRead = (temp) => setIsRead(temp)
+  const [isRead, setIsRead] = useState([0, 1, 2, 3])
+  const changeIsRead = temp => setIsRead(temp)
+
+  const [openPartage, setOpenPartage] = useState(false)
+  const [urlPartage, setUrlPartage] = useState('')
+
+  const clickOpenPartage = url => {
+    setOpenPartage(true)
+    setUrlPartage(url)
+  }
+  const clickClosePartage = () => {
+    setOpenPartage(false)
+  }
 
   return (
     <div className='App'>
@@ -34,27 +45,58 @@ function App() {
         <Route
           path='/'
           element={
-            <Home isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead} />
+            <Home
+              openPartage={openPartage}
+              urlPartage={urlPartage}
+              clickClosePartage={clickClosePartage}
+              setUrlPartage={setUrlPartage}
+              clickOpenPartage={clickOpenPartage}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}
+            />
           }
         />
         <Route
           path='/bookmark'
           element={
-            <Bookmark isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead}/>
+            <Bookmark
+              openPartage={openPartage}
+              urlPartage={urlPartage}
+              clickClosePartage={clickClosePartage}
+              setUrlPartage={setUrlPartage}
+              clickOpenPartage={clickOpenPartage}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}
+            />
           }
         />
         <Route
           path='/team'
           element={
-            <Team isFavorite={isFavorite} setIsFavorite={setIsFavorite} isRead={isRead} changeIsRead={changeIsRead} setIsRead={setIsRead}/>
+            <Team
+              openPartage={openPartage}
+              urlPartage={urlPartage}
+              clickClosePartage={clickClosePartage}
+              setUrlPartage={setUrlPartage}
+              clickOpenPartage={clickOpenPartage}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}
+            />
           }
         />
         <Route path='/connect' element={<Connect avatar={avatar} setAvatar={setAvatar}/> }/>
         <Route path='/test' element={<Test />} />
         <Route path='*' element={<Error />} />
-        <Route path='popup' element={<PopupSocial />} />
       </Routes>
-      
     </div>
   )
 }

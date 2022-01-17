@@ -12,6 +12,7 @@ function Header({avatar, setAvatar}) {
             <img id="HeaderUserPicture" src={avatar} alt="logo"></img>
         </div>
     </header>
-);}
+  )
+}
 
 export default Header

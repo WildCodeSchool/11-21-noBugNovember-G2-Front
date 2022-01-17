@@ -72,7 +72,7 @@ const Bookmark = (props) => {
 
   return (
     <div className='bookmark'>
-      <TexteDefile title=" mes bookmarks | mes bookmarks | " />
+      <TexteDefile title=' mes bookmarks | mes bookmarks | ' />
       <div className='rowbutton'>
         <div className={visibility ? 'buttonselect active' : 'buttonselect'}>
           <i className='fas fa-search' onClick={() => deroule()} />

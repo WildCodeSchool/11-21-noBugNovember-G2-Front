@@ -20,7 +20,7 @@ const Home = (props) => {
   
   return (
     <div>
-      <TexteDefile title="les veilleurs de news |" />
+      <TexteDefile title='les veilleurs de news |' />
       <Gallery
         articles={result}
         isFavorite={props.isFavorite}
@@ -28,6 +28,11 @@ const Home = (props) => {
         isRead={props.isRead}
         setIsrRead={props.setIsRead}
         changeIsRead={props.changeIsRead}
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+        setUrlPartage={props.setUrlPartage}
+        clickOpenPartage={props.clickOpenPartage}
       />
     </div>
   )

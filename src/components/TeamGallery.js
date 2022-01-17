@@ -1,12 +1,18 @@
 import React from 'react'
 import './styles/TeamGallery.css'
 import CardArticle from './CardArticle'
+import PopupSocial from './PopupSocial'
 
-export default function TeamGallery({ isFavorite, setIsFavorite, articles, isRead, setIsRead, changeIsRead  }) {
+export default function TeamGallery(props) {
   return (
     <div className='bigGallery'>
+      <PopupSocial
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+      />
       <div className='gallery'>
-        {articles
+        {props.articles
           .sort((a, b) => {
             if (a.member.toLowerCase() < b.member.toLowerCase()) return -1
             if (a.member.toLowerCase() > b.member.toLowerCase()) return 1
@@ -24,17 +30,19 @@ export default function TeamGallery({ isFavorite, setIsFavorite, articles, isRea
               description={card.description}
               avatar={card.avatar}
               favorite={card.favorite}
-              isFavorite={isFavorite}
-              setIsFavorite={setIsFavorite}
-              isRead={isRead}
-              changeIsRead={changeIsRead}
-              setIsRead={setIsRead}
+              isFavorite={props.isFavorite}
+              setIsFavorite={props.setIsFavorite}
+              setUrlPartage={props.setUrlPartage}
+              clickOpenPartage={props.clickOpenPartage}
+              isRead={props.isRead}
+              changeIsRead={props.changeIsRead}
+              setIsRead={props.setIsRead}
             />
           ))}
       </div>
 
       <div className='gallery'>
-        {articles
+        {props.articles
           .sort((a, b) => {
             if (a.week > b.week) return -1
             if (a.week < b.week) return 1
@@ -57,11 +65,13 @@ export default function TeamGallery({ isFavorite, setIsFavorite, articles, isRea
               description={card.description}
               avatar={card.avatar}
               favorite={card.favorite}
-              isFavorite={isFavorite}
-              setIsFavorite={setIsFavorite}
-              isRead={isRead}
-              changeIsRead={changeIsRead}
-              setIsRead={setIsRead}
+              isFavorite={props.isFavorite}
+              setIsFavorite={props.setIsFavorite}
+              setUrlPartage={props.setUrlPartage}
+              clickOpenPartage={props.clickOpenPartage}
+              isRead={props.isRead}
+              changeIsRead={props.changeIsRead}
+              setIsRead={props.setIsRead}
             />
           ))}
       </div>
