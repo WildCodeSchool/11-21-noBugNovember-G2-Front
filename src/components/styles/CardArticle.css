@@ -29,19 +29,19 @@
 }
 
 .cardImgBox{
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+    position: absolute;
+    display: flex;
+    position: relavive;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .cardImg {
     width: 100%;
-        height: 100%;
+/*         height: 100%; */
     position: absolute;
     object-fit: center;
     z-index: -1;
@@ -178,7 +178,7 @@ background-color:rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         padding: 1px;
-        height: 50%;
+        height: 36%;
         white-space: normal;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -202,6 +202,14 @@ background-color:rgba(0, 0, 0, 0.5);
     transition: 0.2s;
     cursor: pointer;
     }
+
+    .cardBottomFavorite:hover {
+        transform: scale(1.5);
+        transition: 0.2s;
+        cursor: pointer;
+        }
+
+    
     
     .cardBottomLike{
         display: flex;

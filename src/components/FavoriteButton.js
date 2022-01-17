@@ -26,7 +26,7 @@ const FavoriteButton = props => {
   }, [])
   
   return (
-    <div className='cardBottomFavorite'>
+    <div className='cardBottomFavorite cardBottomLink'>
       <a className='cardBottomLink' target='_blank' rel='noreferrer'>
         <img
           className='bookmarkIcon'
