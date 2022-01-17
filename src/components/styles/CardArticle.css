@@ -40,11 +40,19 @@
 }
 
 .cardImg {
-    width: 100%;
-/*         height: 100%; */
+  /*   width: 100%; */
+        height: 100%; 
     position: absolute;
     object-fit: center;
     z-index: -1;
+}
+
+.cardImgPlaceholder {
+    position: absolute;
+    object-fit: center;
+    z-index: -1;
+    width: 100%;
+
 }
   
 .card p {
@@ -113,6 +121,7 @@ background-color:rgba(0, 0, 0, 0.5);
     align-items: center;
     padding: 0 10px 0 10px;
     background-color:rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
 
 }
 
@@ -135,8 +144,7 @@ background-color:rgba(0, 0, 0, 0.5);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 15%;
-    background-color:rgba(0, 0, 0, 0.5);
+    background-color:rgba(0, 0, 0, 0.7);
     border-radius:  20px 0px 0px 0px;
     color: whitesmoke;
 }
@@ -158,6 +166,7 @@ background-color:rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   background-color: rgb(61, 183, 61);
   border: 3px solid white;
+  align-self: center;
   }
 
     /* Bas de la Card */
