@@ -72,7 +72,7 @@ export default function CardArticle(props) {
               alt=''
             />
             <img
-              className='checkMarkIcon'
+              className={isReadMark ? 'checkMarkIcon' : ''}
               src={isReadMark ? check : ''}
               alt=''
             />
