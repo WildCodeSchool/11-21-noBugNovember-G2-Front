@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import check from '../assets/check.png'
 import FavoriteButton from './FavoriteButton'
 import LikeButton from './LikeButton'
-import PopupSocial from './PopupSocial'
 import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
 import axios from 'axios'
@@ -98,7 +97,7 @@ export default function CardArticle(props) {
               isFavorite={props.isFavorite}
               setIsFavorite={props.setIsFavorite}
             />
-            <LikeButton favorite={props.favorite} />
+            <LikeButton favorite={props.likes} />
           </div>
         </div>
       </article>
