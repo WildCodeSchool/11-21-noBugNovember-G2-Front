@@ -20,10 +20,12 @@ const Bookmark = (props) => {
   //selectData permet de filtrer les données en favoris
   //On enregistre aussi les semaines et années des favoris
   const selectData = () => {
+    temp = []
     tempWeek = []
     tempYear = []
     setIsFilter(false)
     for (let i = 0; i < bdd.length; i++) {
+      temp.push(bdd[i].id_article)
       if (tempWeek.indexOf(bdd[i].week) === -1) {
         tempWeek.push(bdd[i].week)
       }
@@ -35,6 +37,7 @@ const Bookmark = (props) => {
     setWeek(tempWeek)
     setSelectYear(tempYear[0])
     setSelectWeek(tempWeek[0])
+    props.setIsFavorite(temp)
   }
 
   //Ecoute de la state API, quand elle modifié, on lance le premier tri, celle des favoris
@@ -47,10 +50,8 @@ const Bookmark = (props) => {
       .put("http://localhost:3030/favorite/bookmark", {
         id_user: localStorage.getItem('id_user')
       })
-      //.then(response => console.log("response ",response.data))
       .then(response => response.data)
       .then(data => setBdd(data))
-      console.log(bdd)
   }, [])
 
   //Affiche ou non la barre de recherche

@@ -9,7 +9,7 @@ const LikeButton = (props) => {
   const incrementationLike = () => {
     setLikeCounter(likeCounter + 1)
   }
-  console.log(likeCounter)
+  
   return (
     <div className='cardBottomLike'>
       <p>{likeCounter}</p>

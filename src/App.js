@@ -23,7 +23,7 @@ function App() {
     }
   }, [])
 
-  const [isRead, setIsRead] = useState([0, 1, 2, 3])
+  const [isRead, setIsRead] = useState([])
   const changeIsRead = temp => setIsRead(temp)
 
   const [openPartage, setOpenPartage] = useState(false)
