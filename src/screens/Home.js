@@ -14,8 +14,6 @@ const Home = (props) => {
     .then(response => {
       setResult(response.data)
     })
-    console.log("Axios members")
-
   }, [])
   
   return (
