@@ -2,12 +2,14 @@ import React from 'react'
 import { useState } from 'react'
 import './styles/CardArticle.css'
 
-const LikeButton = props => {
+const LikeButton = (props) => {
   const { favorite } = props
   const [likeCounter, setLikeCounter] = useState(favorite)
+  
   const incrementationLike = () => {
     setLikeCounter(likeCounter + 1)
   }
+  
   return (
     <div className='cardBottomLike'>
       <p>{likeCounter}</p>

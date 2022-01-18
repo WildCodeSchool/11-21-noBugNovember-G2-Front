@@ -5,25 +5,32 @@ import axios from 'axios'
 
 import { useState, useEffect } from 'react'
 
-const Home = ({ isFavorite, setIsFavorite }) => {
-  const [tableau, setTableau] = useState([])
-  useEffect(() => {
-    // Send the request
-    axios
-      .get('https://yannick-cousin.github.io/veille-api/api/all.json')
-      .then(response => {
-        setTableau(response.data)
-      })
-  }, [])
+const Home = (props) => {
+  const [result, setResult] = useState([])
 
+  useEffect(() => {
+    axios
+    .get('http://localhost:3030/articles/read/all')
+    .then(response => {
+      setResult(response.data)
+    })
+  }, [])
+  
   return (
     <div>
-
-      <TexteDefile title="les veilleurs de news |"/>
+      <TexteDefile title='les veilleurs de news |' />
       <Gallery
-        isFavorite={isFavorite}
-        setIsFavorite={setIsFavorite}
-        articles={tableau}
+        articles={result}
+        isFavorite={props.isFavorite}
+        setIsFavorite={props.setIsFavorite}
+        isRead={props.isRead}
+        setIsrRead={props.setIsRead}
+        changeIsRead={props.changeIsRead}
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+        setUrlPartage={props.setUrlPartage}
+        clickOpenPartage={props.clickOpenPartage}
       />
     </div>
   )

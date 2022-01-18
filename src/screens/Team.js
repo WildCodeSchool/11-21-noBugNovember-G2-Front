@@ -1,11 +1,10 @@
 import React from 'react'
-import Gallery from '../components/Gallery'
 import TeamGallery from '../components/TeamGallery'
 import TexteDefile from '../components/TexteDefile'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-const Team = ({ isFavorite, setIsFavorite }) => {
+const Team = props => {
   const [tableau, setTableau] = useState([])
   useEffect(() => {
     // Send the request
@@ -18,8 +17,20 @@ const Team = ({ isFavorite, setIsFavorite }) => {
 
   return (
     <div>
-        <TexteDefile title=" ma promo |  ma promo | "/>
-        <TeamGallery  articles={tableau} setIsFavorite={setIsFavorite} isFavorite={isFavorite}/>
+      <TexteDefile title=' ma promo |  ma promo | ' />
+      <TeamGallery
+        articles={tableau}
+        setIsFavorite={props.setIsFavorite}
+        isFavorite={props.isFavorite}
+        isRead={props.isRead}
+        setIsRead={props.setIsRead}
+        changeIsRead={props.changeIsRead}
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+        setUrlPartage={props.setUrlPartage}
+        clickOpenPartage={props.clickOpenPartage}
+      />
     </div>
   )
 }
