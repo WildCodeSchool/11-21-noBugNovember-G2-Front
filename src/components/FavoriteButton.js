@@ -34,7 +34,7 @@ const FavoriteButton = props => {
 
   //Sert à mettre en true ou non si l'article est en favori
   const changeMyId = (params) => {
-    if (params[0].id !== undefined) {
+    if (params[0] !== undefined) {
       setMyId(params[0].id)
       setIsBookFull(true)
     }
