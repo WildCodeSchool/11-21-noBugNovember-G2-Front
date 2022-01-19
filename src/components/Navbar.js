@@ -25,6 +25,18 @@ export default function Navbar() {
         <i className='fas fa-users fa-fw fa-2x'></i>
         <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Ma Promo</p>
       </NavLink>
+      {localStorage.getItem('id_user') 
+      ? 
+        <NavLink className='NavLink' to='/connect'>
+          <i className='fas fa-times-circle fa-fw fa-2x'></i>
+          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Déconnection</p>
+        </NavLink>
+      :
+        <NavLink className='NavLink' to='/connect'>
+          <i className='fas fa-key fa-fw fa-2x'></i>
+          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Connection</p>
+        </NavLink>
+      }
       <i id='NavDarkMode' className='far fa-lightbulb fa-fw fa-2x'></i>
     </nav>
   )
