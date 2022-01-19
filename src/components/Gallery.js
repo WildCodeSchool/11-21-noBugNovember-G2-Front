@@ -37,8 +37,10 @@ let seeMoreArticle = () => setMoreArticle(moreArticle + 12)
             changeIsRead={props.changeIsRead}
           />
         ))}
-        <div onClick={seeMoreArticle}>Voir plus
-        </div>
+
+      </div>
+      <div className="seeMore">
+        <div className="seeMoreArticle" onClick={seeMoreArticle}>Voir plus</div>
       </div>
     </div>
   )
