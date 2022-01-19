@@ -1,12 +1,18 @@
 import React from 'react'
 import './styles/Gallery.css'
 import CardArticle from './CardArticle'
+import PopupSocial from './PopupSocial'
 
-export default function Gallery({ isFavorite, setIsFavorite }) {
+export default function Gallery(props) {
   return (
     <div className='bigGallery'>
+      <PopupSocial
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+      />
       <div className='gallery'>
-        {isFavorite.map(card => (
+        {props.articles.map(card => (
           <CardArticle
             key={card.id}
             id={card.id}
@@ -16,7 +22,14 @@ export default function Gallery({ isFavorite, setIsFavorite }) {
             url={card.url}
             description={card.description}
             avatar={card.avatar}
-            favorite={card.favorite}
+            likes={card.likes}
+            isFavorite={props.isFavorite}
+            setIsFavorite={props.setIsFavorite}
+            setUrlPartage={props.setUrlPartage}
+            clickOpenPartage={props.clickOpenPartage}
+            isRead={props.isRead}
+            setIsRead={props.setIsRead}
+            changeIsRead={props.changeIsRead}
           />
         ))}
       </div>

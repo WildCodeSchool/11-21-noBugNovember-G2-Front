@@ -5,3 +5,74 @@
   align-items: center;
   margin-top: 20px;
 }
+/* .checkMarkIcon {
+  width: 25px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+} */
+
+.buttonselect {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 10px;
+  border-radius: 35px;
+  opacity: 0.5;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.buttonselect:hover {
+  opacity: 1;
+}
+
+.cache {
+  display: none;
+  opacity: 0;
+  transition: 0.5s linear;
+}
+
+.fas {
+  display: flex;
+  justify-content: center;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.fas:hover {
+  opacity: 1;
+}
+
+.formulaire {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.rowbutton {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+}
+
+.year {
+  display: flex;
+  opacity: 1;
+  border-radius: 10px;
+  appearance: none;
+}
+
+.week {
+  display: flex;
+  opacity: 1;
+  border-radius: 10px;
+  appearance: none;
+}
