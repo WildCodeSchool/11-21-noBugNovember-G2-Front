@@ -66,12 +66,12 @@ export default function CardArticle(props) {
           </div>
           <div className='cardImgBox'>
             <img
-              className='cardImg'
+              className={openGraph.image ? 'cardImg' : 'cardImgPlaceholder'}
               src={openGraph.image ? openGraph.image : Im}
               alt=''
             />
             <img
-              className='checkMarkIcon'
+              className={isReadMark ? 'checkMarkIcon' : ''}
               src={isReadMark ? check : ''}
               alt=''
             />
@@ -97,7 +97,8 @@ export default function CardArticle(props) {
               isFavorite={props.isFavorite}
               setIsFavorite={props.setIsFavorite}
             />
-            <LikeButton favorite={props.likes} />
+            <LikeButton likes={props.likes}
+              id={props.id}/>
           </div>
         </div>
       </article>

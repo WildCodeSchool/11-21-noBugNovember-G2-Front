@@ -1,5 +1,6 @@
 import { useState , useEffect } from 'react'
 import axios from 'axios'
+import sha256 from 'crypto-js/sha256'
 import '../App.css'
 import '../components/styles/Connect.css'
 import imgDisco from '../assets/croix_rouge.png'
@@ -30,7 +31,7 @@ const Connect = ({setAvatar}) => {
       axios
         .put("http://localhost:3030/members/connect", {
           name: name,
-          password: password
+          password: sha256(password).toString()
         })
       //.then(response => console.log("response ",response.data))
       .then(response => response.data)
