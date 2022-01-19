@@ -45,6 +45,7 @@ const Connect = ({setAvatar}) => {
   const disconnect = () => {
     localStorage.clear();
     setAvatar(imgDisco);
+    window.location.reload()
   }
 
   let ignoreClickOnMeElement = document.querySelector('.input');
@@ -68,6 +69,7 @@ const Connect = ({setAvatar}) => {
 
   return (
     <div className='pageConnect'>
+      {localStorage.getItem("id_user") ? "" :
       <form className="form"> 
         <h2>Connection</h2>
         <div className='fieldCollection'>
@@ -81,9 +83,11 @@ const Connect = ({setAvatar}) => {
           </div>
           <input type="button" id='submit' onClick={() => connect()} value='LOGIN'></input>
         </div>
-      </form>
-      <div>Retour : {isConnected?"Connecté":"Non connecté"}</div>
-      <div type="button" onClick={() => disconnect()} className="disconnect">Déconnection</div>
+      </form>}
+
+      <div>Retour : {localStorage.getItem("id_user")?"Connecté":"Non connecté"}</div>
+      {localStorage.getItem("id_user") ? <div type="button" onClick={() => disconnect()} className="disconnect">Déconnection</div> : ""}
+
     </div>
   )
 } 
