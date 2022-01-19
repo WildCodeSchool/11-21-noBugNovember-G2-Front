@@ -3,13 +3,14 @@ import { NavLink } from 'react-router-dom'
 import './styles/Navbar.css'
 
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [active, setActive] = React.useState(false)
 
   const disconnect = () => {
     localStorage.clear();
     location.reload()
   }
+  
 
   return (
     <nav className={`Nav ${active ? 'NavOpen' : ''}`}>
@@ -32,10 +33,7 @@ export default function Navbar() {
         <i className='fas fa-users fa-fw fa-2x'></i>
         <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>News de la semaine</p>
       </NavLink>
-      <NavLink className='NavLink' to='/connect'>
-        <i className='fas fa-users fa-fw fa-2x'></i>
-        <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Connection</p>
-      </NavLink>
+      
       {localStorage.getItem('id_user') 
       ? 
         <NavLink className='NavLink' to='/' onClick={disconnect}>
@@ -48,7 +46,7 @@ export default function Navbar() {
           <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Connection</p>
         </NavLink>
       }
-      <i id='NavDarkMode' className='far fa-lightbulb fa-fw fa-2x'></i>
+      <i id='NavDarkMode' onClick={props.switchTheme} className='far fa-lightbulb fa-fw fa-2x'></i>
     </nav>
   )
 }

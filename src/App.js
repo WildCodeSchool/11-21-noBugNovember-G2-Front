@@ -38,13 +38,18 @@ function App() {
     setOpenPartage(false)
   }
 
- const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;  
   const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+  
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme)
+  }
 
   return (
     <div id='App' data-theme={theme}>
-      <Header avatar={avatar} setAvatar={setAvatar}/>
-      <Navbar />
+      <Header avatar={avatar} setAvatar={setAvatar} theme={theme}/>
+      <Navbar switchTheme={switchTheme} />
       <Routes>
         <Route
           path='/'

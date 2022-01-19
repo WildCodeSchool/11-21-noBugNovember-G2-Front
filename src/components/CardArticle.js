@@ -90,7 +90,7 @@ export default function CardArticle(props) {
               rel='noreferrer'
               onClick={() => props.clickOpenPartage(props.url)}
             >
-              ⛬
+              ∴
             </a>
             <FavoriteButton
               id={props.id}
