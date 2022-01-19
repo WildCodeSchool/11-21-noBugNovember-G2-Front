@@ -92,7 +92,6 @@ const Connect = ({setAvatar}) => {
           </div>
         </form>
       }
-      <div>Retour : {isConnected?"Connecté":"Non connecté"}</div>
     </div>
   )
 }

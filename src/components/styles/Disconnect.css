@@ -12,12 +12,22 @@ h4 {
 }
 
 input {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  display: block;
+    width: 100%;
+    /*padding: 36px 24px 14px;*/
+    margin: 15px;
+    height: 35px;
+    background: #fff3fe;
+    border: 1px solid #fff3fe;
+    border-radius: 15px;
+    font-family: "Helvetica Neue","Arial",sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000;
+    -webkit-appearance: none;
 }
 
 #submit {
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
 }

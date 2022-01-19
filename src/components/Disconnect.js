@@ -17,13 +17,16 @@ const Disconnect = ({setAvatar, setIsConnected}) => {
 	}
 
 	const letsGo = () => {
-		axios.post("http://localhost:3030/members/avatar/update",
-		{
+		console.log(updateAvatar.type)
+		if (updateAvatar.type !== undefined) {
+			axios.post("http://localhost:3030/members/avatar/update",
+			{
 			id: localStorage.getItem("id_user"),
 			avatar: updateAvatar
-		})
-		localStorage.setItem('avatar', updateAvatar)
-		setAvatar(updateAvatar)
+			})
+			localStorage.setItem('avatar', updateAvatar)
+			setAvatar(updateAvatar)
+		}
 	}
 
   return (
@@ -33,10 +36,11 @@ const Disconnect = ({setAvatar, setIsConnected}) => {
 			Veuillez indiquer l'URL de votre image (on ne stocke aucune image sur notre serveur)
 			<form>
 				<div>
-					<input type="text" id="avatar" onChange={(e) => changeUrl(e)} value={updateAvatar}></input>
+					<input type="text" id="avatarimg" onChange={(e) => changeUrl(e)} value={updateAvatar}></input>
 				</div>
 				<input type="button" id="avatar" onClick={() => letsGo()} value="Mettre à jour votre avatar"></input>	
 			</form>
+			<h4>Vous souhaitez ajouter un article à la veille ?</h4><br/>
       <input type="button" id='submit' onClick={() => aurevoir()} value='Déconnection'></input>
     </div>
   )
