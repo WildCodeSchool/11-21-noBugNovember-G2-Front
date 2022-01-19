@@ -1,6 +1,7 @@
 import "./styles/Header.css"
 import Blacklogo from "../assets/blacklogo.svg"
 import {useState, useEffect} from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Header({avatar, setAvatar}) {
 
@@ -9,7 +10,9 @@ function Header({avatar, setAvatar}) {
         <img id="HeaderLogo" src={Blacklogo} alt="logo"></img>
         <div id="HeaderBorder"></div>
         <div id="HeaderUser">
-            <img id="HeaderUserPicture" src={avatar} alt="logo"></img>
+        <NavLink to="/connect">
+        <img id="HeaderUserPicture" src={avatar} alt="logo"></img>
+        </NavLink>
         </div>
     </header>
   )
