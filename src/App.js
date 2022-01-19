@@ -37,8 +37,9 @@ function App() {
     setOpenPartage(false)
   }
 
+
   return (
-    <div className='App'>
+    <div id='App'>
       <Header avatar={avatar} setAvatar={setAvatar}/>
       <Navbar />
       <Routes>
