@@ -11,10 +11,15 @@
     transition: 0.5s;
 }
 
-.searchBox:hover {
+
+.searchBox:Hover {
     width: 50%;
 }
 
+.searchBoxFull{
+    width: 50%;
+
+}
 
 
 /* .searchBox::after{
@@ -49,11 +54,20 @@
     
 }
 
-.searchBox input::placeholder,
-.searchBox input {
+
+/* Transparence placeHolder quand la barre de recherche est fermé */
+.searchBox input::placeholder, 
+.searchBox input {  
     color: transparent;
 }
 
+
+/* Affichage de la recherche quand la barre de recherche est ouverte */
+.searchBoxFull input{ 
+    color: #555;
+}
+
+/* Affichage du placeholder quand la barre de recherche est ouverte */
 .searchBox:hover input::placeholder,
 .searchBox:hover input{
     color: #555;

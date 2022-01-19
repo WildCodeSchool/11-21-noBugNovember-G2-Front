@@ -1,27 +1,33 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
 import './styles/Gallery.css'
 import CardArticle from './CardArticle'
 import Search from './Search'
 
 import PopupSocial from './PopupSocial'
+import react from 'react'
+
+
 
 export default function Gallery(props) {
+
+
   return (
     <div className='bigGallery'>
-      <Search />
+      <Search setSearchValue={props.setSearchValue} searchValue={props.searchValue}/>
       <PopupSocial
         openPartage={props.openPartage}
         urlPartage={props.urlPartage}
         clickClosePartage={props.clickClosePartage}
       />
       <div className='gallery'>
-        {props.articles.map(card => (
+        {props.articleSearchFiltered.map(card => (
           <CardArticle
             key={card.id}
             id={card.id}
             week={card.week}
             year={card.year}
-            member={card.member}
+            name={card.namez}
             url={card.url}
             description={card.description}
             avatar={card.avatar}
