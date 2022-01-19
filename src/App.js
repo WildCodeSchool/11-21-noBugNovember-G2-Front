@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Team from './screens/Team'
 import Test from './screens/Test'
 import noavatar from './assets/croix_rouge.png'
+import useLocalStorage from 'use-local-storage'
 import PopupSocial from './components/PopupSocial'
 
 
@@ -37,9 +38,11 @@ function App() {
     setOpenPartage(false)
   }
 
+ const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
 
   return (
-    <div id='App'>
+    <div id='App' data-theme={theme}>
       <Header avatar={avatar} setAvatar={setAvatar}/>
       <Navbar />
       <Routes>

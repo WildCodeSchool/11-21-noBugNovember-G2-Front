@@ -2,18 +2,16 @@
   --firstColor: #6667AB;
   --secondColor: #FF74D9;
   --thirdColor:#2B0E45;
-  /* --gradientColor:linear-gradient(45deg, #8c61ff 0%, #ffb3d6 100%); */
+  --gradientColor:linear-gradient(45deg, #8c61ff 0%, #ffb3d6 100%);
   --fontTitle: "IvyJournal" 400;
   --fontBody: 'Ivyjournal', sans-serif;
-  --gradientColor: rgb(205, 109, 220);
 }
 
 :root [data-theme='dark'] {
   --firstColor: #c2c3f0;
   --secondColor: #f7ace3; 
   --thirdColor:white;
-  /* --gradientColor: linear-gradient(218.33deg, #6667AB 15.4%, #430e48 69.39%, rgba(102, 103, 171, 0.53) 116.5%); */
-  --gradientColor: black;
+  --gradientColor: linear-gradient(218.33deg, #6667AB 15.4%, #430e48 69.39%, rgba(102, 103, 171, 0.53) 116.5%);
   --fontTitle: "IvyJournal" 400;
   --fontBody: 'Ivyjournal', sans-serif;
 }
@@ -26,7 +24,7 @@
 
 a {text-decoration: none;}
 
-body {
+#App {
   background:var(--gradientColor); font-family: var(--fontBody); height: 100vh; background-attachment:fixed; font-style: normal; color: var(--thirdColor);
 }
 
