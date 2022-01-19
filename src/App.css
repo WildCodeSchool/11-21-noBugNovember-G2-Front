@@ -4,7 +4,7 @@
   --thirdColor: #2B0E45; /*color dark mode*/
   --gradientColor: linear-gradient(218.33deg, #6667AB 15.4%, #FF74D9 69.39%, rgba(102, 103, 171, 0.53) 116.5%); /*gradient pop mode*/
 
-  --gradientColor:linear-gradient(45deg, rgba(140,97,255,1) 0%, rgba(255,179,214,1) 100%);
+  --gradientColor:linear-gradient(45deg, #8c61ff 0%, #ffb3d6 100%);
   --gradientColorDark: linear-gradient(218.33deg, #6667AB 15.4%, #2b2b2b 69.39%, rgba(102, 103, 171, 0.53) 116.5%); /*gradient dark mode*/
   --fontTitle: IvyJournal;
   --fontBody: 'comic sans ms', sans-serif;
