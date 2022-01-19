@@ -21,9 +21,13 @@ export default function Navbar() {
           Mes Favoris
         </p>
       </NavLink>
-      <NavLink className='NavLink' to='/team'>
+      <NavLink className='NavLink' to='/news-semaine'>
         <i className='fas fa-users fa-fw fa-2x'></i>
-        <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Ma Promo</p>
+        <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>News de la semaine</p>
+      </NavLink>
+      <NavLink className='NavLink' to='/connect'>
+        <i className='fas fa-users fa-fw fa-2x'></i>
+        <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Connection</p>
       </NavLink>
       <i id='NavDarkMode' className='far fa-lightbulb fa-fw fa-2x'></i>
     </nav>

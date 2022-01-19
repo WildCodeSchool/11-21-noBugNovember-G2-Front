@@ -10,7 +10,6 @@
   --fontBody: 'Ivyjournal', sans-serif;
 }
 
-
 *, ::before, ::after {
   box-sizing: 0;
   margin: 0;
@@ -18,9 +17,25 @@
 }
 a {text-decoration: none;}
 
-body{ background:var(--gradientColor); font-family: var(--fontBody); height: 100vh; background-attachment:fixed ;
-font-style: normal;
- }
+body {
+  background:var(--gradientColor); font-family: var(--fontBody); height: 100vh; background-attachment:fixed; font-style: normal; color: var(--thirdColor);
+}
+body.dark-theme {
+  background:var(--gradientColorDark); font-family: var(--fontBody); height: 100vh; background-attachment:fixed; font-style: normal; color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* defaults to dark theme */
+  body {
+    background:var(--gradientColorDark); font-family: var(--fontBody); height: 100vh; background-attachment:fixed; font-style: normal; color: white;
+  }
+  body.light-theme {
+    background:var(--gradientColor); font-family: var(--fontBody); height: 100vh; background-attachment:fixed; font-style: normal; color: var(--thirdColor);
+  }
+}
+
+
+body{}
 
 input,
 button,

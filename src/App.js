@@ -77,7 +77,7 @@ function App() {
           }
         />
         <Route
-          path='/team'
+          path='/news-semaine'
           element={
             <Team
               openPartage={openPartage}
