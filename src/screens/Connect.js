@@ -72,7 +72,7 @@ const Connect = ({setAvatar}) => {
     <div className='pageConnect'>
       {localStorage.getItem("id_user") ? 
       <div>
-        <div>Bienvenue {name}</div>
+        <div>Bienvenue {localStorage.getItem("name")}</div>
       </div>
       :
       <form className="form"> 
