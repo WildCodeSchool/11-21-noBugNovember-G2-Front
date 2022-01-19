@@ -4,6 +4,12 @@ import './styles/Navbar.css'
 
 export default function Navbar() {
   const [active, setActive] = React.useState(false)
+
+  const disconnect = () => {
+    localStorage.clear();
+    location.reload()
+  }
+
   return (
     <nav className={`Nav ${active ? 'NavOpen' : ''}`}>
       <ion-icon
@@ -27,7 +33,7 @@ export default function Navbar() {
       </NavLink>
       {localStorage.getItem('id_user') 
       ? 
-        <NavLink className='NavLink' to='/connect'>
+        <NavLink className='NavLink' to='/' onClick={disconnect}>
           <i className='fas fa-times-circle fa-fw fa-2x'></i>
           <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Déconnection</p>
         </NavLink>

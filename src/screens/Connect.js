@@ -1,6 +1,7 @@
 import { useState , useEffect } from 'react'
 import axios from 'axios'
 import sha256 from 'crypto-js/sha256'
+import Disconnect from '../components/Disconnect.js'
 import '../App.css'
 import '../components/styles/Connect.css'
 import imgDisco from '../assets/croix_rouge.png'
@@ -42,13 +43,13 @@ const Connect = ({setAvatar}) => {
     }
   }
 
-  const disconnect = () => {
-    localStorage.clear();
-    setAvatar(imgDisco);
-  }
+  // const disconnect = () => {
+  //   localStorage.clear();
+  //   setAvatar(imgDisco);
+  //   setIsConnected(false)
+  // }
 
   let ignoreClickOnMeElement = document.querySelector('.input');
-
   document.addEventListener('click', function(event) {
     let isClickInsideElement = ignoreClickOnMeElement.contains(event.target)
     if (!isClickInsideElement && isFocused === true && name.length == 0) {
@@ -61,6 +62,7 @@ const Connect = ({setAvatar}) => {
     if (reponse.length == 1) {
       localStorage.setItem('id_user', reponse[0].id)
       localStorage.setItem('avatar', reponse[0].avatar)
+      localStorage.setItem('name', reponse[0].name)
       setAvatar(reponse[0].avatar)
       setIsConnected(true)
     }
@@ -68,23 +70,31 @@ const Connect = ({setAvatar}) => {
 
   return (
     <div className='pageConnect'>
-      <form className="form"> 
-        <h2>Connection</h2>
-        <div className='fieldCollection'>
-          <div className={`field ${ isFocused && 'focus'}` }>
-            <label for="username" className="label">Username</label>
-            <input type="text" name="username" className="input" value={name} required onChange={(e) => changeName(e)} onClick={() => changeFocus()}></input>
+      {localStorage.getItem('id_user')
+        ?
+        <Disconnect 
+          setIsConnected={setIsConnected}
+          setAvatar={setAvatar}
+        />
+        :
+        <form className="form"> 
+          <h2>Connection</h2>
+          <div className='fieldCollection'>
+            <div className={`field ${ isFocused && 'focus'}` }>
+              <label for="username" className="label">Username</label>
+              <input type="text" name="username" className="input" value={name} required onChange={(e) => changeName(e)} onClick={() => changeFocus()}></input>
+            </div>
+            <div className={`field ${ isFocused && 'focus'}` }>
+              <label for="password" className="label">Password</label>
+              <input type="password" className="input" name="password" required onChange={(e) => changePassword(e)} onClick={() => changeFocus()}></input>
+            </div>
+            <input type="button" id='submit' onClick={() => connect()} value='LOGIN'></input>
           </div>
-          <div className={`field ${ isFocused && 'focus'}` }>
-            <label for="password" className="label">Password</label>
-            <input type="password" className="input" name="password" required onChange={(e) => changePassword(e)} onClick={() => changeFocus()}></input>
-          </div>
-          <input type="button" id='submit' onClick={() => connect()} value='LOGIN'></input>
-        </div>
-      </form>
+        </form>
+      }
       <div>Retour : {isConnected?"Connecté":"Non connecté"}</div>
-      <div type="button" onClick={() => disconnect()} className="disconnect">Déconnection</div>
     </div>
   )
-} 
+}
+
 export default Connect
