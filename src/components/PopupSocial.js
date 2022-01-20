@@ -10,7 +10,6 @@ import {
   LinkedinShareButton,
   LinkedinIcon
 } from 'react-share'
-import cross from '../assets/blackioscross.svg'
 
 export default function PopupSocial(props) {
   // const urlArticle = props.urlPartage
@@ -26,7 +25,7 @@ export default function PopupSocial(props) {
       <div id='holderShareActive' onClick={e => e.stopPropagation()}>
         {/* <div className={props.openPartage ? "HolderShareActive" : "HolderShare"} >  */}
         <a id='popupButtonExit' onClick={() => props.clickClosePartage()}>
-          <img src={cross} />
+         <i class="far fa-times"></i>
         </a>
         <p> Partagez ! </p>
         <div id='shareSocial'>
@@ -50,7 +49,7 @@ export default function PopupSocial(props) {
         </div>
         <div id='clipboard'>
           <input value={props.urlPartage} id='myInput' />
-          <button onClick={() => CopyClipboard()}>Copy link</button>
+          <button onClick={() => CopyClipboard()}><i class="fas fa-copy"></i></button>
         </div>
       </div>
     </div>

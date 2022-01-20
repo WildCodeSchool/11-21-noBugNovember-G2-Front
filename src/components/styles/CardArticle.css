@@ -8,22 +8,26 @@
         position: relative;
         background: rgba(255,255,255,0.05);
         box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        border-top:1px solid rgba(255,255,255,0.5) ;
-        border-left:1px solid rgba(255,255,255,0.5) ;
+        /* border-top:1px solid rgba(255,255,255,0.5) ;
+        border-left:1px solid rgba(255,255,255,0.5) ; */
         border-radius: 15px;
         height: 350px;
-        justify-content: space-between;
+        justify-content: space-between; 
         flex-direction: column;
         align-items: flex-start;
         overflow: hidden;
         backdrop-filter: blur(10px);
-        transition: 0.3s;
+        outline: solid 1px var(--firstColor);
+        transition: outline 0.2s linear;
+        margin: 0.5em; 
+
     }          
 
 .card:hover {
-    border-top:1px solid rgba(255,255,255,1) ;
+    /* border-top:1px solid rgba(255,255,255,1) ;
     border-left:1px solid rgba(255,255,255,1) ;
-    transform : scale(1.02); 
+    transform : scale(1.02) translateZ(0); */
+    outline-width: 3px;
     -webkit-font-smoothing: subpixel-antialiased;    
     backface-visibility: hidden;
 }
@@ -191,8 +195,7 @@ background-color:rgba(0, 0, 0, 0.5);
         white-space: normal;
         overflow: hidden;
         text-overflow: ellipsis;
-        
-    
+        width: 90%;    
     }
       
     .cardBottomFooter {
@@ -203,18 +206,19 @@ background-color:rgba(0, 0, 0, 0.5);
     }
 
     .cardBottomLink{
-        font-size: 20px;
+        font-size: 22px;
+        display: flex;
     }
     
     .cardBottomLink:hover {
-    transform: scale(1.5);
-    transition: 0.2s;
+    /* transform: scale(1.5);
+    transition: 0.2s; */
     cursor: pointer;
     }
 
     .cardBottomFavorite:hover {
-        transform: scale(1.5);
-        transition: 0.2s;
+        /* transform: scale(1.5);
+        transition: 0.2s; */
         cursor: pointer;
         }
 

@@ -124,6 +124,11 @@ const Bookmark = props => {
         isRead={props.isRead}
         setIsRead={props.setIsRead}
         changeIsRead={props.changeIsRead}
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+        setUrlPartage={props.setUrlPartage}
+        clickOpenPartage={props.clickOpenPartage}
       />
     </div>
   )

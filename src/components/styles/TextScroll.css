@@ -19,6 +19,7 @@
   font-size: 9vw;
   white-space: nowrap;
   top:0;
+  color: var(--thirdColor)
 }
  
 .messageH2 {

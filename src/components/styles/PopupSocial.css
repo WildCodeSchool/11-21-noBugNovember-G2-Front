@@ -18,8 +18,8 @@
     opacity: 1;
     position: fixed;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(20px);
+    /* background: rgba(255,255,255,0.5); */
     z-index: 30000;
     padding: 30px;
     border-radius: 12px;
@@ -28,6 +28,7 @@
     top: 50%;
     left: 50%;
     transform: translate(calc(-50% + 45px), -50%);
+    border: 3px solid;
 }
 
 #popupButtonExit {
@@ -53,7 +54,19 @@
 
 #clipboard button {
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background: var(--gradientColor);
+    color: var( --thirdColor);
+    border: 2px solid var(--thirdColor);
+    margin: 5px;
 }
+
+#clipboard button i {width: 100%; opacity: 1;}
+
+#clipboard input {background: var(--gradientColor); color: var(--thirdColor);}
+
 #popupLine {
     display: flex;
     justify-content: space-between;
