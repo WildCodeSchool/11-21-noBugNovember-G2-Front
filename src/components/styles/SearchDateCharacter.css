@@ -2,7 +2,7 @@
   .searchRowbuttonBox {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -90px);
+    transform: translate(-50%, 55px);
     z-index: 10000;
   }
 
@@ -31,7 +31,7 @@
 
   .active{
     border-radius: 10px;
-    transform: translateY(50px);
+    /* transform: translateY(50px); */
     width: 300px;
   }
 

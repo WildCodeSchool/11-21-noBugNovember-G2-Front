@@ -13,7 +13,8 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-share": "^4.4.0",
-    "web-vitals": "^2.1.2"
+    "web-vitals": "^2.1.2",
+    "weeknumber": "^1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -72,7 +72,7 @@ i {width:45px}
     font-style: none; 
     transition: 0.5s;
     width: 70px;
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(20px);
     z-index: 20000;
 }
 
@@ -91,7 +91,7 @@ i {width:45px}
     padding: 30px 14px;
     margin: 20px 0;
     color: var(--thirdColor);
-    opacity: 0.35;
+    opacity: 0.6;
     transition: 0.5s;
     text-decoration: none;
     z-index: 20000;

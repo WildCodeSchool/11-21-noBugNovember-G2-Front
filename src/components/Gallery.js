@@ -1,12 +1,14 @@
 import './styles/Gallery.css'
 import CardArticle from './CardArticle'
 import PopupSocial from './PopupSocial'
-import React from 'react'
+
 import { useState, useEffect } from 'react'
 
 export default function Gallery(props) {
- 
-  
+
+const [moreArticle, setMoreArticle] = useState(12)
+
+let seeMoreArticle = () => setMoreArticle(moreArticle + 12)
 
   return (
     <div className='bigGallery'>
@@ -16,7 +18,9 @@ export default function Gallery(props) {
         clickClosePartage={props.clickClosePartage}
       />
       <div className='gallery'>
-        {props.articleSearchFiltered.map(card => (
+
+        {props.articleSearchFiltered.slice(0, moreArticle).map(card => (
+
           <CardArticle
             key={card.id}
             id={card.id}
@@ -36,6 +40,10 @@ export default function Gallery(props) {
             changeIsRead={props.changeIsRead}
           />
         ))}
+
+      </div>
+      <div className="seeMore">
+        <div className="seeMoreArticle" onClick={seeMoreArticle}>Voir plus</div>
       </div>
     </div>
   )
