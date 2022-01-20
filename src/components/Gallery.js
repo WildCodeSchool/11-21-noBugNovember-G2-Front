@@ -1,20 +1,15 @@
-import React from 'react'
-import {useState, useEffect} from 'react'
 import './styles/Gallery.css'
 import CardArticle from './CardArticle'
-import Search from './Search'
-
 import PopupSocial from './PopupSocial'
-import react from 'react'
-
-
+import React from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Gallery(props) {
-
+ 
+  
 
   return (
     <div className='bigGallery'>
-      <Search setSearchValue={props.setSearchValue} searchValue={props.searchValue}/>
       <PopupSocial
         openPartage={props.openPartage}
         urlPartage={props.urlPartage}
