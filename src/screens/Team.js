@@ -3,13 +3,15 @@ import TeamGallery from '../components/TeamGallery'
 import TexteDefile from '../components/TexteDefile'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import {weekNumber} from 'weeknumber'
 
 const Team = props => {
   const [tableau, setTableau] = useState([])
+
   useEffect(() => {
     // Send the request
     axios
-      .get('https://yannick-cousin.github.io/veille-api/api/all.json')
+      .put('http://localhost:3030/articles/search/date', {year: new Date().getFullYear(), week: weekNumber(new Date())})
       .then(response => {
         setTableau(response.data)
       })

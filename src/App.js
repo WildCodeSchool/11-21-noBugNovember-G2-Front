@@ -11,9 +11,6 @@ import Team from './screens/Team'
 import Test from './screens/Test'
 import noavatar from './assets/croix_rouge.png'
 import useLocalStorage from 'use-local-storage'
-import PopupSocial from './components/PopupSocial'
-
-
 
 function App() {
   const [isFavorite, setIsFavorite] = useState([]) // id objet API
