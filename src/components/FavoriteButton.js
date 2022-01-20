@@ -19,7 +19,6 @@ const FavoriteButton = props => {
           id_user: parseInt(localStorage.getItem('id_user')),
           id_article: props.id
         })
-      localStorage.getItem('theme') === 'light' ? setBookImg(bookFull) : setBookImg(bookFullW)
     }
     else if (localStorage.getItem('id_user') !== null && isBookFull) {
       let temp = props.isFavorite

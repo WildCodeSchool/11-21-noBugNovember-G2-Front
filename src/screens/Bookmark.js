@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Gallery from '../components/Gallery'
+import React, { useState, useEffect } from 'react'
 import TexteDefile from '../components/TexteDefile'
+
 import '../components/styles/Bookmark.css'
 
-const Bookmark = (props) => {
+const Bookmark = props => {
   const [bdd, setBdd] = useState([]) //stock data venant de la base de données
   const [filter, setFilter] = useState([]) //stock des donnes triées par date par rapport à DB
   const [isFilter, setIsFilter] = useState(false) //si un tri a lieu, sert à changer les données envoyer en gallery
@@ -47,7 +48,7 @@ const Bookmark = (props) => {
 
   useEffect(() => {
     axios
-      .put("http://localhost:3030/favorite/bookmark", {
+      .put('http://localhost:3030/favorite/bookmark', {
         id_user: localStorage.getItem('id_user')
       })
       .then(response => response.data)
@@ -117,12 +118,17 @@ const Bookmark = (props) => {
         </div>
       </div>
       <Gallery
-        articles={isFilter ? filter : bdd}
+        articleSearchFiltered={isFilter ? filter : bdd}
         isFavorite={props.isFavorite}
         setIsFavorite={props.setIsFavorite}
         isRead={props.isRead}
         setIsRead={props.setIsRead}
         changeIsRead={props.changeIsRead}
+        openPartage={props.openPartage}
+        urlPartage={props.urlPartage}
+        clickClosePartage={props.clickClosePartage}
+        setUrlPartage={props.setUrlPartage}
+        clickOpenPartage={props.clickOpenPartage}
       />
     </div>
   )
