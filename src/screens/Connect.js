@@ -14,6 +14,9 @@ const Connect = ({setAvatar}) => {
   const [reponse, setReponse] = useState([])
   const [isConnected, setIsConnected] = useState(false)
   const [isValue, setisValue] = useState()
+  const [admin, setAdmin] = useState(false)
+
+  let hein;
 
   const changeFocus = () => {
     if (isFocused === false) {
@@ -43,12 +46,6 @@ const Connect = ({setAvatar}) => {
     }
   }
 
-  // const disconnect = () => {
-  //   localStorage.clear();
-  //   setAvatar(imgDisco);
-  //   setIsConnected(false)
-  // }
-
   let ignoreClickOnMeElement = document.querySelector('.input');
   document.addEventListener('click', function(event) {
     let isClickInsideElement = ignoreClickOnMeElement.contains(event.target)
@@ -63,10 +60,27 @@ const Connect = ({setAvatar}) => {
       localStorage.setItem('id_user', reponse[0].id)
       localStorage.setItem('avatar', reponse[0].avatar)
       localStorage.setItem('name', reponse[0].name)
+      localStorage.setItem('admin', reponse[0].admin)
+      if (reponse[0].admin == 1) {
+        setAdmin(true)
+      }
       setAvatar(reponse[0].avatar)
       setIsConnected(true)
     }
   }, [reponse])
+
+  useEffect(() => {
+    console.log("controle")
+    axios
+        .put("http://localhost:3030/members/admin", {
+          id: localStorage.getItem('id_user')
+        })
+      .then(response => response.data)
+      .then(data => hein = data.admin)
+      if (hein == 1) {
+        setAdmin(true)
+      }
+  }, [])
 
   return (
     <div className='pageConnect'>
@@ -75,6 +89,8 @@ const Connect = ({setAvatar}) => {
         <Disconnect 
           setIsConnected={setIsConnected}
           setAvatar={setAvatar}
+          admin={admin}
+          setAdmin={setAdmin}
         />
         :
         <form className="form"> 
