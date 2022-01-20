@@ -7,6 +7,7 @@ import Error from './screens/Error'
 import Header from './components/Header'
 import Home from './screens/Home'
 import Navbar from './components/Navbar'
+import Prez from './screens/Prez'
 import Team from './screens/Team'
 import Test from './screens/Test'
 import noavatar from './assets/croix_rouge.png'
@@ -94,6 +95,19 @@ function App() {
           }
         />
         <Route path='/connect' element={<Connect avatar={avatar} setAvatar={setAvatar}/> }/>
+        <Route path='/prez' element={
+            <Prez 
+              openPartage={openPartage}
+              urlPartage={urlPartage}
+              clickClosePartage={clickClosePartage}
+              setUrlPartage={setUrlPartage}
+              clickOpenPartage={clickOpenPartage}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}/>} 
+            />
         <Route path='/test' element={<Test />} />
         <Route path='*' element={<Error />} />
       </Routes>
