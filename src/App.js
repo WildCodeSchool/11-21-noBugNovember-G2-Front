@@ -13,6 +13,7 @@ import noavatar from './assets/croix_rouge.png'
 import PopupSocial from './components/PopupSocial'
 
 
+
 function App() {
   const [isFavorite, setIsFavorite] = useState([]) // id objet API
   const [avatar, setAvatar] = useState(noavatar)
