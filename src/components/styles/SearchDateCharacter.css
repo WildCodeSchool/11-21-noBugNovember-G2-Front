@@ -84,10 +84,10 @@
   
   .searchformulaire {
     position: relative;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; */
     width: 100%;
     z-index: 10;
     opacity: 1;
