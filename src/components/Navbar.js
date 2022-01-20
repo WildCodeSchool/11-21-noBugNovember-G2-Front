@@ -8,6 +8,7 @@ export default function Navbar(props) {
 
   const disconnect = () => {
     localStorage.clear();
+    // eslint-disable-next-line no-restricted-globals
     location.reload()
   }
   

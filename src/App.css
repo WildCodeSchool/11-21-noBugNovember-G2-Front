@@ -5,6 +5,7 @@
   --gradientColor:#9b9ee1;
   --fontTitle: "IvyJournal" 400;
   --fontBody: 'Ivyjournal', sans-serif;
+  backface-visibility: hidden;
 }
 
 [data-theme='dark'] {
