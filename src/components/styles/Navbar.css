@@ -91,7 +91,6 @@
     transition: 0.5s;
     text-decoration: none;
     z-index: 20000;
-
 }
 
 .NavLink:hover {
@@ -99,6 +98,9 @@
     transition: 0.45s
 }
 
+.noBookmark {
+    display: none;
+}
 
 /* Text Menu ****Open / Close**** */
 
