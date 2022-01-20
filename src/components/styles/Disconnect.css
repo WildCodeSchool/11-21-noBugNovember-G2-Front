@@ -1,0 +1,49 @@
+h2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+h4 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#avatarimg, #avatar, #article, #description {
+  display: block;
+  width: 100%;
+  /*padding: 36px 24px 14px;*/
+  margin: 15px;
+  height: 35px;
+  background: #fff3fe;
+  border: 1px solid #fff3fe;
+  border-radius: 15px;
+  font-family: "Helvetica Neue","Arial",sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
+  -webkit-appearance: none;
+}
+
+#cache {
+  display:none;
+}
+
+#addarticle {
+  display: flex;
+}
+
+#alright {
+  
+}
+
+#submit {
+  padding: 5px;
+  border-radius: 50px;
+  background: none;
+  border: solid 3px white;
+  border-image: --var(--gradientColorDark);
+  color: white;
+}
