@@ -24,7 +24,7 @@ export default function Navbar(props) {
         <i className='fas fa-home fa-fw fa-2x'></i>
         <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Accueil</p>
       </NavLink>
-      <NavLink className='NavLink' to='/bookmark'>
+      <NavLink className={`${localStorage.getItem('id_user') === null ? 'noBookmark' : 'NavLink'}`} to='/bookmark' >
         <i className='fas fa-bookmark fa-fw fa-2x'></i>
         <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
           Mes Favoris
