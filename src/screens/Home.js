@@ -5,8 +5,8 @@ import axios from "axios";
 import Search from "../components/Search";
 import { useState, useEffect } from "react";
 import SearchDateCharacter from "../components/SearchDateCharacter";
-
 import "../components/styles/Home.css";
+
 const Home = (props) => {
   const [result, setResult] = useState([]);
   const [articleSearchFiltered, setArticleSearchFiltered] = useState([]);
