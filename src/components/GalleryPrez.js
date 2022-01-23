@@ -2,7 +2,6 @@ import React from 'react'
 import './styles/GalleryPrez.css'
 import CardArticlePrez from './CardArticlePrez'
 import PopupSocial from './PopupSocial'
-import { useState } from 'react'
 
 const GalleryPrez = (props) => {
   return (

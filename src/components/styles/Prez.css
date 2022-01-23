@@ -12,20 +12,28 @@
 .frame { 
   grid-area: 1 / 1 / 2 / 4;
   /*background-color: red;*/
-  height: 100vh;
+  height: 91vh;
   display: flex;
   flex-direction: column;
 }
 
 iframe {
-  height: 100vh;
+  height: 91vh;
 }
 
 .list { 
   grid-area: 1 / 4 / 2 / 5; 
   /*background-color: blue;*/
-  height: 90vh;
+  height: 91vh;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow-y: scroll;
 } 
+
+.messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.5em;
+}

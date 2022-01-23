@@ -30,11 +30,12 @@ return (
     <div className="ensemble">
       <div className="frame">
         {/*<iframe name="presentation" id="myframe" sanbox="allow-same-origin" src={link} ></iframe>*/}
-        <object data={link} height="90%">
+        <object data={link} height="95%">
           <embed src={link} height="100vh"></embed>
-          Erreur : Le site refuse de s'ouvrir dans la page. <a href={link} target="_blank" >Cliquez ici pour l'ouvrir dans un nouvel onglet</a>
+          {link.length > 5 
+          ? <div className="messages"><a href={link} target='_blank'>Hélas, le site refuse se s'ouvrir. Cliquez ici pour l'ouvrir dans un nouvel onglet</a></div>
+          : <div className="messages">Pour commencer, cliquez sur une carte situé à droite</div>}
         </object>
-
       </div>
       <div className="list">
         <GalleryPrez
