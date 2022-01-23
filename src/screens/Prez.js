@@ -7,7 +7,8 @@ import {weekNumber} from 'weeknumber'
 const Prez = (props) => {
   const [result, setResult] = useState([]);
   const [link, setLink] = useState("");
-  console.log(result)
+  console.log(link)
+  console.log(link.length)
 
   useEffect(() => {
     axios
@@ -21,14 +22,19 @@ const Prez = (props) => {
 
   useEffect(() => {
     console.log(link)
-    document.getElementById('myframe').contentWindow.location.reload()
+    //document.getElementById('myframe').contentWindow.location.reload()
   },[link])
 
 return (
   <div className="prez">
     <div className="ensemble">
       <div className="frame">
-        <iframe name="presentation" id="myframe" sanbox="allow-same-origin" src={link} ></iframe>
+        {/*<iframe name="presentation" id="myframe" sanbox="allow-same-origin" src={link} ></iframe>*/}
+        <object data={link} height="90%">
+          <embed src={link} height="100vh"></embed>
+          Erreur : Le site refuse de s'ouvrir dans la page. <a href={link} target="_blank" >Cliquez ici pour l'ouvrir dans un nouvel onglet</a>
+        </object>
+
       </div>
       <div className="list">
         <GalleryPrez

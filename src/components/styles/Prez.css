@@ -6,24 +6,26 @@
   grid-row-gap: 0px;
   margin-left: 250px;
   margin-right: 250px;
+  height: 90vh;
 }
   
 .frame { 
   grid-area: 1 / 1 / 2 / 4;
-  background-color: red;
-  height: 100%;
+  /*background-color: red;*/
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 iframe {
-  height: 100%;
+  height: 100vh;
 }
 
 .list { 
   grid-area: 1 / 4 / 2 / 5; 
-  background-color: blue;
-  height: 100%;
+  /*background-color: blue;*/
+  height: 90vh;
   justify-content: center;
   align-items: center;
+  overflow: scroll;
 } 

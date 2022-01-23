@@ -5,10 +5,6 @@ import PopupSocial from './PopupSocial'
 import { useState } from 'react'
 
 const GalleryPrez = (props) => {
-
-const [moreArticle, setMoreArticle] = useState(12)
-
-let seeMoreArticle = () => setMoreArticle(moreArticle + 12)
   return (
     <div className='bigGallery'>
       <PopupSocial
@@ -17,13 +13,13 @@ let seeMoreArticle = () => setMoreArticle(moreArticle + 12)
         clickClosePartage={props.clickClosePartage}
       />
       <div className='gallery'>
-        {props.articles.slice(0, moreArticle).map(card => (
+        {props.articles.map(card => (
           <CardArticlePrez
             key={card.id}
             id={card.id}
             week={card.week}
             year={card.year}
-            member={card.member}
+            name={card.name}
             url={card.url}
             description={card.description}
             avatar={card.avatar}
@@ -39,9 +35,6 @@ let seeMoreArticle = () => setMoreArticle(moreArticle + 12)
           />
         ))}
 
-      </div>
-      <div className="seeMore">
-        <div className="seeMoreArticle" onClick={seeMoreArticle}>Voir plus</div>
       </div>
     </div>
   )
