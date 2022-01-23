@@ -11,8 +11,7 @@ import Prez from './screens/Prez'
 import Team from './screens/Team'
 import Test from './screens/Test'
 import noavatar from './assets/croix_rouge.png'
-import PopupSocial from './components/PopupSocial'
-
+import useLocalStorage from 'use-local-storage'
 
 function App() {
   const [isFavorite, setIsFavorite] = useState([]) // id objet API
@@ -38,10 +37,18 @@ function App() {
     setOpenPartage(false)
   }
 
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;  
+  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+  
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme)
+  }
+
   return (
-    <div className='App'>
-      <Header avatar={avatar} setAvatar={setAvatar}/>
-      <Navbar />
+    <div id='App' data-theme={theme}>
+      <Header avatar={avatar} setAvatar={setAvatar} theme={theme}/>
+      <Navbar switchTheme={switchTheme} />
       <Routes>
         <Route
           path='/'
@@ -78,7 +85,7 @@ function App() {
           }
         />
         <Route
-          path='/team'
+          path='/news-semaine'
           element={
             <Team
               openPartage={openPartage}

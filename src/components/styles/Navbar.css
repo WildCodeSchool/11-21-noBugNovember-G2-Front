@@ -1,7 +1,3 @@
-/* Icon Menu  */
-
-i {width:45px}
-
 
 /* Icon Slide for Menu ****Close****   */
 
@@ -95,7 +91,6 @@ i {width:45px}
     transition: 0.5s;
     text-decoration: none;
     z-index: 20000;
-
 }
 
 .NavLink:hover {
@@ -103,6 +98,9 @@ i {width:45px}
     transition: 0.45s
 }
 
+.noBookmark {
+    display: none;
+}
 
 /* Text Menu ****Open / Close**** */
 
