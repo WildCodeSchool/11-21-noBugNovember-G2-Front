@@ -12,19 +12,19 @@
 .frame { 
   grid-area: 1 / 1 / 2 / 4;
   /*background-color: red;*/
-  height: 91vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
 }
 
 iframe {
-  height: 91vh;
+  height: 90vh;
 }
 
 .list { 
   grid-area: 1 / 4 / 2 / 5; 
   /*background-color: blue;*/
-  height: 91vh;
+  height: 90vh;
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
