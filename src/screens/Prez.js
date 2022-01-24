@@ -7,17 +7,24 @@ import {weekNumber} from 'weeknumber'
 const Prez = (props) => {
   const [result, setResult] = useState([]);
   const [link, setLink] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false)
   console.log(link)
   console.log(link.length)
 
   useEffect(() => {
-    axios
+    if (localStorage.getItem("admin") == 1) {
+      axios
       .put('http://localhost:3030/articles/search/date', {
         year: new Date().getFullYear(),
         week: weekNumber(new Date())
       })
       .then(response => response.data)
       .then(data => setResult(data))
+      setIsAdmin(true)
+    }
+    else {
+
+    }
   }, [])
 
   useEffect(() => {
@@ -27,13 +34,16 @@ const Prez = (props) => {
 
 return (
   <div className="prez">
-    <div className="ensemble">
+    <div className={!isAdmin?"ptdr":"cache"}>
+      Vous devez être administrateur pour accéder à cette partie
+    </div>
+    <div className={isAdmin?"ensemble":"cache"}>
       <div className="frame">
         {/*<iframe name="presentation" id="myframe" sanbox="allow-same-origin" src={link} ></iframe>*/}
         <object data={link} height="95%">
           <embed src={link} height="100vh"></embed>
           {link.length > 5 
-          ? <div className="messages"><a href={link} target='_blank'>Hélas, le site refuse se s'ouvrir. Cliquez ici pour l'ouvrir dans un nouvel onglet</a></div>
+          ? <div className="messages"><a href={link} target='_blank'>Hélas, le site refuse de s'ouvrir. Cliquez ici pour l'ouvrir dans un nouvel onglet</a></div>
           : <div className="messages">Pour commencer, cliquez sur une carte situé à droite</div>}
         </object>
       </div>
