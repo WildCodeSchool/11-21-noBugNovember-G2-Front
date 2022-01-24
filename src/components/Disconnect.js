@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react'
 import '../components/styles/Disconnect.css'
 import axios from 'axios'
 import {weekNumber} from 'weeknumber'
+import { NavLink } from 'react-router-dom'
 
 const Disconnect = ({setAvatar, setIsConnected, admin, setAdmin}) => {
   const [updateAvatar, setUpdateAvatar] = useState("");
@@ -13,8 +14,6 @@ const Disconnect = ({setAvatar, setIsConnected, admin, setAdmin}) => {
 	const [reveal, setReveal] = useState(false)
 	const [bdd, setBdd] = useState([])
 	const [moreArticle, setMoreArticle] = useState(12)
-
-	console.log(admin)
 
 	const aurevoir = () => {
     localStorage.clear();
@@ -127,6 +126,11 @@ const Disconnect = ({setAvatar, setIsConnected, admin, setAdmin}) => {
 			<div className={post?"alright":"cache"}>
 				<h4>Nous vous remercions de votre contribution 😀</h4>
 				<input type="button" id="avatar" onClick={() => newArticlePlease()} value="Ajouter un nouvel article"></input>
+			</div>
+			<div className={admin?"modeprez":"cache"}>
+				<NavLink className='NavLink' to='/prez'>
+					<input type="button" id="avatar" value="Accéder au mode présentation"></input>
+					</NavLink>
 			</div>
 			<div className={admin?"admin":"cache"}>
 			<h2>Gestion des articles postés en veille - Mode Admin</h2>

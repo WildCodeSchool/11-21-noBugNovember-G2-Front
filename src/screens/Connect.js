@@ -70,7 +70,6 @@ const Connect = ({setAvatar}) => {
   }, [reponse])
 
   useEffect(() => {
-    console.log("controle")
     axios
         .put("http://localhost:3030/members/admin", {
           id: localStorage.getItem('id_user')
