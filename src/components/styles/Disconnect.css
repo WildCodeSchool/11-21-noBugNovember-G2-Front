@@ -1,6 +1,6 @@
 .textDisconnectPage {
   text-align: center;
-  transform: translateX(17px);
+  transform: translateX(15.3px);
   margin-top: 40px;
 }
 
@@ -67,7 +67,7 @@ table {
   width: 100%;
   border: 1px solid;
   justify-content: center;
-  transform: translateX(17px);
+  transform: translateX(15.3px);
 }
 
 .fas {
