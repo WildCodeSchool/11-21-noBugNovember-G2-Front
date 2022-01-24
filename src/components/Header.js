@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import ProfileModal from "./ProfileModal";
 
 function Header({ avatar, setAvatar, theme }) {
+  const [active, setActive] = useState(false);
+
   return (
     <header className="Header">
       <img
@@ -15,12 +17,10 @@ function Header({ avatar, setAvatar, theme }) {
       ></img>
       <div id="HeaderBorder"></div>
       <div className="wrapperUser">
-        <div id="HeaderUser">
-          <NavLink to="/connect">
-            <img id="HeaderUserPicture" src={avatar} alt="logo"></img>
-          </NavLink>
+        <div id="HeaderUser" onClick={() => setActive(!active)}>
+          <img id="HeaderUserPicture" src={avatar} alt="logo"></img>
         </div>
-        <ProfileModal />
+        <ProfileModal active={active} setActive={setActive} />
       </div>
     </header>
   );
