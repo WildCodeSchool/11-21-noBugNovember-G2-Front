@@ -16,7 +16,7 @@
 .messageContent:after {
   position: relative;
   display: inline-block;
-  font-size: 9vw;
+  font-size: 200px;
   white-space: nowrap;
   top:0;
   color: var(--thirdColor)
@@ -44,13 +44,21 @@
     100% { margin-left: 0%; }
   } 
 
+
+  @media (max-width:1104px) {
+    .messageH2, .messageContent:after {font-size: 160px;}
+  }
+
+
   @media (max-width:768px) {
     .messagedefilant {
       display: block;
       padding: 0;
       position: relative;
       width: 100%;
-      height: 150px;
+      height: 140px;
       top: 20px;
     }
+    .messageH2, .messageContent:after {font-size: 72px;}
+
   }

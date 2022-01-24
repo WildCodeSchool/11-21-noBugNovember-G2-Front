@@ -44,10 +44,16 @@ function App() {
     setTheme(newTheme)
   }
 
+  const disconnect = () => {
+    localStorage.clear();
+    // eslint-disable-next-line no-restricted-globals
+    location.reload()
+  }
+
   return (
     <div id='App' data-theme={theme}>
-      <Header avatar={avatar} setAvatar={setAvatar} theme={theme}/>
-      <Navbar switchTheme={switchTheme} />
+      <Header switchTheme={switchTheme} avatar={avatar} setAvatar={setAvatar} theme={theme} disconnect={disconnect}/>
+      <Navbar switchTheme={switchTheme} disconnect={disconnect}/>
       <Routes>
         <Route
           path='/'

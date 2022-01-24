@@ -151,7 +151,7 @@ const Home = (props) => {
 
   return (
     <div>
-      <TexteDefile title="les veilleurs de news |" />
+      <TexteDefile title="les veilleurs de news |   les veilleurs de news |" />
 
       {/* <div className='searchBox'> */}
       <SearchDateCharacter
