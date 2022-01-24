@@ -1,26 +1,19 @@
-h2 {
-  display: flex;
-  justify-content: center;
+.textDisconnectPage {
+  text-align: center;
+  transform: translateX(17px);
   margin-top: 40px;
 }
 
 h3 {
-  display: flex;
-  justify-content: center;
   margin-bottom: 20px;
 }
 
 h4 {
-  display: flex;
-  justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-#avatarimg,
-#avatar,
-#article,
-#description {
+.buttonsDisconnectPage {
   display: block;
   width: 100%;
   /*padding: 36px 24px 14px;*/
@@ -36,6 +29,18 @@ h4 {
   -webkit-appearance: none;
 }
 
+#accessPrez {
+  opacity: 0.6;
+  width: 80%;
+  margin-left: 11.7%;
+  margin-top: 10%;
+}
+
+#accessPrez:hover {
+  opacity: 1;
+  transition: 0.45s;
+}
+
 #cache {
   display: none;
 }
@@ -44,7 +49,7 @@ h4 {
   display: flex;
 }
 
-#submit {
+#disconnectButton {
   padding: 5px;
   border-radius: 50px;
   background: none;
@@ -62,6 +67,7 @@ table {
   width: 100%;
   border: 1px solid;
   justify-content: center;
+  transform: translateX(17px);
 }
 
 .fas {
@@ -76,5 +82,4 @@ th {
 
 input {
   text-align: center;
-  vertical-align: middle;
 }

@@ -100,20 +100,26 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
 
   return (
     <div className='Disconnect'>
-      <h2>Bienvenue {localStorage.getItem('name')}</h2>
+      <h2 className='textDisconnectPage'>
+        Bienvenue {localStorage.getItem('name')}
+      </h2>
       <input
         type='button'
-        id='submit'
+        // className='buttonsDisconnectPage'
+        id='disconnectButton'
         onClick={() => aurevoir()}
         value='Se déconnecter'
       ></input>
-      <h4>Souhaitez-vous mettre à jour votre avatar ?</h4>
+      <h4 className='textDisconnectPage'>
+        Souhaitez-vous mettre à jour votre avatar ?
+      </h4>
       {/* Veuillez indiquer l'URL de votre image (on ne stocke aucune image sur
       notre serveur) */}
       <form>
         <div>
           <input
             type='text'
+            className='buttonsDisconnectPage'
             id='avatarimg'
             placeholder="Veuillez indiquer l'URL de votre image(on ne stocke aucune image sur notre serveur)"
             onChange={(e) => changeUrl(e)}
@@ -122,6 +128,7 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
         </div>
         <input
           type='button'
+          className='buttonsDisconnectPage'
           id='avatar'
           onClick={() => letsGo()}
           value='Mettre à jour votre avatar'
@@ -129,12 +136,15 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
       </form>
       <br />
       <div className={post ? 'cache' : 'addarticle'}>
-        <h4>Vous souhaitez ajouter un article à la veille ?</h4>
+        <h4 className='textDisconnectPage'>
+          Souhaitez-vous ajouter un article à la veille ?
+        </h4>
         <form>
           <div>
             {/* URL de votre article :{' '} */}
             <input
               type='text'
+              className='buttonsDisconnectPage'
               id='article'
               placeholder='URL de votre article'
               onChange={(e) => changeArticle(e)}
@@ -143,6 +153,7 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
             {/* Titre de l'article :{' '} */}
             <input
               type='text'
+              className='buttonsDisconnectPage'
               id='description'
               placeholder="Titre de l'article"
               onChange={(e) => changeDescription(e)}
@@ -151,37 +162,47 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
           </div>
           <input
             type='button'
-            id='avatar'
+            className='buttonsDisconnectPage'
+            id='addArticle'
             onClick={() => postArticle()}
             value='Ajouter un article à la veille'
           ></input>
         </form>
       </div>
       <div className={post ? 'alright' : 'cache'}>
-        <h4>Nous vous remercions de votre contribution 😀</h4>
+        <h4 className='textDisconnectPage'>
+          Nous vous remercions de votre contribution 😀
+        </h4>
         <input
           type='button'
-          id='avatar'
+          className='buttonsDisconnectPage'
+          id='addArticleAgain'
           onClick={() => newArticlePlease()}
           value='Ajouter un nouvel article'
         ></input>
       </div>
       <div className={admin ? 'modeprez' : 'cache'}>
-        <NavLink className='NavLink' to='/prez'>
+        <NavLink to='/prez'>
           <input
             type='button'
-            id='avatar'
+            className='buttonsDisconnectPage'
+            id='accessPrez'
             value='Accéder au mode présentation'
           ></input>
         </NavLink>
       </div>
       <div className={admin ? 'admin' : 'cache'}>
-        <h2>Gestion des articles postés en veille - Mode Admin</h2>
-        <h3>⚠ Toutes suppresion est définitive !</h3>
+        <h2 className='textDisconnectPage'>
+          Gestion des articles postés en veille - Mode Admin
+        </h2>
+        <h3 className='textDisconnectPage'>
+          ⚠ Toute suppression est définitive !
+        </h3>
         <div className='linearticle'>
           <input
             type='button'
-            id='avatar'
+            className='buttonsDisconnectPage'
+            id='postedArticles'
             onClick={() => getAllArticles()}
             value='Voir les articles postés'
           ></input>
@@ -226,11 +247,14 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
       </div>
       <div className={!admin ? 'perso' : 'cache'}>
         <h2>Gestion de vos articles postés en veille</h2>
-        <h3>⚠ Toutes suppresion est définitive !</h3>
+        <h3 className='textDisconnectPage'>
+          ⚠ Toute suppression est définitive !
+        </h3>
         <div className='linearticle'>
           <input
             type='button'
-            id='avatar'
+            className='buttonsDisconnectPage'
+            id='seePostedArticles'
             onClick={() => getMyArticles()}
             value='Voir vos articles postés'
           ></input>
