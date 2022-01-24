@@ -19,7 +19,7 @@ const Team = props => {
 
   return (
     <div>
-      <TexteDefile title=' ma promo |  ma promo | ' />
+      <TexteDefile title=' Les news de la semaine |  Les news de la semaine | ' />
       <TeamGallery
         articles={tableau}
         setIsFavorite={props.setIsFavorite}
