@@ -91,14 +91,14 @@ const Connect = ({ setAvatar }) => {
         />
       ) : (
         <form className='form'>
-          <h2>Connexion</h2>
+          <h2 id='idConnexion'>Connexion</h2>
           <div className='fieldCollection'>
             <div className={`field ${isFocused && 'focus'}`}>
-              {/* <label for='username' className='label'></label> */}
+              <label for='username' className='label'></label>
               <input
                 type='text'
                 name='username'
-                className='input'
+                className='input seeMoreArticle'
                 value={name}
                 placeholder="Nom d'utilisateur"
                 required
@@ -110,7 +110,7 @@ const Connect = ({ setAvatar }) => {
               <label for='password' className='label'></label>
               <input
                 type='password'
-                className='input'
+                className='input seeMoreArticle'
                 name='password'
                 placeholder='Mot de passe'
                 required
@@ -120,6 +120,7 @@ const Connect = ({ setAvatar }) => {
             </div>
             <input
               type='button'
+              className='seeMoreArticle'
               id='submit'
               onClick={() => connect()}
               value='ME CONNECTER'

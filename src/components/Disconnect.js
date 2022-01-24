@@ -98,97 +98,113 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
 
   useEffect(() => {}, [stokage, bdd])
 
+  useEffect(() => {
+    if (admin && reveal) {
+      axios
+        .get('http://localhost:3030/articles/godmode/read')
+        .then((response) => response.data)
+        .then((data) => setBdd(data))
+    }
+    if (!admin && reveal) {
+      axios
+        .post('http://localhost:3030/articles/byuser', {
+          id_users: parseInt(localStorage.getItem('id_user')),
+        })
+        .then((response) => response.data)
+        .then((data) => setStokage(data))
+    }
+  })
+
   return (
     <div className='Disconnect'>
       <h2 className='textDisconnectPage'>
         Bienvenue {localStorage.getItem('name')}
       </h2>
-      <input
-        type='button'
-        // className='buttonsDisconnectPage'
-        id='disconnectButton'
-        onClick={() => aurevoir()}
-        value='Se déconnecter'
-      ></input>
-      <h4 className='textDisconnectPage'>
-        Souhaitez-vous mettre à jour votre avatar ?
-      </h4>
-      {/* Veuillez indiquer l'URL de votre image (on ne stocke aucune image sur
-      notre serveur) */}
-      <form>
+      <div className='flexDisconnectButtons'>
         <div>
-          <input
-            type='text'
-            className='buttonsDisconnectPage'
-            id='avatarimg'
-            placeholder="Veuillez indiquer l'URL de votre image(on ne stocke aucune image sur notre serveur)"
-            onChange={(e) => changeUrl(e)}
-            value={updateAvatar}
-          ></input>
+          <h4 className='textDisconnectPage'>
+            Souhaitez-vous mettre à jour votre avatar ?
+          </h4>
+          <h5 className='textDisconnectPage' id='h5DiscoPage'>
+            (on ne stocke aucune image sur notre serveur)
+          </h5>
+          <form>
+            <div>
+              <input
+                type='text'
+                className='inputText seeMoreArticle'
+                id='avatarimg'
+                placeholder='URL de votre image'
+                onChange={(e) => changeUrl(e)}
+                value={updateAvatar}
+              ></input>
+            </div>
+            <button
+              type='button'
+              className='buttonPageDisconnect buttonUpPageDisco seeMoreArticle'
+              id='avatar'
+              onClick={() => letsGo()}
+            >
+              Mettre à jour votre avatar
+            </button>
+          </form>
         </div>
-        <input
-          type='button'
-          className='buttonsDisconnectPage'
-          id='avatar'
-          onClick={() => letsGo()}
-          value='Mettre à jour votre avatar'
-        ></input>
-      </form>
-      <br />
-      <div className={post ? 'cache' : 'addarticle'}>
-        <h4 className='textDisconnectPage'>
-          Souhaitez-vous ajouter un article à la veille ?
-        </h4>
-        <form>
-          <div>
-            {/* URL de votre article :{' '} */}
-            <input
-              type='text'
-              className='buttonsDisconnectPage'
-              id='article'
-              placeholder='URL de votre article'
-              onChange={(e) => changeArticle(e)}
-              value={article}
-            ></input>
-            {/* Titre de l'article :{' '} */}
-            <input
-              type='text'
-              className='buttonsDisconnectPage'
-              id='description'
-              placeholder="Titre de l'article"
-              onChange={(e) => changeDescription(e)}
-              value={description}
-            ></input>
-          </div>
-          <input
+        <div className={post ? 'cache' : 'addarticle'}>
+          <h4 className='textDisconnectPage'>
+            Souhaitez-vous ajouter un article à la veille ?
+          </h4>
+          <form>
+            <div>
+              <input
+                type='text'
+                className='inputText seeMoreArticle '
+                id='article'
+                placeholder='URL de votre article'
+                onChange={(e) => changeArticle(e)}
+                value={article}
+              ></input>
+              <input
+                type='text'
+                className='inputText seeMoreArticle '
+                id='description'
+                placeholder="Titre de l'article"
+                onChange={(e) => changeDescription(e)}
+                value={description}
+              ></input>
+            </div>
+            <button
+              type='button'
+              className='buttonPageDisconnect buttonUpPageDisco seeMoreArticle '
+              id='addArticle'
+              onClick={() => postArticle()}
+            >
+              Ajouter un article à la veille
+            </button>
+          </form>
+        </div>
+        <div className={post ? 'alright' : 'cache'}>
+          <h4 className='textDisconnectPage'>
+            Nous vous remercions de votre contribution 😀
+          </h4>
+          <button
             type='button'
-            className='buttonsDisconnectPage'
-            id='addArticle'
-            onClick={() => postArticle()}
-            value='Ajouter un article à la veille'
-          ></input>
-        </form>
-      </div>
-      <div className={post ? 'alright' : 'cache'}>
-        <h4 className='textDisconnectPage'>
-          Nous vous remercions de votre contribution 😀
-        </h4>
-        <input
-          type='button'
-          className='buttonsDisconnectPage'
-          id='addArticleAgain'
-          onClick={() => newArticlePlease()}
-          value='Ajouter un nouvel article'
-        ></input>
+            className='buttonPageDisconnect buttonUpPageDisco seeMoreArticle '
+            id='addArticleAgain'
+            onClick={() => newArticlePlease()}
+          >
+            Ajouter un nouvel article
+          </button>
+        </div>
       </div>
       <div className={admin ? 'modeprez' : 'cache'}>
         <NavLink to='/prez'>
-          <input
+          <button
             type='button'
-            className='buttonsDisconnectPage'
+            className='buttonPageDisconnect buttonDownPageDisco seeMoreArticle '
             id='accessPrez'
-            value='Accéder au mode présentation'
-          ></input>
+          >
+            Accéder au mode présentation
+          </button>
         </NavLink>
       </div>
       <div className={admin ? 'admin' : 'cache'}>
@@ -199,13 +215,14 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
           ⚠ Toute suppression est définitive !
         </h3>
         <div className='linearticle'>
-          <input
+          <button
             type='button'
-            className='buttonsDisconnectPage'
+            className='buttonPageDisconnect buttonDownPageDisco seeMoreArticle '
             id='postedArticles'
             onClick={() => getAllArticles()}
-            value='Voir les articles postés'
-          ></input>
+          >
+            Voir les articles postés
+          </button>
           <table className={reveal ? 'reveal' : 'cache'}>
             <thead className={reveal ? 'reveal' : 'cache'}>
               <tr className={reveal ? 'reveal' : 'cache'}>
@@ -246,18 +263,21 @@ const Disconnect = ({ setAvatar, setIsConnected, admin, setAdmin }) => {
         </div>
       </div>
       <div className={!admin ? 'perso' : 'cache'}>
-        <h2>Gestion de vos articles postés en veille</h2>
+        <h2 className='textDisconnectPage'>
+          Gestion de vos articles postés en veille
+        </h2>
         <h3 className='textDisconnectPage'>
           ⚠ Toute suppression est définitive !
         </h3>
         <div className='linearticle'>
-          <input
+          <button
             type='button'
-            className='buttonsDisconnectPage'
+            className='buttonPageDisconnect buttonDownPageDisco seeMoreArticle '
             id='seePostedArticles'
             onClick={() => getMyArticles()}
-            value='Voir vos articles postés'
-          ></input>
+          >
+            Voir vos articles postés
+          </button>
           <table className={reveal ? 'reveal' : 'cache'}>
             <thead className={reveal ? 'reveal' : 'cache'}>
               <tr className={reveal ? 'reveal' : 'cache'}>
