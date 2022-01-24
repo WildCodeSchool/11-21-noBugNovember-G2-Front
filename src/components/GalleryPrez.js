@@ -5,13 +5,13 @@ import PopupSocial from './PopupSocial'
 
 const GalleryPrez = (props) => {
   return (
-    <div className='bigGallery'>
+    <div className='bigGalleryPrez'>
       <PopupSocial
         openPartage={props.openPartage}
         urlPartage={props.urlPartage}
         clickClosePartage={props.clickClosePartage}
       />
-      <div className='gallery'>
+      <div className='galleryprez'>
         {props.articles.map(card => (
           <CardArticlePrez
             key={card.id}
