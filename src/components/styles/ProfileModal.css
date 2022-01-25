@@ -14,14 +14,14 @@
 }
 
 .tricheCarreHidden {
-  display: none;
+  opacity: 0%;
 }
 
 .bodyProfileModal {
   width: 200px;
   height: auto;
   position: relative;
-  top: 8%;
+  top: 12%;
   right: 5%;
   background-color: whitesmoke;
   z-index: 9999999;
@@ -82,4 +82,8 @@
 .buttonOptionMenuProfile label {
   margin: 0px 0px 0px 10px;
   cursor: pointer;
+}
+
+.wrapperModal {
+  overflow: visible;
 }
