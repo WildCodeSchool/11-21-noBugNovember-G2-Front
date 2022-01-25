@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.profilTableau {
+  margin: auto;
+}
+
 table {
   border: 1px solid;
   justify-content: center;
