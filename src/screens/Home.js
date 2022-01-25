@@ -145,13 +145,19 @@ const Home = (props) => {
     setVisibility(!visibility);
   };
 
-  console.log("search User length: " + selectUser.length);
-  console.log("select week : " + selectWeek);
-  console.log("select month : " + selectYear);
+  const [posScroll, setPosScroll] = useState();
+
+  const checkScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      setPosScroll(window.scrollY);
+    }
+  };
+
+  window.addEventListener("scroll", checkScroll);
 
   return (
     <div>
-      <TexteDefile title="les veilleurs de news |" />
+      <TexteDefile title="les veilleurs de news |   les veilleurs de news |" />
 
       {/* <div className='searchBox'> */}
       <SearchDateCharacter
@@ -185,6 +191,8 @@ const Home = (props) => {
         clickClosePartage={props.clickClosePartage}
         setUrlPartage={props.setUrlPartage}
         clickOpenPartage={props.clickOpenPartage}
+        posScroll={posScroll}
+        setPosScroll={setPosScroll}
       />
     </div>
   );
