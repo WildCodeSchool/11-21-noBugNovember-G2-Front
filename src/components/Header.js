@@ -1,20 +1,22 @@
 import "./styles/Header.css"
-import Lightlogo from "../assets/lightlogo.svg"
+import BurgerMenu from "./BurgerMenu";
 import Blacklogo from "../assets/blacklogo.svg"
-import {useState, useEffect} from 'react'
+import Lightlogo from "../assets/lightlogo.svg"
 import { NavLink } from 'react-router-dom'
 
-function Header({avatar, setAvatar, theme}) {
+
+function Header(props) {
 
 	return (
     <header className="Header"> 
-        <img id="HeaderLogo" src={theme === 'light' ? Blacklogo : Lightlogo } alt="logo"></img>
+        <img id="HeaderLogo" src={props.theme === 'light' ? Blacklogo : Lightlogo } alt="logo"></img>
         <div id="HeaderBorder"></div>
         <div id="HeaderUser">
         <NavLink to="/connect">
-        <img id="HeaderUserPicture" src={avatar} alt="logo"></img>
+        <img id="HeaderUserPicture" src={props.avatar} alt="logo"></img>
         </NavLink>
         </div>
+        <BurgerMenu open={props.open} disconnect={props.disconnect} switchTheme={props.switchTheme}/>
     </header>
   )
 }
