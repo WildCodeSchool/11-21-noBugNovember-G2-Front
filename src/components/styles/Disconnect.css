@@ -1,53 +1,87 @@
-h2 {
+.Disconnect {
+  width: 100%;
+}
+
+.flexDisconnectButtons {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.textDisconnectPage {
+  text-align: center;
+  transform: translateX(15.3px);
   margin-top: 40px;
 }
 
-h3 {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+#h5DiscoPage {
+  margin-top: 0px;
 }
 
-h4 {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+#avatarimg,
+#article,
+#description {
+  background: none;
+  color: var(--thirdColor);
 }
 
-#avatarimg, #avatar, #article, #description {
+.inputText {
+  background: none;
   display: block;
   width: 100%;
-  /*padding: 36px 24px 14px;*/
   margin: 15px;
-  height: 35px;
-  background: #fff3fe;
-  border: 1px solid #fff3fe;
-  border-radius: 15px;
-  font-family: "Helvetica Neue","Arial",sans-serif;
+  height: 50px;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
   font-size: 16px;
   line-height: 20px;
-  color: #000;
   -webkit-appearance: none;
 }
 
+.buttonPageDisconnect {
+  display: block;
+  width: 100%;
+  height: 50px;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  background: var(--thirdColor);
+  color: var(--gradientColor);
+  -webkit-appearance: none;
+}
+
+.buttonPageDisconnect:hover {
+  cursor: pointer;
+}
+
+.buttonUpPageDisco {
+  margin: 15px;
+}
+
+.buttonDownPageDisco {
+  width: 20%;
+  margin: auto;
+  margin-top: 2%;
+}
+
+#accessPrez {
+  margin-top: 10%;
+}
+
+#accessPrez:hover {
+  opacity: 1;
+  transition: 0.45s;
+}
+
+#postedArticles,
+#seePostedArticles {
+  margin-bottom: 2%;
+}
+
 #cache {
-  display:none;
+  display: none;
 }
 
 #addarticle {
   display: flex;
-}
-
-#submit {
-  padding: 5px;
-  border-radius: 50px;
-  background: none;
-  border: solid 3px white;
-  border-image: --var(--gradientColorDark);
-  color: white;
 }
 
 #reveal {
@@ -56,9 +90,11 @@ h4 {
 }
 
 table {
-  width: 100%;
+  width: 80%;
+  margin-left: 10%;
   border: 1px solid;
   justify-content: center;
+  transform: translateX(15.3px);
 }
 
 .fas {
@@ -69,4 +105,8 @@ table {
 th {
   border: 1px solid;
   justify-content: center;
+}
+
+input {
+  text-align: center;
 }

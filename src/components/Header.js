@@ -4,24 +4,30 @@ import Blacklogo from "../assets/blacklogo.svg";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ProfileModal from "./ProfileModal";
+import BurgerMenu from "./BurgerMenu";
 
-function Header({ avatar, setAvatar, theme }) {
+function Header(props) {
   const [active, setActive] = useState(false);
 
   return (
     <header className="Header">
       <img
         id="HeaderLogo"
-        src={theme === "light" ? Blacklogo : Lightlogo}
+        src={props.theme === "light" ? Blacklogo : Lightlogo}
         alt="logo"
       ></img>
       <div id="HeaderBorder"></div>
       <div className="wrapperUser">
         <div id="HeaderUser" onClick={() => setActive(!active)}>
-          <img id="HeaderUserPicture" src={avatar} alt="logo"></img>
+          <img id="HeaderUserPicture" src={props.avatar} alt="logo"></img>
         </div>
         <ProfileModal active={active} setActive={setActive} />
       </div>
+      <BurgerMenu
+        open={props.open}
+        disconnect={props.disconnect}
+        switchTheme={props.switchTheme}
+      />
     </header>
   );
 }
