@@ -1,8 +1,7 @@
-import BurgerMenu from "./BurgerMenu";
+import BurgerMenu from './BurgerMenu'
 import { NavLink } from 'react-router-dom'
 import React from 'react'
 import './styles/Navbar.css'
-
 
 export default function Navbar(props) {
   const [active, setActive] = React.useState(false)
@@ -19,7 +18,12 @@ export default function Navbar(props) {
           <i className='fas fa-home fa-fw fa-2x'></i>
           <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Accueil</p>
         </NavLink>
-        <NavLink className={`${localStorage.getItem('id_user') === null ? 'noBookmark' : 'NavLink'}`} to='/bookmark' >
+        <NavLink
+          className={`${
+            localStorage.getItem('id_user') === null ? 'noBookmark' : 'NavLink'
+          }`}
+          to='/bookmark'
+        >
           <i className='fas fa-bookmark fa-fw fa-2x'></i>
           <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
             Mes Favoris
@@ -27,22 +31,43 @@ export default function Navbar(props) {
         </NavLink>
         <NavLink className='NavLink' to='/news-semaine'>
           <i className='fas fa-users fa-fw fa-2x'></i>
-          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>News de la semaine</p>
+          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+            News de la semaine
+          </p>
         </NavLink>
-        
-        {localStorage.getItem('id_user') 
-        ? 
+
+        <NavLink
+          className={`${
+            localStorage.getItem('id_user') === null ? 'noBookmark' : 'NavLink'
+          }`}
+          to='/connect'
+        >
+          <i className='fas fa-user fa-fw fa-2x'></i>
+          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+            Mon Profil
+          </p>
+        </NavLink>
+
+        {localStorage.getItem('id_user') ? (
           <NavLink className='NavLink' to='/' onClick={props.disconnect}>
             <i className='fas fa-times-circle fa-fw fa-2x'></i>
-            <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Déconnection</p>
+            <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+              Déconnexion
+            </p>
           </NavLink>
-        :
+        ) : (
           <NavLink className='NavLink' to='/connect'>
             <i className='fas fa-key fa-fw fa-2x'></i>
-            <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Connection</p>
+            <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+              Connexion
+            </p>
           </NavLink>
-        }
-        <i id='NavDarkMode' onClick={props.switchTheme} className='far fa-lightbulb fa-fw fa-2x'></i>
+        )}
+        <i
+          id='NavDarkMode'
+          onClick={props.switchTheme}
+          className='far fa-lightbulb fa-fw fa-2x'
+        ></i>
       </nav>
     </div>
   )
