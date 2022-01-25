@@ -23,9 +23,6 @@ export default function ProfileModal({ active, setActive }) {
   return (
     <>
       <div id="wrapperModalID" className="wrapperModal">
-        <div className={`tricheCarre ${active ? "" : "tricheCarreHidden"}`}>
-          <div className="petitcarre"></div>
-        </div>
         <div
           className={`bodyProfileModal ${
             active ? "" : "bodyProfileModalHidden"

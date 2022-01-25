@@ -85,5 +85,25 @@
 }
 
 .wrapperModal {
-  overflow: visible;
+  position: absolute;
+  top: 11%;
+  right: 15%;
+}
+
+.wrapperUser {
+  display: flex;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .wrapperModal {
+    position: absolute;
+    top: 90%;
+    right: 10%;
+  }
 }
