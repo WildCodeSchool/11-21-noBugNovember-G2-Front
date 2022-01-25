@@ -1,20 +1,18 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import sha256 from 'crypto-js/sha256'
-import Disconnect from '../components/Disconnect.js'
+import Profil from '../components/Profil.js'
 import '../App.css'
 import '../components/styles/Connect.css'
-import imgDisco from '../assets/croix_rouge.png'
 
 const Connect = ({ setAvatar }) => {
   const [isFocused, setIsFocused] = useState(false)
-  const [isFocusedPass, setIsFocusedPass] = useState(false)
   const [name, setName] = useState()
   const [password, setPassword] = useState()
   const [reponse, setReponse] = useState([])
   const [isConnected, setIsConnected] = useState(false)
-  const [isValue, setisValue] = useState()
   const [admin, setAdmin] = useState(false)
+  const [errorConnect, setErrorConnect] = useState(false)
 
   let hein
 
@@ -37,9 +35,10 @@ const Connect = ({ setAvatar }) => {
           name: name,
           password: sha256(password).toString(),
         })
-        //.then(response => console.log("response ",response.data))
         .then((response) => response.data)
-        .then((data) => setReponse(data))
+        .then((data) =>
+          data.length == 1 ? setReponse(data) : setErrorConnect(true)
+        )
     } else {
       setIsConnected(true)
     }
@@ -83,50 +82,52 @@ const Connect = ({ setAvatar }) => {
   return (
     <div className='pageConnect'>
       {localStorage.getItem('id_user') ? (
-        <Disconnect
+        <Profil
           setIsConnected={setIsConnected}
           setAvatar={setAvatar}
           admin={admin}
           setAdmin={setAdmin}
         />
       ) : (
-        <form className='form'>
-          <h2 id='idConnexion'>Connexion</h2>
-          <div className='fieldCollection'>
-            <div className={`field ${isFocused && 'focus'}`}>
-              <label for='username' className='label'></label>
+        <div>
+          <form className='form'>
+            <h2 id='h2Profil'>Connexion</h2>
+            <div className='fieldCollection'>
               <input
                 type='text'
                 name='username'
-                className='input seeMoreArticle'
+                className='inputText buttonConnect'
+                id='gridCo1'
                 value={name}
                 placeholder="Nom d'utilisateur"
-                required
                 onChange={(e) => changeName(e)}
                 onClick={() => changeFocus()}
               ></input>
-            </div>
-            <div className={`field ${isFocused && 'focus'}`}>
-              <label for='password' className='label'></label>
               <input
                 type='password'
-                className='input seeMoreArticle'
+                className='inputText buttonConnect'
+                id='gridCo2'
                 name='password'
                 placeholder='Mot de passe'
-                required
                 onChange={(e) => changePassword(e)}
                 onClick={() => changeFocus()}
               ></input>
+              <button
+                type='button'
+                className='buttonConnect'
+                id='gridCo3'
+                onClick={() => connect()}
+              >
+                ME CONNECTER
+              </button>
+              {errorConnect && (
+                <p className='inputText' id='gridCo4'>
+                  ⚠ Mauvais nom d'utilisateur ou mot de passe
+                </p>
+              )}{' '}
             </div>
-            <input
-              type='button'
-              className='seeMoreArticle'
-              id='submit'
-              onClick={() => connect()}
-              value='ME CONNECTER'
-            ></input>
-          </div>
-        </form>
+          </form>{' '}
+        </div>
       )}
     </div>
   )

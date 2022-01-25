@@ -1,0 +1,25 @@
+#cache {
+  display: none;
+}
+
+#reveal {
+  display: flex;
+}
+
+table {
+  border: 1px solid;
+  justify-content: center;
+}
+
+th {
+  border: 1px solid;
+  justify-content: center;
+}
+
+.fas {
+  display: unset;
+  font-size: 25px;
+}
+.fas:hover {
+  cursor: pointer;
+}

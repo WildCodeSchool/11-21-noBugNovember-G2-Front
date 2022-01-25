@@ -1,4 +1,5 @@
 import React from 'react'
+import './styles/ProfilArticles.css'
 
 const ProfilArticles = (props) => {
   return (

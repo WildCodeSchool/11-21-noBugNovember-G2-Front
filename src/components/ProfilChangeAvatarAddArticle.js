@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { weekNumber } from 'weeknumber'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import '../components/styles/ProfilChangeAvatarAddArticle.css'
 
 const ProfilChangeAvatarAddArticle = (props) => {
   const [updateAvatar, setUpdateAvatar] = useState('')
@@ -50,79 +51,69 @@ const ProfilChangeAvatarAddArticle = (props) => {
   }
 
   return (
-    <div className='flexDisconnectButtons'>
-      <div>
-        <h4 className='textDisconnectPage'>
-          Souhaitez-vous mettre à jour votre avatar ?
-        </h4>
-        <h5 className='textDisconnectPage' id='h5DiscoPage'>
-          (on ne stocke aucune image sur notre serveur)
-        </h5>
-        <form>
-          <div>
-            <input
-              type='text'
-              className='inputText seeMoreArticle'
-              id='avatarimg'
-              placeholder='URL de votre image'
-              onChange={(e) => changeUrl(e)}
-              value={updateAvatar}
-            ></input>
-          </div>
+    <div className='flexProfil'>
+      <div className='blocProfil'>
+        <div>
+          <h4 className='textProfilPage'>
+            Souhaitez-vous mettre à jour votre avatar ?
+          </h4>
+          <h5 className='textProfilPage'>
+            (on ne stocke aucune image sur notre serveur)
+          </h5>
+        </div>
+        <form className='formProfil'>
+          <input
+            type='text'
+            className='inputText buttonConnect '
+            placeholder='URL de votre image'
+            onChange={(e) => changeUrl(e)}
+            value={updateAvatar}
+          ></input>
           <button
             type='button'
-            className='buttonPageDisconnect buttonUpPageDisco seeMoreArticle'
-            id='avatar'
+            className='buttonConnect buttonUpProfil '
             onClick={() => letsGo()}
           >
-            Mettre à jour votre avatar
+            Je change mon avatar
           </button>
         </form>
       </div>
       <div className={post ? 'cache' : 'addarticle'}>
-        <h4 className='textDisconnectPage'>
-          Souhaitez-vous ajouter un article à la veille ?
-        </h4>
-        <form>
-          <div>
-            <input
-              type='text'
-              className='inputText seeMoreArticle '
-              id='article'
-              placeholder='URL de votre article'
-              onChange={(e) => changeArticle(e)}
-              value={article}
-            ></input>
-            <input
-              type='text'
-              className='inputText seeMoreArticle '
-              id='description'
-              placeholder="Titre de l'article"
-              onChange={(e) => changeDescription(e)}
-              value={description}
-            ></input>
-          </div>
+        <h4 className='textProfilPage'>Souhaitez-vous ajouter un article ?</h4>
+        <form className='formProfil'>
+          <input
+            type='text'
+            className='inputText buttonConnect  '
+            placeholder="URL de l'article"
+            onChange={(e) => changeArticle(e)}
+            value={article}
+          ></input>
+          <input
+            type='text'
+            className='inputText buttonConnect  '
+            placeholder="Titre de l'article"
+            onChange={(e) => changeDescription(e)}
+            value={description}
+          ></input>
           <button
             type='button'
-            className='buttonPageDisconnect buttonUpPageDisco seeMoreArticle '
-            id='addArticle'
+            className='buttonConnect buttonUpProfil  '
             onClick={() => postArticle()}
           >
-            Ajouter un article à la veille
+            J'ajoute un article
           </button>
         </form>
       </div>
       <div className={post ? 'alright' : 'cache'}>
-        <h4 className='textDisconnectPage'>
+        <h4 className='textProfilPage'>
           Nous vous remercions de votre contribution 😀
         </h4>
         <button
           type='button'
-          className='buttonPageDisconnect buttonUpPageDisco seeMoreArticle '
-          id='addArticleAgain'
+          className='buttonConnect buttonUpProfil  '
           onClick={() => newArticlePlease()}
         >
-          Ajouter un nouvel article
+          J'ajoute un nouvel article
         </button>
       </div>
     </div>
