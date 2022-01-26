@@ -1,0 +1,66 @@
+.profil {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.textProfilPage {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.buttonPageDisconnect:hover {
+  cursor: pointer;
+}
+
+.buttonUpProfil {
+  width: 100%;
+}
+
+.buttonDownProfil {
+  display: block;
+  width: 400px;
+  margin: auto;
+  margin-top: 2%;
+}
+
+.buttonSeeMoreProfil {
+  width: 400px;
+  margin: auto;
+}
+
+#accessPrez {
+  margin-top: 7%;
+}
+
+.postedArticles {
+  margin-bottom: 2%;
+}
+
+.messageMobileProfil {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .profilUser,
+  .profilAdmin,
+  .buttonSeeMoreProfil {
+    display: none;
+  }
+
+  .messageMobileProfil {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .textProfilPage {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #h2Profil {
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+}

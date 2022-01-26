@@ -12,32 +12,43 @@ const ProfilAdmin = (props) => {
     props.setReveal(true)
   }
 
+  const hideArticles = () => {
+    props.setReveal(false)
+  }
+
   return (
-    <div>
+    <div className='profilAdmin'>
       <NavLink to='/prez'>
         <button
           type='button'
-          className='buttonPageDisconnect buttonDownPageDisco seeMoreArticle '
+          className='buttonConnect buttonDownProfil'
           id='accessPrez'
         >
-          Accéder au mode présentation
+          J'accède au mode présentation
         </button>
       </NavLink>
-      <h2 className='textDisconnectPage'>
-        Gestion des articles postés en veille - Mode Admin
+      <h2 className='textProfilPage' id='h2Profil'>
+        Gestion des articles - Mode Admin
       </h2>
-      <h3 className='textDisconnectPage'>
-        ⚠ Toute suppression est définitive !
-      </h3>
+      <h3 className='textProfilPage'>⚠ Toute suppression est définitive !</h3>
       <div className='linearticle'>
-        <button
-          type='button'
-          className='buttonPageDisconnect buttonDownPageDisco seeMoreArticle '
-          id='postedArticles'
-          onClick={() => getAllArticles()}
-        >
-          Voir les articles postés
-        </button>
+        {!props.reveal ? (
+          <button
+            type='button'
+            className='buttonConnect buttonDownProfil postedArticles '
+            onClick={() => getAllArticles()}
+          >
+            Voir tous les articles
+          </button>
+        ) : (
+          <button
+            type='button'
+            className='buttonConnect buttonDownProfil postedArticles '
+            onClick={() => hideArticles()}
+          >
+            Masquer les articles
+          </button>
+        )}
         {props.reveal ? (
           <ProfilArticles
             admin={props.admin}
