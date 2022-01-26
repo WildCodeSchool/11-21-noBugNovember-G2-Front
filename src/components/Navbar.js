@@ -36,7 +36,7 @@ export default function Navbar(props) {
           </p>
         </NavLink>
 
-        <NavLink
+        {/*   <NavLink
           className={`${
             localStorage.getItem("id_user") === null ? "noBookmark" : "NavLink"
           }`}
@@ -46,9 +46,9 @@ export default function Navbar(props) {
           <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
             Mon Profil
           </p>
-        </NavLink>
+        </NavLink> */}
 
-        {localStorage.getItem("id_user") ? (
+        {/*   {localStorage.getItem("id_user") ? (
           <NavLink className="NavLink" to="/" onClick={props.disconnect}>
             <i className="fas fa-times-circle fa-fw fa-2x"></i>
             <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
@@ -62,7 +62,7 @@ export default function Navbar(props) {
               Connexion
             </p>
           </NavLink>
-        )}
+        )} */}
         <i
           id="NavDarkMode"
           onClick={props.switchTheme}
