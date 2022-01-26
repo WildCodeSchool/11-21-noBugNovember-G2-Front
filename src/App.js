@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Bookmark from "./screens/Bookmark";
+import Bookmark2 from "./screens/Bookmark2";
 import Connect from "./screens/Connect";
 import Error from "./screens/Error";
 import Header from "./components/Header";
@@ -84,7 +85,7 @@ function App() {
         <Route
           path="/bookmark"
           element={
-            <Bookmark
+            <Bookmark2
               openPartage={openPartage}
               urlPartage={urlPartage}
               clickClosePartage={clickClosePartage}

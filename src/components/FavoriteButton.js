@@ -6,7 +6,6 @@ import './styles/CardArticle.css'
 const FavoriteButton = props => {
   const [isBookFull, setIsBookFull] = useState(false)
   const [myId, setMyId] = useState()
-
   const bookChange = () => {
     if (localStorage.getItem('id_user') === null) {
       alert("Veuillez d'abord vous connecter à votre compte pour ajouter des articles dans vos favoris")
