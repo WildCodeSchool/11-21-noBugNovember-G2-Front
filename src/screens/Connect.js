@@ -30,28 +30,24 @@ const Connect = ({ setAvatar }) => {
 
   const connect = () => {
     if (localStorage.getItem('id_user') === null) {
+      setErrorConnect(false);
       axios
         .put('http://localhost:3030/members/connect', {
           name: name,
           password: sha256(password).toString(),
         })
-        .then((response) => response.data)
-        .then((data) =>
-          data.length == 1 ? setReponse(data) : setErrorConnect(true)
-        )
+        .then(response => response.data)
+        .then((data) => setReponse(data))
+        .catch(err => { 
+          if (err.response) { 
+            console.log("accès refusé")
+            setErrorConnect(true);
+          }
+        })
     } else {
       setIsConnected(true)
     }
   }
-
-  let ignoreClickOnMeElement = document.querySelector('.input')
-  document.addEventListener('click', function (event) {
-    let isClickInsideElement = ignoreClickOnMeElement.contains(event.target)
-    if (!isClickInsideElement && isFocused === true && name.length == 0) {
-      //Do something click is outside specified element
-      setIsFocused(!isFocused)
-    }
-  })
 
   useEffect(() => {
     if (reponse.length == 1) {

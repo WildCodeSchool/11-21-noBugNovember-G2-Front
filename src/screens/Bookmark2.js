@@ -4,15 +4,11 @@ import React, { useState, useEffect } from 'react'
 import TexteDefile from '../components/TexteDefile'
 import Search2 from "../components/Search2";
 
-
-
 import '../components/styles/Bookmark.css'
 
 const Bookmark2 = props => {
   const [bdd, setBdd] = useState([]) //stock data venant de la base de données
-
   const [articleSearchFiltered, setArticleSearchFiltered] = useState([]);
-
   const [year, setYear] = useState([]);
   const [week, setWeek] = useState([]);
   const [user, setUser] = useState([]);
@@ -21,7 +17,6 @@ const Bookmark2 = props => {
   let tempWeek = []; //stock temporaire tri par semaine
   let tempYear = []; //stock temporaire tri par annee
   let tempUser = []; // stock temporaire des élèves
-
 
   //Ecoute de la state API, quand elle modifié, on lance le premier tri, 
   useEffect(() => {
@@ -32,7 +27,6 @@ const Bookmark2 = props => {
       .then(response => response.data)
       .then(data => setBdd(data))
   }, [])
-
  
   //Récupération des années, des numéros de semaines et des élèves
   useEffect(() => {
@@ -59,7 +53,6 @@ const Bookmark2 = props => {
 
   // State du filtre de recherche
   const [searchValue, setSearchValue] = useState("");
-
   const [selectWeek, setSelectWeek] = useState(0);
   const [selectYear, setSelectYear] = useState(0);
   const [selectUser, setSelectUser] = useState("");
@@ -85,8 +78,6 @@ const Bookmark2 = props => {
       setWeek(tempWeek)
     }
   }, [yearTemp]);
-
-  
 
   // UseEffect de la recherche
   useEffect(() => {
@@ -167,9 +158,6 @@ const Bookmark2 = props => {
 
     setArticleSearchFiltered(articleFilteredTemp);
   }, [searchValue, selectYear, selectWeek, selectUser, bdd]);
-
-
-  
 
   return (
     <div className='bookmark'>

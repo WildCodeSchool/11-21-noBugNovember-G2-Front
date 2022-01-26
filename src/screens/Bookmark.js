@@ -71,15 +71,6 @@ const Bookmark = props => {
     setFilter(temp)
     setIsFilter(true)
   }
-
-
-
-
-
-
-
-  
-
   return (
     <div className='bookmark'>
       <TexteDefile title=' mes bookmarks | mes bookmarks | ' />
