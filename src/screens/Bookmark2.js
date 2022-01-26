@@ -1,23 +1,17 @@
-import axios from "axios";
-import Gallery from "../components/Gallery";
-import React from "react";
+import axios from 'axios'
+import Gallery from '../components/Gallery'
+import React, { useState, useEffect } from 'react'
+import TexteDefile from '../components/TexteDefile'
 import Search2 from "../components/Search2";
-import Search from "../components/Search2";
 
-import TexteDefile from "../components/TexteDefile";
-import { useState, useEffect } from "react";
 
-import "../components/styles/Home.css";
-const Home = (props) => {
-  const [result, setResult] = useState([]);
+
+import '../components/styles/Bookmark.css'
+
+const Bookmark2 = props => {
+  const [bdd, setBdd] = useState([]) //stock data venant de la base de données
+
   const [articleSearchFiltered, setArticleSearchFiltered] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3030/articles/read/all").then((response) => {
-      setResult(response.data);
-      setArticleSearchFiltered(response.data); //récupération des données dans un tableau filtrable
-    });
-  }, []);
 
   const [year, setYear] = useState([]);
   const [week, setWeek] = useState([]);
@@ -28,6 +22,18 @@ const Home = (props) => {
   let tempYear = []; //stock temporaire tri par annee
   let tempUser = []; // stock temporaire des élèves
 
+
+  //Ecoute de la state API, quand elle modifié, on lance le premier tri, 
+  useEffect(() => {
+    axios
+      .put('http://localhost:3030/favorite/bookmark', {
+        id_user: localStorage.getItem('id_user')
+      })
+      .then(response => response.data)
+      .then(data => setBdd(data))
+  }, [])
+
+ 
   //Récupération des années, des numéros de semaines et des élèves
   useEffect(() => {
     temp = [];
@@ -35,21 +41,21 @@ const Home = (props) => {
     tempYear = [];
     tempUser = [];
 
-    for (let i = 0; i < result.length; i++) {
-      if (tempWeek.indexOf(result[i].week) === -1) {
-        tempWeek.push(result[i].week);
+    for (let i = 0; i < bdd.length; i++) {
+      if (tempWeek.indexOf(bdd[i].week) === -1) {
+        tempWeek.push(bdd[i].week);
       }
-      if (tempYear.indexOf(result[i].year) === -1) {
-        tempYear.push(result[i].year);
+      if (tempYear.indexOf(bdd[i].year) === -1) {
+        tempYear.push(bdd[i].year);
       }
-      if (tempUser.indexOf(result[i].name) === -1) {
-        tempUser.push(result[i].name);
+      if (tempUser.indexOf(bdd[i].name) === -1) {
+        tempUser.push(bdd[i].name);
       }
     }
     setYear(tempYear)
     setWeek(tempWeek)
     setUser(tempUser)
-  }, [result])
+  }, [bdd])
 
   // State du filtre de recherche
   const [searchValue, setSearchValue] = useState("");
@@ -64,14 +70,14 @@ const Home = (props) => {
   useEffect(() => {
     let tempWeek = [];
     if (yearTemp !== 0) {
-      result.map((el) => {
+      bdd.map((el) => {
         if (tempWeek.indexOf(el.week) === -1 && el.year === yearTemp) {
           tempWeek.push(el.week);
         }
       });
       setWeek(tempWeek)
     } else {
-      result.map((el) => {
+      bdd.map((el) => {
         if (tempWeek.indexOf(el.week) === -1) {
           tempWeek.push(el.week);
         }
@@ -85,7 +91,7 @@ const Home = (props) => {
   // UseEffect de la recherche
   useEffect(() => {
     let articleFilteredTemp = [];
-    articleFilteredTemp = result.filter((res) => {
+    articleFilteredTemp = bdd.filter((res) => {
       if (selectUser.length) {
         if (selectWeek !== 0 && selectYear === 0) {
           return (
@@ -160,42 +166,14 @@ const Home = (props) => {
     });
 
     setArticleSearchFiltered(articleFilteredTemp);
-  }, [searchValue, selectYear, selectWeek, selectUser]);
+  }, [searchValue, selectYear, selectWeek, selectUser, bdd]);
 
 
-  const [posScroll, setPosScroll] = useState()
-
-  const checkScroll = () => {
-    if (
-      Math.floor(window.innerHeight + window.scrollY + 10) >=
-      document.body.offsetHeight
-    ) {
-      setPosScroll(window.scrollY)
-    }
-  }
-
-  window.addEventListener('scroll', checkScroll)
+  
 
   return (
-    <div>
-      <TexteDefile title='les veilleurs de news |   les veilleurs de news |' />
-
-      {/* <div className='searchBox'> */}
-      {/* <SearchDateCharacter
-        visibility={visibility}
-        deroule={deroule}
-        setSelectYear={setSelectYear}
-        setSelectWeek={setSelectWeek}
-        setSelectUser={setSelectUser} */}
-      {/* // selectDate={selectDate}
-        // selectData={selectData}
-        // year={year}
-        // week={week}
-        // user={user} */}
-      {/* /> */}
-      {/* <Search setSearchValue={setSearchValue} searchValue={searchValue} /> */}
-      {/* </div> */}
-
+    <div className='bookmark'>
+      <TexteDefile title=' mes bookmarks | mes bookmarks | ' />
       <Search2
         setSearchValue={setSearchValue}
         searchValue={searchValue}
@@ -209,25 +187,20 @@ const Home = (props) => {
         setYearTemp={setYearTemp}
       />
       <Gallery
-        articleSearchFiltered={articleSearchFiltered} // tableau filtré
-        articles={result} // tableau full resultats
-        setArticles={setResult}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
+        articleSearchFiltered={articleSearchFiltered}
         isFavorite={props.isFavorite}
         setIsFavorite={props.setIsFavorite}
         isRead={props.isRead}
-        setIsrRead={props.setIsRead}
+        setIsRead={props.setIsRead}
         changeIsRead={props.changeIsRead}
         openPartage={props.openPartage}
         urlPartage={props.urlPartage}
         clickClosePartage={props.clickClosePartage}
         setUrlPartage={props.setUrlPartage}
         clickOpenPartage={props.clickOpenPartage}
-        posScroll={posScroll}
-        setPosScroll={setPosScroll}
       />
     </div>
-  );
-};
-export default Home;
+  )
+}
+
+export default Bookmark2
