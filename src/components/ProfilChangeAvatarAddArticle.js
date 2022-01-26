@@ -58,9 +58,6 @@ const ProfilChangeAvatarAddArticle = (props) => {
           <h4 className='textProfilPage'>
             Souhaitez-vous mettre à jour votre avatar ?
           </h4>
-          <h5 className='textProfilPage'>
-            (on ne stocke aucune image sur notre serveur)
-          </h5>
         </div>
         <form className='formProfil'>
           <input
@@ -80,19 +77,21 @@ const ProfilChangeAvatarAddArticle = (props) => {
         </form>
       </div>
       <div className={post ? 'cache' : 'addarticle'}>
-        <h4 className='textProfilPage'>Souhaitez-vous ajouter un article ?</h4>
+        <h4 className='textProfilPage'>
+          Souhaitez-vous ajouter un article à la veille ?
+        </h4>
         <form className='formProfil'>
           <input
             type='text'
             className='inputText buttonConnect  '
-            placeholder="URL de l'article"
+            placeholder='URL de votre article'
             onChange={(e) => changeArticle(e)}
             value={article}
           ></input>
           <input
             type='text'
             className='inputText buttonConnect  '
-            placeholder="Titre de l'article"
+            placeholder='Titre de votre article'
             onChange={(e) => changeDescription(e)}
             value={description}
           ></input>

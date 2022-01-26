@@ -26,8 +26,13 @@
 }
 
 .buttonSeeMoreProfil {
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 400px;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
 }
 
 #accessPrez {

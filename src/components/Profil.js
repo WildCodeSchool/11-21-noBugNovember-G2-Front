@@ -80,9 +80,9 @@ const Profil = (props) => {
           reveal={reveal}
         />
       )}
-      <div className={reveal ? 'seeMore' : 'cache'}>
+      <div className={reveal ? 'buttonSeeMoreProfil' : 'cache'}>
         <button
-          className='buttonConnect buttonSeeMoreProfil'
+          className='buttonSeeMoreProfil buttonConnect'
           onClick={seeMoreArticle}
         >
           Voir plus

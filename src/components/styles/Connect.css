@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 97vw;
 }
 
-#h2Profil {
-  margin-top: 40px;
-  margin-bottom: 60px;
-  text-align: center;
+.formConnect {
+  top: 50%;
+  transform: translateY(+50%);
 }
 
 .fieldCollection {
@@ -72,7 +72,7 @@
 .inputText:focus {
   border: 2px solid var(--thirdColor);
   outline: none;
-  background: var(--firstColor);
+  background: none;
 }
 
 .kpm_icon {

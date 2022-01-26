@@ -30,22 +30,6 @@
   justify-content: center;
   padding-bottom: 30px;
 }
-/* .seeMoreArticle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px 0;
-    color: var(--thirdColor);
-    backdrop-filter: blur(10px);
-    border-radius: 999px;
-    box-shadow: 5px 5px 5px rgba(var(--thirdColor), 0.08), 
-    15px 15px 15px rgba(0,0,0,.1),
-    20px 20px 15px rgba(0,0,0,.1),
-    inset 5px 5px 5px rgba(0,0,0,.1);
-    width: 170px;
-    padding: 8px;
-    border: 2px solid var(--firstColor);
-} */
 
 @media (max-width: 768px) {
   .bigGallery {
