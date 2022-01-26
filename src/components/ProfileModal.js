@@ -30,22 +30,21 @@ export default function ProfileModal({ active, setActive }) {
         >
           <NavLink to="/connect">
             <div className="wrapDisconnect wrapOptionMenuProfile">
-              <button className="buttonOptionMenuProfile">
+              <button
+                className="buttonOptionMenuProfile"
+                onClick={() => setActive(!active)}
+              >
                 <AccountCircleIcon color="disabled" />
                 <label>Profil</label>
               </button>
             </div>
           </NavLink>
-          {/*           <NavLink to="/connect">
-            <div className="wrapDisconnect wrapOptionMenuProfile">
-              <button className="buttonOptionMenuProfile">
-                <BuildIcon color="disabled" />
-                <label>Paramètres</label>
-              </button>
-            </div>
-          </NavLink> */}
           <div className="wrapDisconnect wrapOptionMenuProfile">
-            <button className="buttonOptionMenuProfile" onClick={disconnect}>
+            <button
+              className="buttonOptionMenuProfile"
+              onClick={() => setActive(!active)}
+              onClick={disconnect}
+            >
               <LogoutIcon color="disabled" />
               <label>Déconnexion</label>
             </button>
