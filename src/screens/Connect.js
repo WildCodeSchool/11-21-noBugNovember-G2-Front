@@ -6,13 +6,14 @@ import '../App.css'
 import '../components/styles/Connect.css'
 
 const Connect = ({ setAvatar }) => {
+  const [admin, setAdmin] = useState(false)
+  const [errorConnect, setErrorConnect] = useState(false)
+  const [isConnected, setIsConnected] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
+  const [isOut, setIsOut] = useState(false)
   const [name, setName] = useState()
   const [password, setPassword] = useState()
   const [reponse, setReponse] = useState([])
-  const [isConnected, setIsConnected] = useState(false)
-  const [admin, setAdmin] = useState(false)
-  const [errorConnect, setErrorConnect] = useState(false)
 
   let hein
 
@@ -31,6 +32,7 @@ const Connect = ({ setAvatar }) => {
   const connect = () => {
     if (localStorage.getItem('id_user') === null) {
       setErrorConnect(false);
+      setIsOut(false);
       axios
         .put('http://localhost:3030/members/connect', {
           name: name,
@@ -42,6 +44,9 @@ const Connect = ({ setAvatar }) => {
           if (err.response) { 
             console.log("accès refusé")
             setErrorConnect(true);
+          }
+          else if (err.request) { 
+            setIsOut(true) 
           }
         })
     } else {
@@ -119,6 +124,11 @@ const Connect = ({ setAvatar }) => {
               {errorConnect && (
                 <p className='inputText' id='gridCo4'>
                   ⚠ Mauvais nom d'utilisateur ou mot de passe
+                </p>
+              )}{' '}
+              {isOut && (
+                <p className='inputText' id='gridCo4'>
+                  ⚠ Serveur distant indisponible
                 </p>
               )}{' '}
             </div>
