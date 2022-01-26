@@ -1,8 +1,7 @@
 import axios from "axios";
 import Gallery from "../components/Gallery";
 import React from "react";
-import Search2 from "../components/Search2";
-import Search from "../components/Search2";
+import Search from "../components/Search";
 
 import TexteDefile from "../components/TexteDefile";
 import { useState, useEffect } from "react";
@@ -19,6 +18,8 @@ const Home = (props) => {
     });
   }, []);
 
+
+  // State des ensembles d'années, semaines et users en format tableau 
   const [year, setYear] = useState([]);
   const [week, setWeek] = useState([]);
   const [user, setUser] = useState([]);
@@ -54,6 +55,7 @@ const Home = (props) => {
   // State du filtre de recherche
   const [searchValue, setSearchValue] = useState("");
 
+  // State des valeur choisies par l'utilisateur
   const [selectWeek, setSelectWeek] = useState(0);
   const [selectYear, setSelectYear] = useState(0);
   const [selectUser, setSelectUser] = useState("");
@@ -196,7 +198,7 @@ const Home = (props) => {
       {/* <Search setSearchValue={setSearchValue} searchValue={searchValue} /> */}
       {/* </div> */}
 
-      <Search2
+      <Search
         setSearchValue={setSearchValue}
         searchValue={searchValue}
         year={year}

@@ -2,50 +2,22 @@ import axios from 'axios'
 import Gallery from '../components/Gallery'
 import React, { useState, useEffect } from 'react'
 import TexteDefile from '../components/TexteDefile'
+import Search from "../components/Search";
+
+
 
 import '../components/styles/Bookmark.css'
 
-const Bookmark = props => {
+const Bookmark2 = props => {
   const [bdd, setBdd] = useState([]) //stock data venant de la base de données
-  const [filter, setFilter] = useState([]) //stock des donnes triées par date par rapport à DB
-  const [isFilter, setIsFilter] = useState(false) //si un tri a lieu, sert à changer les données envoyer en gallery
-  const [visibility, setVisibility] = useState(false) //sert à cacher ou non l'ensemble de la barre de recherche
-  const [year, setYear] = useState([])
-  const [week, setWeek] = useState([])
-  const [selectWeek, setSelectWeek] = useState(0)
-  const [selectYear, setSelectYear] = useState(0)
-  let temp = [] // stock temporaire
-  let tempWeek = [] //stock temporaire tri par semaine
-  let tempYear = [] //stock temporaire tri par annee
 
-  //selectData permet de filtrer les données en favoris
-  //On enregistre aussi les semaines et années des favoris
-  const selectData = () => {
-    temp = []
-    tempWeek = []
-    tempYear = []
-    setIsFilter(false)
-    for (let i = 0; i < bdd.length; i++) {
-      temp.push(bdd[i].id_article)
-      if (tempWeek.indexOf(bdd[i].week) === -1) {
-        tempWeek.push(bdd[i].week)
-      }
-      if (tempYear.indexOf(bdd[i].year) === -1) {
-        tempYear.push(bdd[i].year)
-      }
-    }
-    setYear(tempYear)
-    setWeek(tempWeek)
-    setSelectYear(tempYear[0])
-    setSelectWeek(tempWeek[0])
-    props.setIsFavorite(temp)
-  }
+  const [articleSearchFiltered, setArticleSearchFiltered] = useState([]); // stock des articles pour avoir un stock modifiable sans toucher à la bdd de base
 
-  //Ecoute de la state API, quand elle modifié, on lance le premier tri, celle des favoris
-  useEffect(() => {
-    selectData()
-  }, [bdd])
+  const [year, setYear] = useState([]);
+  const [week, setWeek] = useState([]);
+  const [user, setUser] = useState([]);
 
+  //Ecoute de la state API, quand elle modifié, on lance le premier tri, 
   useEffect(() => {
     axios
       .put('http://localhost:3030/favorite/bookmark', {
@@ -55,69 +27,162 @@ const Bookmark = props => {
       .then(data => setBdd(data))
   }, [])
 
-  //Affiche ou non la barre de recherche
-  const deroule = () => {
-    setVisibility(!visibility)
-  }
+ 
+  let temp = []; // stock temporaire
+  let tempWeek = []; //stock temporaire tri par semaine
+  let tempYear = []; //stock temporaire tri par annee
+  let tempUser = []; // stock temporaire des élèves
 
-  //Lance un tri dans DB par rapport aux dates sélectionnées
-  const selectDate = () => {
-    temp = []
+  //Récupération des années, des numéros de semaines et des élèves
+  useEffect(() => {
+    temp = [];
+    tempWeek = [];
+    tempYear = [];
+    tempUser = [];
+
     for (let i = 0; i < bdd.length; i++) {
-      if (bdd[i].year === selectYear && bdd[i].week === selectWeek) {
-        temp.push(bdd[i])
+      if (tempWeek.indexOf(bdd[i].week) === -1) {
+        tempWeek.push(bdd[i].week);
+      }
+      if (tempYear.indexOf(bdd[i].year) === -1) {
+        tempYear.push(bdd[i].year);
+      }
+      if (tempUser.indexOf(bdd[i].name) === -1) {
+        tempUser.push(bdd[i].name);
       }
     }
-    setFilter(temp)
-    setIsFilter(true)
-  }
+    setYear(tempYear)
+    setWeek(tempWeek)
+    setUser(tempUser)
+  }, [bdd])
+
+  // State du filtre de recherche
+  const [searchValue, setSearchValue] = useState("");
+
+// State des valeur choisies par l'utilisateur
+  const [selectWeek, setSelectWeek] = useState(0);
+  const [selectYear, setSelectYear] = useState(0);
+  const [selectUser, setSelectUser] = useState("");
+
+  //Récupération des semaines en fonction de l'année
+  const [yearTemp, setYearTemp] = useState(0);
+
+  useEffect(() => {
+    let tempWeek = [];
+    if (yearTemp !== 0) {
+      bdd.map((el) => {
+        if (tempWeek.indexOf(el.week) === -1 && el.year === yearTemp) {
+          tempWeek.push(el.week);
+        }
+      });
+      setWeek(tempWeek)
+    } else {
+      bdd.map((el) => {
+        if (tempWeek.indexOf(el.week) === -1) {
+          tempWeek.push(el.week);
+        }
+      });
+      setWeek(tempWeek)
+    }
+  }, [yearTemp]);
+
+  // UseEffect de la recherche
+  useEffect(() => {
+    let articleFilteredTemp = [];
+    articleFilteredTemp = bdd.filter((res) => {
+      if (selectUser.length) {
+        if (selectWeek !== 0 && selectYear === 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
+            res.week === selectWeek
+          );
+        } else if (selectWeek === 0 && selectYear !== 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
+            res.year === selectYear
+          );
+        } else if (selectWeek !== 0 && selectYear !== 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
+            res.year === selectYear &&
+            res.week === selectWeek
+          )
+        } else {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.name.toLowerCase().includes(selectUser.toLowerCase())
+          );
+        }
+      } else {
+        if (selectWeek !== 0 && selectYear === 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.week === selectWeek
+          );
+        } else if (selectWeek === 0 && selectYear !== 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.year === selectYear
+          );
+        } else if (selectWeek !== 0 && selectYear !== 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.year === selectYear &&
+            res.week === selectWeek
+          );
+        } else {
+          return (
+            res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
+            res.name.toLowerCase().includes(searchValue.toLowerCase())
+          );
+        }
+      }
+    });
+
+    setArticleSearchFiltered(articleFilteredTemp);
+  }, [searchValue, selectYear, selectWeek, selectUser, bdd]);
+
   return (
     <div className='bookmark'>
       <TexteDefile title=' mes bookmarks | mes bookmarks | ' />
-      <div className='rowbutton'>
-        <div className={visibility ? 'buttonselect active' : 'buttonselect'}>
-          <i className='fas fa-search' onClick={() => deroule()} />
-          {/*Selection de l'année et de la semaine*/}
-          <form className={visibility ? 'formulaire' : 'cache'}>
-            <select
-              className={visibility ? 'year' : 'cache'}
-              name='choixyear'
-              id='choixyear'
-              onChange={e => setSelectYear(parseInt(e.target.value))}
-            >
-              {year.map((options, i) => (
-                <option key={i} value={options}>
-                  {options}
-                </option>
-              ))}
-            </select>
-            <select
-              className={visibility ? 'year' : 'cache'}
-              name='choixweek'
-              id='choixweek'
-              onChange={e => setSelectWeek(parseInt(e.target.value))}
-            >
-              {week.map((options, i) => (
-                <option key={i} value={options}>
-                  {options}
-                </option>
-              ))}
-            </select>
-            <i
-              className={visibility ? 'fas fa-arrow-circle-right' : 'cache'}
-              type='button'
-              onClick={() => selectDate()}
-            />
-          </form>
-          <div className={visibility ? 'separateur' : 'cache'}> || </div>
-          <i
-            onClick={() => selectData()} //on recharge tous les favoris
-            className={visibility ? 'fas fa-times-circle' : 'cache'}
-          />
-        </div>
-      </div>
+      <Search
+        setSearchValue={setSearchValue}
+        searchValue={searchValue}
+        year={year}
+        week={week}
+        user={user}
+        setSelectYear={setSelectYear}
+        setSelectWeek={setSelectWeek}
+        setSelectUser={setSelectUser}
+        yearTemp={yearTemp}
+        setYearTemp={setYearTemp}
+      />
       <Gallery
-        articleSearchFiltered={isFilter ? filter : bdd}
+        articleSearchFiltered={articleSearchFiltered}
         isFavorite={props.isFavorite}
         setIsFavorite={props.setIsFavorite}
         isRead={props.isRead}
@@ -133,4 +198,4 @@ const Bookmark = props => {
   )
 }
 
-export default Bookmark
+export default Bookmark2
