@@ -1,74 +1,74 @@
-import BurgerMenu from './BurgerMenu'
-import { NavLink } from 'react-router-dom'
-import React from 'react'
-import './styles/Navbar.css'
+import BurgerMenu from "./BurgerMenu";
+import { NavLink } from "react-router-dom";
+import React from "react";
+import "./styles/Navbar.css";
 
 export default function Navbar(props) {
-  const [active, setActive] = React.useState(false)
+  const [active, setActive] = React.useState(false);
 
   return (
     <div>
-      <nav className={`Nav ${active ? 'NavOpen' : ''}`}>
+      <nav className={`Nav ${active ? "NavOpen" : ""}`}>
         <ion-icon
           onClick={() => setActive(!active)}
-          name='chevron-forward-circle-sharp'
-          id={active ? 'ion-icon-open' : 'ion-icon'}
+          name="chevron-forward-circle-sharp"
+          id={active ? "ion-icon-open" : "ion-icon"}
         ></ion-icon>
-        <NavLink className='NavLink' to='/'>
-          <i className='fas fa-home fa-fw fa-2x'></i>
-          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>Accueil</p>
+        <NavLink className="NavLink" to="/">
+          <i className="fas fa-home fa-fw fa-2x"></i>
+          <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>Accueil</p>
         </NavLink>
         <NavLink
           className={`${
-            localStorage.getItem('id_user') === null ? 'noBookmark' : 'NavLink'
+            localStorage.getItem("id_user") === null ? "noBookmark" : "NavLink"
           }`}
-          to='/bookmark'
+          to="/bookmark"
         >
-          <i className='fas fa-bookmark fa-fw fa-2x'></i>
-          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+          <i className="fas fa-bookmark fa-fw fa-2x"></i>
+          <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
             Mes Favoris
           </p>
         </NavLink>
-        <NavLink className='NavLink' to='/news-semaine'>
-          <i className='fas fa-users fa-fw fa-2x'></i>
-          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+        <NavLink className="NavLink" to="/news-semaine">
+          <i className="fas fa-users fa-fw fa-2x"></i>
+          <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
             News de la semaine
           </p>
         </NavLink>
 
-        <NavLink
+        {/*   <NavLink
           className={`${
-            localStorage.getItem('id_user') === null ? 'noBookmark' : 'NavLink'
+            localStorage.getItem("id_user") === null ? "noBookmark" : "NavLink"
           }`}
-          to='/connect'
+          to="/connect"
         >
-          <i className='fas fa-user fa-fw fa-2x'></i>
-          <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+          <i className="fas fa-user fa-fw fa-2x"></i>
+          <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
             Mon Profil
           </p>
-        </NavLink>
+        </NavLink> */}
 
-        {localStorage.getItem('id_user') ? (
-          <NavLink className='NavLink' to='/' onClick={props.disconnect}>
-            <i className='fas fa-times-circle fa-fw fa-2x'></i>
-            <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+        {/*   {localStorage.getItem("id_user") ? (
+          <NavLink className="NavLink" to="/" onClick={props.disconnect}>
+            <i className="fas fa-times-circle fa-fw fa-2x"></i>
+            <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
               Déconnexion
             </p>
           </NavLink>
         ) : (
-          <NavLink className='NavLink' to='/connect'>
-            <i className='fas fa-key fa-fw fa-2x'></i>
-            <p className={`TextMenu ${active ? '' : 'TextMenuOpen'}`}>
+          <NavLink className="NavLink" to="/connect">
+            <i className="fas fa-key fa-fw fa-2x"></i>
+            <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
               Connexion
             </p>
           </NavLink>
-        )}
+        )} */}
         <i
-          id='NavDarkMode'
+          id="NavDarkMode"
           onClick={props.switchTheme}
-          className='far fa-lightbulb fa-fw fa-2x'
+          className="far fa-lightbulb fa-fw fa-2x"
         ></i>
       </nav>
     </div>
-  )
+  );
 }

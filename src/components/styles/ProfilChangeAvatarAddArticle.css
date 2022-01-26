@@ -9,6 +9,10 @@
   grid-gap: 10px 0px;
 }
 
+.bloc {
+  min-width: 30%;
+}
+
 @media (max-width: 1024px) {
   .flexProfil {
     flex-direction: column;

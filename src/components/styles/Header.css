@@ -1,7 +1,7 @@
 .Header {
   display: flex;
   justify-content: center;
-  width: 97vw;
+  /* width: 97vw; */
   height: 115px;
 }
 
@@ -20,7 +20,7 @@
 }
 
 #HeaderUser {
-  position: absolute;
+  position: relative;
   right: 30px;
   top: 22px;
   width: 66px;
@@ -40,27 +40,28 @@
 @media (max-width: 768px) {
   #HeaderLogo {
     margin-left: 0px;
-    width: 200px;
+    width: 50%;
+    max-width: 200px;
   }
   .Header {
     width: 100vw;
     height: 90px;
+
     position: sticky;
     top: 0;
     z-index: 19000;
     background: var(--gradientColor);
   }
   #HeaderUser {
-    top: 50%;
-    transform: translateY(-50%);
     width: 50px;
     height: 50px;
+    right: 4vw;
   }
   #HeaderUserPicture {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     position: relative;
-    top: 0;
+    top: -10%;
     right: 0;
   }
 

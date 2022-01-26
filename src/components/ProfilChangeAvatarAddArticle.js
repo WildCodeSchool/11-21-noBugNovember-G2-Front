@@ -53,7 +53,7 @@ const ProfilChangeAvatarAddArticle = (props) => {
 
   return (
     <div className='flexProfil'>
-      <div className='blocProfil'>
+      <div className='blocProfil bloc'>
         <div>
           <h4 className='textProfilPage'>
             Souhaitez-vous mettre à jour votre avatar ?
@@ -76,7 +76,7 @@ const ProfilChangeAvatarAddArticle = (props) => {
           </button>
         </form>
       </div>
-      <div className={post ? 'cache' : 'addarticle'}>
+      <div className={post ? 'cache' : 'addarticle bloc'}>
         <h4 className='textProfilPage'>
           Souhaitez-vous ajouter un article à la veille ?
         </h4>

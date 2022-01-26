@@ -82,9 +82,7 @@ const Connect = ({ setAvatar }) => {
 
   return (
     <div className='pageConnect'>
-      {!localStorage.getItem('id_user') && (
-        <TexteDefile title='Connexion |   Connexion |' />
-      )}
+
       {localStorage.getItem('id_user') ? (
         <Profil
           setIsConnected={setIsConnected}

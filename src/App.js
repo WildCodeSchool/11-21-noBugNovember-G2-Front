@@ -10,7 +10,7 @@ import Navbar from './components/Navbar'
 import Prez from './screens/Prez'
 import Team from './screens/Team'
 import Test from './screens/Test'
-import noavatar from './assets/croix_rouge.png'
+import noavatar from './assets/AvatarPlaceholder.jpg'
 import useLocalStorage from 'use-local-storage'
 
 function App() {
@@ -24,12 +24,12 @@ function App() {
   }, [])
 
   const [isRead, setIsRead] = useState([])
-  const changeIsRead = temp => setIsRead(temp)
+  const changeIsRead = (temp) => setIsRead(temp)
 
   const [openPartage, setOpenPartage] = useState(false)
   const [urlPartage, setUrlPartage] = useState('')
 
-  const clickOpenPartage = url => {
+  const clickOpenPartage = (url) => {
     setOpenPartage(true)
     setUrlPartage(url)
   }
@@ -37,24 +37,35 @@ function App() {
     setOpenPartage(false)
   }
 
-  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;  
-  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
-  
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const [theme, setTheme] = useLocalStorage(
+    'theme',
+    defaultDark ? 'dark' : 'light'
+  )
+
   const switchTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme = theme === 'light' ? 'dark' : 'light'
     setTheme(newTheme)
   }
 
   const disconnect = () => {
-    localStorage.clear();
+    localStorage.clear()
     // eslint-disable-next-line no-restricted-globals
     location.reload()
   }
 
   return (
     <div id='App' data-theme={theme}>
-      <Header switchTheme={switchTheme} avatar={avatar} setAvatar={setAvatar} theme={theme} disconnect={disconnect}/>
-      <Navbar switchTheme={switchTheme} disconnect={disconnect}/>
+      <Navbar switchTheme={switchTheme} disconnect={disconnect} />
+      {/* <div className='Ecran'> */}
+      <Header
+        switchTheme={switchTheme}
+        avatar={avatar}
+        setAvatar={setAvatar}
+        theme={theme}
+        disconnect={disconnect}
+      />
+
       <Routes>
         <Route
           path='/'
@@ -107,9 +118,14 @@ function App() {
             />
           }
         />
-        <Route path='/connect' element={<Connect avatar={avatar} setAvatar={setAvatar}/> }/>
-        <Route path='/prez' element={
-            <Prez 
+        <Route
+          path='/connect'
+          element={<Connect avatar={avatar} setAvatar={setAvatar} />}
+        />
+        <Route
+          path='/prez'
+          element={
+            <Prez
               openPartage={openPartage}
               urlPartage={urlPartage}
               clickClosePartage={clickClosePartage}
@@ -119,12 +135,15 @@ function App() {
               setIsFavorite={setIsFavorite}
               isRead={isRead}
               changeIsRead={changeIsRead}
-              setIsRead={setIsRead}/>} 
+              setIsRead={setIsRead}
             />
+          }
+        />
         <Route path='/test' element={<Test />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </div>
+    // </div>
   )
 }
 

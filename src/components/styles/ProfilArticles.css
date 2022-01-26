@@ -8,6 +8,8 @@
 
 .profilTableau {
   margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 table {
@@ -19,6 +21,7 @@ table {
 th {
   border: 1px solid;
   justify-content: center;
+  padding: 8px;
 }
 
 .fas {

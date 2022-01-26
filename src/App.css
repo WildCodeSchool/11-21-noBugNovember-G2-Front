@@ -1,46 +1,62 @@
 :root {
-  --firstColor: #6667AB;
-  --secondColor: #FF74D9;
-  --thirdColor:#2B0E45;
-  --gradientColor:#9b9ee1;
-  --fontTitle: "IvyJournal" 400;
+  --firstColor: #6667ab;
+  --secondColor: #ff74d9;
+  --thirdColor: #2b0e45;
+  --gradientColor: #9b9ee1;
+  --fontTitle: 'IvyJournal' 400;
   --fontBody: 'Ivyjournal', sans-serif;
   backface-visibility: hidden;
 }
 
 [data-theme='dark'] {
   --firstColor: #c2c3f0;
-  --secondColor: #f7ace3; 
-  --thirdColor:rgb(235, 235, 235);
-  --gradientColor:#1e1f34;
-  --fontTitle: "IvyJournal" 400;
+  --secondColor: #f7ace3;
+  --thirdColor: rgb(235, 235, 235);
+  --gradientColor: #1e1f34;
+  --fontTitle: 'IvyJournal' 400;
   --fontBody: 'Ivyjournal', sans-serif;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-a {text-decoration: none;}
-
-#App {
-  background:var(--gradientColor); font-family: var(--fontBody); min-height: 100vh; background-attachment:fixed; font-style: normal; color: var(--thirdColor);
+a {
+  text-decoration: none;
 }
 
+#App {
+  background: var(--gradientColor);
+  font-family: var(--fontBody);
+  min-height: 100vh;
+  background-attachment: fixed;
+  font-style: normal;
+  color: var(--thirdColor);
+}
+
+.Ecran {
+  padding-left: 80px;
+  overflow-x: hidden;
+}
 
 input,
 button,
 textarea,
 select {
-font: inherit;
+  font: inherit;
 }
 
 ul[role='list'],
 ol[role='list'] {
-list-style: none;
+  list-style: none;
 }
 
-h1 h2 {font-family: var(--fontTitle); font-weight: 400; color: var(--thirdColor);}
-
+h1 h2 {
+  font-family: var(--fontTitle);
+  font-weight: 400;
+  color: var(--thirdColor);
+}
