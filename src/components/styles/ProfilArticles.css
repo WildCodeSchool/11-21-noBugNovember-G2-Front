@@ -13,6 +13,7 @@
 }
 
 table {
+  border-spacing: 0;
   border: 1px solid;
   justify-content: center;
 }

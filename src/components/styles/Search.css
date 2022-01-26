@@ -24,13 +24,12 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 32px;
-  color: #555;
+  color: var(--thirdColor);
   outline: none;
   font-size: 1em;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 15px 15px 15px rgba(0, 0, 0, 0.1),
-    20px 20px 15px rgba(0, 0, 0, 0.1), inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px var(--shadowColor), inset 2px 2px 2px var(--shadowColor);
   transition: 0.5s;
 }
 
@@ -47,8 +46,7 @@
   cursor: pointer;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 15px 15px 15px rgba(0, 0, 0, 0.1),
-    20px 20px 15px rgba(0, 0, 0, 0.1), inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px var(--shadowColor), inset 2px 2px 2px var(--shadowColor);
   border-radius: 32px;
 }
 
@@ -57,8 +55,8 @@
 }
 
 .trash2:hover {
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 15px 15px 15px rgba(0, 0, 0, 0.1),
-    20px 20px 15px rgba(0, 0, 0, 0.1), inset 8px 8px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 5px var(--shadowColor), inset 2px 2px 2px var(--shadowColor);
+
 }
 .trash2 img {
   width: 40px;
@@ -68,7 +66,7 @@
 
 .searchWrite {
   height: 100%;
-  color: #555;
+  color: var(--thirdColor);
   outline: none;
   border: none;
   border-radius: 32px;
@@ -119,13 +117,13 @@
 
 .searchHover:hover {
   background: rgba(255, 255, 255, 0.2);
-  box-shadow: inset 8px 8px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 8px 8px 8px var(--shadowColor);
   border-radius: 32px;  
 }
 
 .modalOpen {
   background: rgba(255, 255, 255, 0.2);
-  box-shadow: inset 8px 8px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 8px 8px 8px var(--shadowColor);
   border-radius: 32px;
   height: 100%;
 }
@@ -148,15 +146,16 @@
   border-radius: 50%;
   outline: none;
   border: none;
-  background: var(--firstColor);
+  background: var(--thirdColor);
   backdrop-filter: blur(100px);
   cursor: pointer;
   transition: 0.05s;
   user-select: none;
+  color: var(--gradientColor);
 }
 
 .searchButton:hover {
-  background: var(--gradientColor);
+  background: var(--firstColor);
 }
 
 .searchButtonOpen {
@@ -210,13 +209,12 @@
     justify-content:initial;
     align-items: center;
     border-radius: 32px;
-    color: #555;
-    outline: none;
-    font-size: 1em;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 15px 15px 15px rgba(0, 0, 0, 0.1),
-      20px 20px 15px rgba(0, 0, 0, 0.1), inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+    color: var(--thirdColor);
+  outline: none;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 5px 5px 5px var(--shadowColor), inset 2px 2px 2px var(--shadowColor);
     transition: 0.5s;
   }
 

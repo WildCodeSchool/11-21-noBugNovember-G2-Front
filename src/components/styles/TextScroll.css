@@ -6,59 +6,77 @@
   height: 250px;
   overflow: hidden;
 }
- 
+
 .messageContent {
   position: absolute;
-  min-width: 100%; 
+  min-width: 100%;
 }
- 
-.messageH2, 
+
+.messageH2,
 .messageContent:after {
   position: relative;
   display: inline-block;
-  font-size: 200px;
+  font-size: 160px;
   white-space: nowrap;
-  top:0;
-  color: var(--thirdColor)
+  top: 0;
+  color: var(--thirdColor);
 }
- 
+
 .messageH2 {
   animation: defilement 30s infinite linear;
 }
- 
+
 .messageContent:after {
   position: absolute;
-  top:0; 
-  left:0;
-  content:attr(data-text);
+  top: 0;
+  left: 0;
+  content: attr(data-text);
   animation: defilement2 30s infinite linear;
 }
-   
-  @keyframes defilement {
-    0% { margin-left: 0; }
-    100% { margin-left: -100%; }
+
+@keyframes defilement {
+  0% {
+    margin-left: 0;
   }
-   
-  @keyframes defilement2 {
-    0% { margin-left: 100%; }
-    100% { margin-left: 0%; }
-  } 
-
-
-  @media (max-width:1104px) {
-    .messageH2, .messageContent:after {font-size: 160px;}
+  100% {
+    margin-left: -100%;
   }
+}
 
-
-  @media (max-width:768px) {
-    .messagedefilant {
-      display: block;
-      padding: 0;
-      position: relative;
-      width: 100%;
-      height: 140px;
-      top: 20px;
-    }
-    .messageH2, .messageContent:after {font-size: 72px;}
-
+@keyframes defilement2 {
+  0% {
+    margin-left: 100%;
   }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@media (max-width: 1404px) {
+  .messageH2,
+  .messageContent:after {
+    font-size: 140px;
+  }
+}
+
+@media (max-width: 1104px) {
+  .messageH2,
+  .messageContent:after {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .messagedefilant {
+    display: block;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    height: 140px;
+    top: 20px;
+  }
+  .messageH2,
+  .messageContent:after {
+    font-size: 72px;
+  }
+}

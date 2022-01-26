@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* width: 97vw; */
+  /* height: 80vh; */
 }
 
-#h2Profil {
-  margin-top: 40px;
-  margin-bottom: 60px;
-  text-align: center;
+.formConnect {
+  top: 50%;
+  transform: translateY(+50%);
 }
 
 .fieldCollection {
@@ -41,9 +42,7 @@
   color: var(--gradientColor);
   backdrop-filter: blur(10px);
   border-radius: 999px;
-  box-shadow: 5px 5px 5px rgba(var(--thirdColor), 0.08),
-    15px 15px 15px rgba(0, 0, 0, 0.1), 20px 20px 15px rgba(0, 0, 0, 0.1),
-    inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px var(--shadowColor);
   padding: 8px;
   border: 2px solid var(--firstColor);
   -webkit-appearance: none;
@@ -72,34 +71,7 @@
 .inputText:focus {
   border: 2px solid var(--thirdColor);
   outline: none;
-  background: var(--firstColor);
-}
-
-.kpm_icon {
-  display: none;
-}
-
-@media (max-width: 1024px) {
-  .profilUser,
-  .profilAdmin,
-  .buttonSeeMoreProfil {
-    display: none;
-  }
-
-  .messageMobileProfil {
-    display: inline-block;
-    text-align: center;
-  }
-
-  .textProfilPage {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  #h2Profil {
-    margin-top: 40px;
-    margin-bottom: 14px;
-  }
+  background: none;
 }
 
 @media (max-width: 768px) {

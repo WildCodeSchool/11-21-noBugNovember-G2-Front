@@ -26,7 +26,7 @@ export default function ProfileModal({ active, setActive }) {
                 className="buttonOptionMenuProfile"
                 onClick={() => setActive(!active)}
               >
-                <AccountCircleIcon color="disabled" />
+                <AccountCircleIcon color="var(--thirdColor)" />
                 <label>Profil</label>
               </button>
             </div>
@@ -38,18 +38,19 @@ export default function ProfileModal({ active, setActive }) {
                 onClick={() => setActive(!active)}
                 onClick={disconnect}
               >
-                <LogoutIcon color="disabled" />
+                <LogoutIcon color="var(--thirdColor)" />
                 <label>Déconnexion</label>
               </button>
             ) : (
+              <NavLink to="/connect">
               <button
                 className="buttonOptionMenuProfile"
                 onClick={() => setActive(!active)}
-                onClick={disconnect}
               >
-                <LoginIcon color="disabled" />
+                <LoginIcon color="var(--thirdColor)" />
                 <label>Connexion</label>
               </button>
+              </NavLink>
             )}
           </div>
         </div>

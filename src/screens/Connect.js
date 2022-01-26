@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import sha256 from 'crypto-js/sha256'
 import Profil from '../components/Profil.js'
+import TexteDefile from '../components/TexteDefile'
 import '../App.css'
 import '../components/styles/Connect.css'
 
@@ -81,6 +82,7 @@ const Connect = ({ setAvatar }) => {
 
   return (
     <div className='pageConnect'>
+
       {localStorage.getItem('id_user') ? (
         <Profil
           setIsConnected={setIsConnected}
@@ -90,8 +92,7 @@ const Connect = ({ setAvatar }) => {
         />
       ) : (
         <div>
-          <form className='form'>
-            <h2 id='h2Profil'>Connexion</h2>
+          <form className='formConnect'>
             <div className='fieldCollection'>
               <input
                 type='text'
@@ -118,7 +119,7 @@ const Connect = ({ setAvatar }) => {
                 id='gridCo3'
                 onClick={() => connect()}
               >
-                ME CONNECTER
+                Me connecter
               </button>
               {errorConnect && (
                 <p className='inputText' id='gridCo4'>
