@@ -1,27 +1,25 @@
-import "./styles/Gallery.css";
-import CardArticle from "./CardArticle";
-import PopupSocial from "./PopupSocial";
-import { useState, useEffect } from "react";
+import './styles/Gallery.css'
+import CardArticle from './CardArticle'
+import PopupSocial from './PopupSocial'
+import { useState, useEffect } from 'react'
 
 export default function Gallery(props) {
-  const [moreArticle, setMoreArticle] = useState(12);
+  const [moreArticle, setMoreArticle] = useState(12)
 
-  let seeMoreArticle = () => setMoreArticle(moreArticle + 12);
+  let seeMoreArticle = () => setMoreArticle(moreArticle + 12)
 
   useEffect(() => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      seeMoreArticle();
-    }
-  }, [props.posScroll]);
+    seeMoreArticle()
+  }, [props.posScroll])
 
   return (
-    <div className="bigGallery">
+    <div className='bigGallery'>
       <PopupSocial
         openPartage={props.openPartage}
         urlPartage={props.urlPartage}
         clickClosePartage={props.clickClosePartage}
       />
-      <div className="gallery">
+      <div className='gallery'>
         {props.articleSearchFiltered.slice(0, moreArticle).map((card) => (
           <CardArticle
             key={card.id}
@@ -49,5 +47,5 @@ export default function Gallery(props) {
         </div>
       </div> */}
     </div>
-  );
+  )
 }

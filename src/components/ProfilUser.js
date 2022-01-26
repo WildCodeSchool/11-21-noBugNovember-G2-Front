@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import ProfilArticles from './ProfilArticles'
 import axios from 'axios'
 
@@ -13,23 +14,33 @@ const ProfilUser = (props) => {
     props.setReveal(true)
   }
 
+  const hideArticles = () => {
+    props.setReveal(false)
+  }
+
   return (
-    <div>
-      <h2 className='textDisconnectPage'>
-        Gestion de vos articles postés en veille
-      </h2>
-      <h3 className='textDisconnectPage'>
-        ⚠ Toute suppression est définitive !
-      </h3>
+    <div className='profilUser'>
+      <h2 className='textProfilPage'>Gestion de vos articles</h2>
+      <h3 className='textProfilPage'>⚠ Toute suppression est définitive !</h3>
       <div className='linearticle'>
-        <button
-          type='button'
-          className='buttonPageDisconnect buttonDownPageDisco seeMoreArticle '
-          id='seePostedArticles'
-          onClick={() => getMyArticles()}
-        >
-          Voir vos articles postés
-        </button>
+        {!props.reveal ? (
+          <button
+            type='button'
+            className='buttonConnect buttonDownProfil postedArticles'
+            onClick={() => getMyArticles()}
+          >
+            Voir mes articles
+          </button>
+        ) : (
+          <button
+            type='button'
+            className='buttonConnect buttonDownProfil postedArticles'
+            onClick={() => hideArticles()}
+          >
+            Masquer mes articles
+          </button>
+        )}
+
         {props.reveal ? (
           <ProfilArticles
             admin={props.admin}
