@@ -76,7 +76,7 @@
 } */
 
 .buttonOptionMenuProfile:hover {
-  color: var(--gradientColor);
+  color: #6667ab;
 }
 
 .buttonOptionMenuProfile label {
