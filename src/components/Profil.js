@@ -10,11 +10,12 @@ const Profil = (props) => {
   const [reveal, setReveal] = useState(false)
   const [bdd, setBdd] = useState([])
   const [moreArticle, setMoreArticle] = useState(12)
+  const [bddChange, setBddChange] = useState(false)
 
   const deleteArticle = (params) => {
     axios.delete('http://localhost:3030/articles/delete', {
       data: { id: params },
-    })
+    }) && setBddChange(!bddChange)
   }
 
   const seeMoreArticle = () => setMoreArticle(moreArticle + 12)
@@ -32,7 +33,7 @@ const Profil = (props) => {
       axios
         .get('http://localhost:3030/articles/godmode/read')
         .then((response) => response.data)
-        .then((data) => setBdd(data))
+        .then((data) => setBdd(data)) && console.log('pouet')
     }
     if (!props.admin && reveal) {
       axios
@@ -42,14 +43,18 @@ const Profil = (props) => {
         .then((response) => response.data)
         .then((data) => setStokage(data))
     }
-  })
+  }, [bddChange])
 
   return (
     <div className='profil'>
       <h2 className='textProfilPage' id='h2Profil'>
         Bienvenue {localStorage.getItem('name')}
       </h2>
-      <ProfilChangeAvatarAddArticle setAvatar={props.setAvatar} />
+      <ProfilChangeAvatarAddArticle
+        setAvatar={props.setAvatar}
+        setBddChange={setBddChange}
+        bddChange={bddChange}
+      />
       {props.admin ? (
         <ProfilAdmin
           bdd={bdd}

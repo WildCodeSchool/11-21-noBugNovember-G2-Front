@@ -42,6 +42,7 @@ const ProfilChangeAvatarAddArticle = (props) => {
       likes: 0,
     })
     setPost(true)
+    props.setBddChange(!props.bddChange)
   }
 
   const newArticlePlease = () => {
