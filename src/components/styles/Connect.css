@@ -79,6 +79,29 @@
   display: none;
 }
 
+@media (max-width: 1024px) {
+  .profilUser,
+  .profilAdmin,
+  .buttonSeeMoreProfil {
+    display: none;
+  }
+
+  .messageMobileProfil {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .textProfilPage {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #h2Profil {
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+}
+
 @media (max-width: 768px) {
   #gridCo3 {
     grid-area: 4 / 1 / 5 / 7;
