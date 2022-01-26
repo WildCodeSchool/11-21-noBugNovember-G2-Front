@@ -42,7 +42,6 @@ const Connect = ({ setAvatar }) => {
         .then((data) => setReponse(data))
         .catch(err => { 
           if (err.response) { 
-            console.log("accès refusé")
             setErrorConnect(true);
           }
           else if (err.request) { 
