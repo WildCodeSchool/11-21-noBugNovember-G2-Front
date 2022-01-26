@@ -1,164 +1,210 @@
-import React from 'react'
-import Gallery from '../components/Gallery'
-import TexteDefile from '../components/TexteDefile'
-import axios from 'axios'
-import Search from '../components/Search'
-import { useState, useEffect } from 'react'
-import SearchDateCharacter from '../components/SearchDateCharacter'
+import React from "react";
+import Gallery from "../components/Gallery";
+import TexteDefile from "../components/TexteDefile";
+import axios from "axios";
+import Search from "../components/Search";
+import Search2 from "../components/Search2";
+import { useState, useEffect } from "react";
+import SearchDateCharacter from "../components/SearchDateCharacter";
 
-import '../components/styles/Home.css'
-const Home = props => {
-  const [result, setResult] = useState([])
-  const [articleSearchFiltered, setArticleSearchFiltered] = useState([])
+import "../components/styles/Home.css";
+const Home = (props) => {
+  const [result, setResult] = useState([]);
+  const [articleSearchFiltered, setArticleSearchFiltered] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3030/articles/read/all').then(response => {
-      setResult(response.data)
-      setArticleSearchFiltered(response.data) //récupération des données dans un tableau filtrable
-    })
-  }, [])
+    axios.get("http://localhost:3030/articles/read/all").then((response) => {
+      setResult(response.data);
+      setArticleSearchFiltered(response.data); //récupération des données dans un tableau filtrable
+    });
+  }, []);
 
+  const [year, setYear] = useState([]);
+  const [week, setWeek] = useState([]);
+  const [user, setUser] = useState([]);
 
-
-  const [year, setYear] = useState([])
-  const [week, setWeek] = useState([])
-  const [user, setUser] = useState([])
-  
-  let temp = [] // stock temporaire
-  let tempWeek = [] //stock temporaire tri par semaine
-  let tempYear = [] //stock temporaire tri par annee
-  let tempUser = [] // stock temporaire des élèves
+  let temp = []; // stock temporaire
+  let tempWeek = []; //stock temporaire tri par semaine
+  let tempYear = []; //stock temporaire tri par annee
+  let tempUser = []; // stock temporaire des élèves
 
   //Récupération des années, des numéros de semaines et des élèves
   useEffect(() => {
-    temp = []
-    tempWeek = []
-    tempYear = []
-    tempUser = []
+    temp = [];
+    tempWeek = [];
+    tempYear = [];
+    tempUser = [];
 
     for (let i = 0; i < result.length; i++) {
       if (tempWeek.indexOf(result[i].week) === -1) {
-        tempWeek.push(result[i].week)
+        tempWeek.push(result[i].week);
       }
       if (tempYear.indexOf(result[i].year) === -1) {
-        tempYear.push(result[i].year)
+        tempYear.push(result[i].year);
       }
       if (tempUser.indexOf(result[i].name) === -1) {
-        tempUser.push(result[i].name)
+        tempUser.push(result[i].name);
       }
     }
-    setYear(tempYear)
-    setWeek(tempWeek)
-    setUser(tempUser)
-  }, [result])
-
+    setYear(tempYear);
+    setWeek(tempWeek);
+    setUser(tempUser);
+  }, [result]);
 
   // State du filtre de recherche
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState("");
 
-  const [selectWeek, setSelectWeek] = useState(0)
-  const [selectYear, setSelectYear] = useState(0)
-  const [selectUser, setSelectUser] = useState("")
+  const [selectWeek, setSelectWeek] = useState(0);
+  const [selectYear, setSelectYear] = useState(0);
+  const [selectUser, setSelectUser] = useState("");
 
+  //Récupération des semaines en fonction de l'année
+  const [yearTemp, setYearTemp] = useState(0);
 
-  let articleFilteredTemp = []
+  useEffect(() => {
+    let tempWeek = [];
+    if (yearTemp !== 0) {
+      result.map((el) => {
+        if (tempWeek.indexOf(el.week) === -1 && el.year === yearTemp) {
+          tempWeek.push(el.week);
+        }
+      });
+      setWeek(tempWeek)
+    } else {
+      result.map((el) => {
+        if (tempWeek.indexOf(el.week) === -1) {
+          tempWeek.push(el.week);
+        }
+      });
+      setWeek(tempWeek)
+    }
+  }, [yearTemp]);
+
+  
 
   // UseEffect de la recherche
   useEffect(() => {
-    articleFilteredTemp = result.filter(res => {
-
-      if (selectUser.length)  {
-        if (selectWeek !== 0 && selectYear===0) {
-          return(
-            ((res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
-            res.name.toLowerCase().includes(searchValue.toLowerCase()))
-            &&  res.name.toLowerCase().includes(selectUser.toLowerCase()))
-             && res.week === selectWeek
-          )
-        } else if (selectWeek === 0 && selectYear!==0){
+    let articleFilteredTemp = [];
+    articleFilteredTemp = result.filter((res) => {
+      if (selectUser.length) {
+        if (selectWeek !== 0 && selectYear === 0) {
           return (
-            ((res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
-            res.name.toLowerCase().includes(searchValue.toLowerCase()))
-            &&  res.name.toLowerCase().includes(selectUser.toLowerCase())) && res.year === selectYear
-          )}
-          else if (selectWeek !== 0 && selectYear!==0){
-            return (
-              ((res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
-              res.name.toLowerCase().includes(searchValue.toLowerCase()))
-              &&  res.name.toLowerCase().includes(selectUser.toLowerCase())) && res.year === selectYear && res.week === selectWeek
-            ) 
-  
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
+            res.week === selectWeek
+          );
+        } else if (selectWeek === 0 && selectYear !== 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
+            res.year === selectYear
+          );
+        } else if (selectWeek !== 0 && selectYear !== 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
+            res.year === selectYear &&
+            res.week === selectWeek
+          );
         } else {
-          return  ( (res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
-          res.name.toLowerCase().includes(searchValue.toLowerCase()))  &&  res.name.toLowerCase().includes(selectUser.toLowerCase() ))
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.name.toLowerCase().includes(selectUser.toLowerCase())
+          );
         }
-
       } else {
-
-        if (selectWeek !== 0 && selectYear===0) {
-          return(
-            (res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
-            res.name.toLowerCase().includes(searchValue.toLowerCase()))
-             && res.week === selectWeek
-          )
-        } else if (selectWeek === 0 && selectYear!==0){
+        if (selectWeek !== 0 && selectYear === 0) {
           return (
-            (res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
-            res.name.toLowerCase().includes(searchValue.toLowerCase())
-           ) && res.year === selectYear
-          )}
-          else if (selectWeek !== 0 && selectYear!==0){
-            return (
-              (res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
-              res.name.toLowerCase().includes(searchValue.toLowerCase())) && res.year === selectYear && res.week === selectWeek
-            ) 
-  
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.week === selectWeek
+          );
+        } else if (selectWeek === 0 && selectYear !== 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.year === selectYear
+          );
+        } else if (selectWeek !== 0 && selectYear !== 0) {
+          return (
+            (res.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase()) ||
+              res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
+            res.year === selectYear &&
+            res.week === selectWeek
+          );
         } else {
-          return   (res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
-          res.name.toLowerCase().includes(searchValue.toLowerCase())) 
+          return (
+            res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
+            res.name.toLowerCase().includes(searchValue.toLowerCase())
+          );
         }
       }
-   
-    })
+    });
 
+    setArticleSearchFiltered(articleFilteredTemp);
+  }, [searchValue, selectYear, selectWeek, selectUser]);
 
-    setArticleSearchFiltered(articleFilteredTemp)
-  }, [searchValue, selectYear, selectWeek, selectUser])
- 
- 
-  
-  const [visibility, setVisibility] = useState(false) //sert à cacher ou non l'ensemble de la barre de recherche
+  const [visibility, setVisibility] = useState(false); //sert à cacher ou non l'ensemble de la barre de recherche
 
   //Affiche ou non la barre de recherche
   const deroule = () => {
-    setVisibility(!visibility)
-  }
+    setVisibility(!visibility);
+  };
 
-  
- console.log("search User length: "+ selectUser.length)
- console.log("select week : "+ selectWeek)
- console.log("select month : "+ selectYear)
+  console.log("search User length: " + selectUser.length);
+  console.log("select week : " + selectWeek);
+  console.log("select month : " + selectYear);
 
   return (
     <div>
-      <TexteDefile title='les veilleurs de news |' />
+      <TexteDefile title="les veilleurs de news |" />
 
       {/* <div className='searchBox'> */}
-      <SearchDateCharacter
+      {/* <SearchDateCharacter
         visibility={visibility}
         deroule={deroule}
         setSelectYear={setSelectYear}
         setSelectWeek={setSelectWeek}
-        setSelectUser={setSelectUser}
-        // selectDate={selectDate}
+        setSelectUser={setSelectUser} */}
+      {/* // selectDate={selectDate}
         // selectData={selectData}
+        // year={year}
+        // week={week}
+        // user={user} */}
+      {/* /> */}
+      {/* <Search setSearchValue={setSearchValue} searchValue={searchValue} /> */}
+      {/* </div> */}
+
+      <Search2
+        setSearchValue={setSearchValue}
+        searchValue={searchValue}
         year={year}
         week={week}
         user={user}
+        setSelectYear={setSelectYear}
+        setSelectWeek={setSelectWeek}
+        setSelectUser={setSelectUser}
+        yearTemp={yearTemp}
+        setYearTemp={setYearTemp}
       />
-      <Search setSearchValue={setSearchValue} searchValue={searchValue} />
-      {/* </div> */}
-     
       <Gallery
         articleSearchFiltered={articleSearchFiltered} // tableau filtré
         articles={result} // tableau full resultats
@@ -177,6 +223,6 @@ const Home = props => {
         clickOpenPartage={props.clickOpenPartage}
       />
     </div>
-  )
-}
-export default Home
+  );
+};
+export default Home;
