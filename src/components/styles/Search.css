@@ -46,11 +46,7 @@
     color: #555;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
-    /* background: linear-gradient(#dbdae1,#a3aaba); */
-    box-shadow: 5px 5px 5px rgba(0,0,0,.1), 
-    15px 15px 15px rgba(0,0,0,.1),
-    20px 20px 15px rgba(0,0,0,.1),
-    inset 5px 5px 5px rgba(0,0,0,.1);
+    box-shadow: 5px 5px 5px var(--shadowColor);
     
 }
 

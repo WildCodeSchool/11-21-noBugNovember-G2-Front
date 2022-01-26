@@ -42,9 +42,7 @@
   color: var(--gradientColor);
   backdrop-filter: blur(10px);
   border-radius: 999px;
-  box-shadow: 5px 5px 5px rgba(var(--thirdColor), 0.08),
-    15px 15px 15px rgba(0, 0, 0, 0.1), 20px 20px 15px rgba(0, 0, 0, 0.1),
-    inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px var(--shadowColor);
   padding: 8px;
   border: 2px solid var(--firstColor);
   -webkit-appearance: none;

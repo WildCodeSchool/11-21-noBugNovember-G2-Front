@@ -24,7 +24,7 @@
   width: 46px;
   height: 42px;
   opacity: 0.65;
-  transition: 0.5s;
+  transition: all .5s cubic-bezier(0.76, 0.01, 0.21, 0.97);
   z-index: 20000;
   transform: rotate(180deg);
 }
@@ -60,13 +60,19 @@
   position: fixed;
   left: 0;
   top: 0;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 25px var(--shadowColor);
   text-decoration: none;
   font-style: none;
-  transition: 0.5s;
+  transition: all 0.5s cubic-bezier(0.76, 0.01, 0.21, 0.97);
   width: 70px;
   backdrop-filter: blur(20px);
   z-index: 20000;
+}
+
+@-moz-document url-prefix() {
+  .Nav {
+    background-color: var(--gradientColor);
+  }
 }
 
 /* Bloc Navigation ****Open**** */
@@ -85,7 +91,7 @@
   margin: 20px 0;
   color: var(--thirdColor);
   opacity: 0.6;
-  transition: 0.5s;
+  transition: all 0.1s cubic-bezier(0.76, 0.01, 0.21, 0.97);
   text-decoration: none;
   z-index: 20000;
 }
@@ -104,7 +110,8 @@
 .TextMenu {
   position: absolute;
   left: 90px;
-  transition: 0.8s;
+  transition: all .5s cubic-bezier(0.76, 0.01, 0.21, 0.97);
+    transition-delay: 0.2s;
   opacity: 1;
   font-family: var(--fontTitle);
 }
@@ -120,11 +127,9 @@
     display: none;
   }
   #NavDarkMode {
-    position: absolute;
-    /* top: 20vh; */
+    position: relative;
+    top: 20vh;
     left: 20px;
-    bottom: 25px;
-    margin-bottom: 20px;
   }
   .NavLink {
     opacity: 1;
@@ -133,7 +138,5 @@
   .fas {
     opacity: 1;
     color: var(--firstColor);
-  }
-  .lightBulb {
   }
 }

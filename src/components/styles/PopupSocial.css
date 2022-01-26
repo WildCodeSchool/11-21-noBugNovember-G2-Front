@@ -17,7 +17,7 @@
     display: block;
     opacity: 1;
     position: fixed;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 25px var(--shadowColor);
     backdrop-filter: blur(20px);
     /* background: rgba(255,255,255,0.5); */
     z-index: 30000;

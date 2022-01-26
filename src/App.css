@@ -3,6 +3,7 @@
   --secondColor: #ff74d9;
   --thirdColor: #2b0e45;
   --gradientColor: #9b9ee1;
+  --shadowColor: #2b0e4545;
   --fontTitle: 'IvyJournal' 400;
   --fontBody: 'Ivyjournal', sans-serif;
   backface-visibility: hidden;
@@ -13,6 +14,7 @@
   --secondColor: #f7ace3;
   --thirdColor: rgb(235, 235, 235);
   --gradientColor: #1e1f34;
+  --shadowColor: #c2c3f02f;
   --fontTitle: 'IvyJournal' 400;
   --fontBody: 'Ivyjournal', sans-serif;
 }
