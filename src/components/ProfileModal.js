@@ -36,14 +36,14 @@ export default function ProfileModal({ active, setActive }) {
               </button>
             </div>
           </NavLink>
-          <NavLink to="/connect">
+          {/*           <NavLink to="/connect">
             <div className="wrapDisconnect wrapOptionMenuProfile">
               <button className="buttonOptionMenuProfile">
                 <BuildIcon color="disabled" />
                 <label>Paramètres</label>
               </button>
             </div>
-          </NavLink>
+          </NavLink> */}
           <div className="wrapDisconnect wrapOptionMenuProfile">
             <button className="buttonOptionMenuProfile" onClick={disconnect}>
               <LogoutIcon color="disabled" />
