@@ -1,0 +1,53 @@
+/* Container du composant  */
+.searchContainer {
+  position: absolute;
+  z-index: 100000;
+  bottom: -10px;
+  transform: translateY(100%);
+  padding: 20px 15px;
+  color: #555;
+  outline: none;
+  font-size: 0.8em;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+ 
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 15px 15px 15px rgba(0, 0, 0, 0.1),
+    20px 20px 15px rgba(0, 0, 0, 0.1), inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.searchContainerHide {
+  display: none;
+}
+
+/* Grille du composant */
+
+.searchGrid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+/* Elèment de la grille */
+.elGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elGrid p {
+  display: flex;
+  padding: 10px;
+  border: 1px solid transparent;
+  justify-content: center;
+  align-items: center;
+  min-width: 4 0px;
+  min-height: 40px;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.elGrid p:hover {
+  border: 1px solid var(--firstColor);
+}
