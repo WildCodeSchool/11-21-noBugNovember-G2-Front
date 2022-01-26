@@ -8,8 +8,6 @@ const Prez = (props) => {
   const [result, setResult] = useState([]);
   const [link, setLink] = useState("");
   const [isAdmin, setIsAdmin] = useState(false)
-  console.log(link)
-  console.log(link.length)
 
   useEffect(() => {
     if (localStorage.getItem("admin") == 1) {
@@ -28,8 +26,6 @@ const Prez = (props) => {
   }, [])
 
   useEffect(() => {
-    console.log(link)
-    //document.getElementById('myframe').contentWindow.location.reload()
   },[link])
 
 return (
