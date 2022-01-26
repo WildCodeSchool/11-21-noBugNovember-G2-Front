@@ -9,7 +9,6 @@ import Home from "./screens/Home";
 import Navbar from "./components/Navbar";
 import Prez from "./screens/Prez";
 import Team from "./screens/Team";
-import Test from "./screens/Test";
 import noavatar from "./assets/AvatarPlaceholder.jpg";
 import useLocalStorage from "use-local-storage";
 
@@ -137,7 +136,6 @@ function App() {
             />
           }
         />
-        <Route path="/test" element={<Test />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

@@ -1,4 +1,3 @@
-import BurgerMenu from "./BurgerMenu";
 import { NavLink } from "react-router-dom";
 import React from "react";
 import "./styles/Navbar.css";
@@ -13,7 +12,8 @@ export default function Navbar(props) {
           onClick={() => setActive(!active)}
           name="chevron-forward-circle-sharp"
           id={active ? "ion-icon-open" : "ion-icon"}
-        ></ion-icon>
+        >
+        </ion-icon>
         <NavLink className="NavLink" to="/">
           <i className="fas fa-home fa-fw fa-2x"></i>
           <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>Accueil</p>
@@ -35,34 +35,6 @@ export default function Navbar(props) {
             News de la semaine
           </p>
         </NavLink>
-
-        {/*   <NavLink
-          className={`${
-            localStorage.getItem("id_user") === null ? "noBookmark" : "NavLink"
-          }`}
-          to="/connect"
-        >
-          <i className="fas fa-user fa-fw fa-2x"></i>
-          <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
-            Mon Profil
-          </p>
-        </NavLink> */}
-
-        {/*   {localStorage.getItem("id_user") ? (
-          <NavLink className="NavLink" to="/" onClick={props.disconnect}>
-            <i className="fas fa-times-circle fa-fw fa-2x"></i>
-            <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
-              Déconnexion
-            </p>
-          </NavLink>
-        ) : (
-          <NavLink className="NavLink" to="/connect">
-            <i className="fas fa-key fa-fw fa-2x"></i>
-            <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>
-              Connexion
-            </p>
-          </NavLink>
-        )} */}
         <i
           id="NavDarkMode"
           onClick={props.switchTheme}

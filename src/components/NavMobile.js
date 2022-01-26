@@ -69,23 +69,6 @@ const NavMobile = (props) => {
             <i className="fas fa-users fa-fw fa-2x"></i>
             <p className="TextMenu">News de la semaine</p>
           </NavLink>
-          {/* 
-          {localStorage.getItem('id_user') ? (
-            <NavLink className='NavLink' to='/' onClick={props.disconnect}>
-              <i className='fas fa-times-circle fa-fw fa-2x'></i>
-              <p className='TextMenu'>Déconnexion</p>
-            </NavLink>
-          ) : (
-            <NavLink
-              onClick={() => props.setOpen(!props.open)}
-              className='NavLink'
-              to='/connect'
-            >
-              <i className='fas fa-key fa-fw fa-2x'></i>
-              <p className='TextMenu'>Connexion</p>
-            </NavLink>
-          )} */}
-
           <i
             id="NavDarkMode"
             onClick={props.switchTheme}

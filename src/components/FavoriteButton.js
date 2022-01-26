@@ -6,7 +6,6 @@ import './styles/CardArticle.css'
 const FavoriteButton = props => {
   const [isBookFull, setIsBookFull] = useState(false)
   const [myId, setMyId] = useState()
-  const [bookImg, setBookImg ] = useState()
 
   const bookChange = () => {
     if (localStorage.getItem('id_user') === null) {
@@ -32,13 +31,11 @@ const FavoriteButton = props => {
     }
   }
 
-
   //Sert à mettre en true ou non si l'article est en favori
   const changeMyId = (params) => {
     if (params[0] !== undefined) {
       setMyId(params[0].id)
       setIsBookFull(true)
-
     }
   }
 
@@ -52,7 +49,6 @@ const FavoriteButton = props => {
         })
         .then(response => response.data)
         .then(data => changeMyId(data))
-        console.log(localStorage.getItem('theme'));
     }
   },[])
 

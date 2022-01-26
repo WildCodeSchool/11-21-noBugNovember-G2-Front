@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, UseEffect } from 'react'
+import { useState } from 'react'
 import './styles/SearchDateCharacter.css'
 import cog from '../assets/cog.svg'
 import cross from '../assets/cross.svg'
@@ -36,9 +36,6 @@ export default function SearchDateCharacter(props) {
             alt='cog'
             onClick={() => props.deroule()}
           />
-          {/* <i className='fas fa-search' onClick={() => props.deroule()} /> */}
-          {/*Selection de l'année et de la semaine*/}
-
           <form
             className={props.visibility ? 'searchFormulaire' : 'searchcache'}
           >
@@ -83,12 +80,6 @@ export default function SearchDateCharacter(props) {
               ))}
             </select>
           </form>
-          {/* <div
-            className={props.visibility ? 'searchseparateur' : 'searchcache'}
-          >
-            {' '}
-            ||{' '}
-          </div> */}
           <div className='searchIconBox'>
             <i
               className={
