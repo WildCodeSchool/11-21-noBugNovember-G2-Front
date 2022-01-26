@@ -14,7 +14,7 @@ export default function CardArticle(props) {
     window.open(props.url)
   }
   const showCheck = () => {
-    goUrl()
+    props.setLink(props.url)
     let temp = props.isRead
     if (!temp.includes(props.id)) {
       temp.push(props.id)
@@ -36,8 +36,8 @@ export default function CardArticle(props) {
   useEffect(() => {
     axios
       .get(`http://localhost:3030/?url=${props.url}`)
-      .then((response) => response.data)
-      .then((data) => setOpenGraph(data))
+      .then(response => response.data)
+      .then(data => setOpenGraph(data))
   }, [])
 
   return (
@@ -54,7 +54,7 @@ export default function CardArticle(props) {
             </div>
             <div className='cardTopTitle'>
               <p className='cardTopTitleP' maxLength='10'>
-                {/*openGraph.title ? openGraph.title : props.description*/ props.name}
+              {props.name}
               </p>
             </div>
             <div className='cardDate'>
@@ -90,14 +90,15 @@ export default function CardArticle(props) {
               rel='noreferrer'
               onClick={() => props.clickOpenPartage(props.url)}
             >
-              <i class='fas fa-share-alt'></i>
+              ⛬
             </a>
             <FavoriteButton
               id={props.id}
               isFavorite={props.isFavorite}
               setIsFavorite={props.setIsFavorite}
             />
-            <LikeButton likes={props.likes} id={props.id} />
+            <LikeButton likes={props.likes}
+              id={props.id}/>
           </div>
         </div>
       </article>

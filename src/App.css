@@ -1,15 +1,21 @@
 :root {
   --firstColor: #6667AB;
-  --secondColor: #FF74D9; /*color pop*/
-  --thirdColor: #2B0E45; /*color dark mode*/
-  --gradientColor: linear-gradient(218.33deg, #6667AB 15.4%, #FF74D9 69.39%, rgba(102, 103, 171, 0.53) 116.5%); /*gradient pop mode*/
+  --secondColor: #FF74D9;
+  --thirdColor:#2B0E45;
+  --gradientColor:#9b9ee1;
+  --fontTitle: "IvyJournal" 400;
+  --fontBody: 'Ivyjournal', sans-serif;
+  backface-visibility: hidden;
+}
 
-  --gradientColor:linear-gradient(45deg, rgba(140,97,255,1) 0%, rgba(255,179,214,1) 100%);
-  --gradientColorDark: linear-gradient(218.33deg, #6667AB 15.4%, #2b2b2b 69.39%, rgba(102, 103, 171, 0.53) 116.5%); /*gradient dark mode*/
+[data-theme='dark'] {
+  --firstColor: #c2c3f0;
+  --secondColor: #f7ace3; 
+  --thirdColor:rgb(235, 235, 235);
+  --gradientColor:#1e1f34;
   --fontTitle: "IvyJournal" 400;
   --fontBody: 'Ivyjournal', sans-serif;
 }
-
 
 *, ::before, ::after {
   box-sizing: border-box;
@@ -17,12 +23,12 @@
   padding: 0;
 }
 
-
 a {text-decoration: none;}
 
-body{ background:var(--gradientColor); font-family: var(--fontBody); height: 100vh; background-attachment:fixed ;
-font-style: normal;
- }
+#App {
+  background:var(--gradientColor); font-family: var(--fontBody); min-height: 100vh; background-attachment:fixed; font-style: normal; color: var(--thirdColor);
+}
+
 
 input,
 button,
@@ -36,5 +42,5 @@ ol[role='list'] {
 list-style: none;
 }
 
-h1 h2 {font-family: var(--fontTitle); font-weight: 400;}
+h1 h2 {font-family: var(--fontTitle); font-weight: 400; color: var(--thirdColor);}
 

@@ -1,0 +1,16 @@
+.flexProfil {
+  display: flex;
+  justify-content: space-around;
+}
+
+.formProfil {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px 0px;
+}
+
+@media (max-width: 1024px) {
+  .flexProfil {
+    flex-direction: column;
+  }
+}

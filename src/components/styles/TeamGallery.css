@@ -1,6 +1,5 @@
 .bigGallery{
     margin-left: 80px;
-    margin-bottom: 50px;
 }
 
 .teamTitle{
@@ -31,3 +30,8 @@
     padding: 20px;
     border-radius: 5px;
 } */
+
+@media (max-width: 768px) {
+    .bigGallery{margin-left: 0px; padding-bottom: 50px;}
+    .gallery {padding: 0 20px;}
+}

@@ -7,12 +7,11 @@ import Error from './screens/Error'
 import Header from './components/Header'
 import Home from './screens/Home'
 import Navbar from './components/Navbar'
+import Prez from './screens/Prez'
 import Team from './screens/Team'
 import Test from './screens/Test'
 import noavatar from './assets/croix_rouge.png'
-import PopupSocial from './components/PopupSocial'
-
-
+import useLocalStorage from 'use-local-storage'
 
 function App() {
   const [isFavorite, setIsFavorite] = useState([]) // id objet API
@@ -38,10 +37,24 @@ function App() {
     setOpenPartage(false)
   }
 
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;  
+  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+  
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme)
+  }
+
+  const disconnect = () => {
+    localStorage.clear();
+    // eslint-disable-next-line no-restricted-globals
+    location.reload()
+  }
+
   return (
-    <div className='App'>
-      <Header avatar={avatar} setAvatar={setAvatar}/>
-      <Navbar />
+    <div id='App' data-theme={theme}>
+      <Header switchTheme={switchTheme} avatar={avatar} setAvatar={setAvatar} theme={theme} disconnect={disconnect}/>
+      <Navbar switchTheme={switchTheme} disconnect={disconnect}/>
       <Routes>
         <Route
           path='/'
@@ -78,7 +91,7 @@ function App() {
           }
         />
         <Route
-          path='/team'
+          path='/news-semaine'
           element={
             <Team
               openPartage={openPartage}
@@ -95,6 +108,19 @@ function App() {
           }
         />
         <Route path='/connect' element={<Connect avatar={avatar} setAvatar={setAvatar}/> }/>
+        <Route path='/prez' element={
+            <Prez 
+              openPartage={openPartage}
+              urlPartage={urlPartage}
+              clickClosePartage={clickClosePartage}
+              setUrlPartage={setUrlPartage}
+              clickOpenPartage={clickOpenPartage}
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              isRead={isRead}
+              changeIsRead={changeIsRead}
+              setIsRead={setIsRead}/>} 
+            />
         <Route path='/test' element={<Test />} />
         <Route path='*' element={<Error />} />
       </Routes>

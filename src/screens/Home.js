@@ -1,11 +1,9 @@
-import React from "react";
-import Gallery from "../components/Gallery";
-import TexteDefile from "../components/TexteDefile";
 import axios from "axios";
-import Search from "../components/Search";
+import Gallery from "../components/Gallery";
+import React from "react";
 import Search2 from "../components/Search2";
+import TexteDefile from "../components/TexteDefile";
 import { useState, useEffect } from "react";
-import SearchDateCharacter from "../components/SearchDateCharacter";
 
 import "../components/styles/Home.css";
 const Home = (props) => {
@@ -46,10 +44,10 @@ const Home = (props) => {
         tempUser.push(result[i].name);
       }
     }
-    setYear(tempYear);
-    setWeek(tempWeek);
-    setUser(tempUser);
-  }, [result]);
+    setYear(tempYear)
+    setWeek(tempWeek)
+    setUser(tempUser)
+  }, [result])
 
   // State du filtre de recherche
   const [searchValue, setSearchValue] = useState("");
@@ -114,7 +112,7 @@ const Home = (props) => {
             res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
             res.year === selectYear &&
             res.week === selectWeek
-          );
+          )
         } else {
           return (
             (res.description
@@ -162,20 +160,23 @@ const Home = (props) => {
     setArticleSearchFiltered(articleFilteredTemp);
   }, [searchValue, selectYear, selectWeek, selectUser]);
 
-  const [visibility, setVisibility] = useState(false); //sert à cacher ou non l'ensemble de la barre de recherche
 
-  //Affiche ou non la barre de recherche
-  const deroule = () => {
-    setVisibility(!visibility);
-  };
+  const [posScroll, setPosScroll] = useState()
 
-  console.log("search User length: " + selectUser.length);
-  console.log("select week : " + selectWeek);
-  console.log("select month : " + selectYear);
+  const checkScroll = () => {
+    if (
+      Math.floor(window.innerHeight + window.scrollY + 10) >=
+      document.body.offsetHeight
+    ) {
+      setPosScroll(window.scrollY)
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll)
 
   return (
     <div>
-      <TexteDefile title="les veilleurs de news |" />
+      <TexteDefile title='les veilleurs de news |   les veilleurs de news |' />
 
       {/* <div className='searchBox'> */}
       {/* <SearchDateCharacter
@@ -221,6 +222,8 @@ const Home = (props) => {
         clickClosePartage={props.clickClosePartage}
         setUrlPartage={props.setUrlPartage}
         clickOpenPartage={props.clickOpenPartage}
+        posScroll={posScroll}
+        setPosScroll={setPosScroll}
       />
     </div>
   );

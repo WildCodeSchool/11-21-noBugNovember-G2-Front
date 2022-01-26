@@ -2,12 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './styles/CardArticle.css'
-import bookEmpty from '../assets/bookEmpty.png'
-import bookFull from '../assets/bookFull.png'
 
 const FavoriteButton = props => {
   const [isBookFull, setIsBookFull] = useState(false)
   const [myId, setMyId] = useState()
+  const [bookImg, setBookImg ] = useState()
 
   const bookChange = () => {
     if (localStorage.getItem('id_user') === null) {
@@ -29,14 +28,17 @@ const FavoriteButton = props => {
         {data: {id: myId}})
         temp = props.isFavorite.filter(el => el != props.id)
         props.setIsFavorite(temp)
+
     }
   }
+
 
   //Sert à mettre en true ou non si l'article est en favori
   const changeMyId = (params) => {
     if (params[0] !== undefined) {
       setMyId(params[0].id)
       setIsBookFull(true)
+
     }
   }
 
@@ -50,18 +52,14 @@ const FavoriteButton = props => {
         })
         .then(response => response.data)
         .then(data => changeMyId(data))
+        console.log(localStorage.getItem('theme'));
     }
   },[])
 
   return (
     <div className='cardBottomFavorite cardBottomLink'>
       <a className='cardBottomLink' target='_blank' rel='noreferrer'>
-        <img
-          className='bookmarkIcon'
-          src={isBookFull ? bookFull : bookEmpty}
-          onClick={() => bookChange()}
-          alt=''
-        />
+        <i className={`${isBookFull ? 'fas' : 'far' } fa-bookmark bookmarkIcon`} onClick={() => bookChange()}></i>
       </a>
     </div>
   )
