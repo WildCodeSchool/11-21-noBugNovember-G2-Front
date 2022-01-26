@@ -42,11 +42,12 @@ export default function Search2(props) {
     props.setSearchValue(searchTemp);
   }
 
-//  Lancer la recherche en appuyant sur entrée 
-  const handleKeyDown= (e) =>{
-    if(e.keyCode === 13) { 
-      handleFocus()
-}}
+  //  Lancer la recherche en appuyant sur entrée
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      handleFocus();
+    }
+  };
 
   // Envoie de la recherche gâce aux valeurs temporaires quand on clique sur le bouton recherche
   // const handleSearch = () => {
@@ -74,19 +75,16 @@ export default function Search2(props) {
     props.setSearchValue("");
   };
 
-
   return (
-    <div>
-       <div className="trash2" onClick={() => resetHandleSearch()}>
-        <img alt="trash" src={returnIcon} />
-      </div>
-      <div className="searchBox2">
+    <div className="searchBigContainer">
+      {/* Barre de Recherche en mode Desktop */}
+      <div className="searchBoxDesktop">
         <input
           onKeyDown={(e) => handleKeyDown(e)}
           placeholder="Recherche"
           value={searchTemp}
           ref={searchInput}
-          className={`searchWrite searchHover ${ searchTemp && "modalOpen" }`}
+          className={`searchWrite searchHover ${searchTemp && "modalOpen"}`}
           onChange={(e) => setSearchTemp(e.target.value)}
           onClick={() => !isSearchButton && setIsSearchButton(true)}
         />
@@ -94,7 +92,7 @@ export default function Search2(props) {
           className={`searchHover ${isYearOpen && "modalOpen"}`}
           onClick={() => setIsYearOpen(!isYearOpen)}
         >
-          <p className="bulle" >Année</p>
+          <p className="bulle">Année</p>
           <p>{yearInput !== "Année" && yearInput}</p>
           <SearchContainer
             isSearchButton={isSearchButton}
@@ -141,7 +139,7 @@ export default function Search2(props) {
         </div>
         <button
           value={searchTemp}
-           type='submit'
+          type="submit"
           onClick={() => handleFocus()}
           className={
             isSearchButton ? "searchButtonOpen searchButton" : "searchButton"
@@ -160,7 +158,38 @@ export default function Search2(props) {
         </button>
       </div>
 
-     
+      {/* Barre de recherche en mode telephone */}
+      <div className="searchPhone">
+        <input
+          onKeyDown={(e) => handleKeyDown(e)}
+          placeholder="Recherche"
+          value={searchTemp}
+          ref={searchInput}
+          className={`searchWrite searchHover ${searchTemp && "modalOpen"}`}
+          onChange={(e) => setSearchTemp(e.target.value)}
+          onClick={() => !isSearchButton && setIsSearchButton(true)}
+        />
+
+        <button
+          value={searchTemp}
+          type="submit"
+          onClick={() => handleFocus()}
+          className={"searchButton"}
+        >
+          <img src={search} alt="search" />
+          <div className={"searchRechercherClosed"}></div>
+        </button>
+      </div>
+      <div
+        className={
+          searchTemp || weekTemp || userTemp || props.yearTemp
+            ? "trash2"
+            : "trash2Hide"
+        }
+        onClick={() => resetHandleSearch()}
+      >
+        <img alt="trash" src={returnIcon} />
+      </div>
     </div>
   );
 }

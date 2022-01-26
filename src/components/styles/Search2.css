@@ -1,15 +1,31 @@
-.searchBox2 {
-  position: relative;
-  z-index: 20000;
+.searchBigContainer{
+  display: flex;
+  padding-top: 50px;
+  justify-content: space-around;
+  align-items: center;
   width: 60%;
   max-width: 800px;
+  margin: 0 auto;
+}
+
+.searchPhone{
+  display: none;
+}
+
+
+
+.searchBoxDesktop {
+  position: relative;
+  z-index: 20000;
+  width: 90%;
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 32px;
-  left: calc(50% + 40px);
-  transform: translateX(-50%);
+  /* left: calc(50% + 40px); */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
   color: #555;
   outline: none;
   font-size: 1em;
@@ -20,15 +36,18 @@
   transition: 0.5s;
 }
 
+
+
+
 /* Supprimer TRash */
 .trash2 {
   display: flex;
+  /* margin-bottom: 20px; */
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  margin-left: calc(50% + 20px);
-  width: 50px;
-  height: 50px;
+  /* margin-left: calc(50% - 25px);  */
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -37,13 +56,16 @@
   border-radius: 32px;
 }
 
+.trash2Hide{
+  visibility: hidden;
+}
 
 .trash2:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 15px 15px 15px rgba(0, 0, 0, 0.1),
     20px 20px 15px rgba(0, 0, 0, 0.1), inset 8px 8px 8px rgba(0, 0, 0, 0.2);
 }
 .trash2 img {
-  width: 30px;
+  width: 40px;
 }
 
 /* Barre de recherche */
@@ -53,7 +75,6 @@
   color: #555;
   outline: none;
   border: none;
-  outline: none;
   border-radius: 32px;
   font-size: 1.1em;
   background: transparent;
@@ -138,6 +159,7 @@
   backdrop-filter: blur(100px);
   cursor: pointer;
   transition: 0.05s;
+  user-select: none;
 }
 
 .searchButton:hover {
@@ -172,4 +194,50 @@
   opacity: 1;
   padding-right: 10px;
   margin-left: 10px;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .searchBigContainer{
+    width: 80%;}
+
+}
+
+@media screen and (max-width: 1080px) {
+  .searchBoxDesktop{
+   display: none;}
+
+  .searchPhone{
+    margin: auto;
+    display: block;
+    position: relative;
+    z-index: 20000;
+    width: 75%;
+    height: 60px;
+    display: flex;
+    justify-content:initial;
+    align-items: center;
+    border-radius: 32px;
+    color: #555;
+    outline: none;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 15px 15px 15px rgba(0, 0, 0, 0.1),
+      20px 20px 15px rgba(0, 0, 0, 0.1), inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+  }
+
+  .searchBigContainer{
+    display: flex;
+    padding-top: 50px;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: .9em;
+  }
+ 
+
 }
