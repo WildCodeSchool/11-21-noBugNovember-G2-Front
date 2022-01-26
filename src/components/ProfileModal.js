@@ -3,7 +3,7 @@ import "./styles/ProfileModal.css";
 import { NavLink } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import BuildIcon from "@mui/icons-material/Build";
+import LoginIcon from "@mui/icons-material/Login";
 
 export default function ProfileModal({ active, setActive }) {
   const disconnect = () => {
@@ -40,14 +40,25 @@ export default function ProfileModal({ active, setActive }) {
             </div>
           </NavLink>
           <div className="wrapDisconnect wrapOptionMenuProfile">
-            <button
-              className="buttonOptionMenuProfile"
-              onClick={() => setActive(!active)}
-              onClick={disconnect}
-            >
-              <LogoutIcon color="disabled" />
-              <label>Déconnexion</label>
-            </button>
+            {localStorage.getItem("id_user") ? (
+              <button
+                className="buttonOptionMenuProfile"
+                onClick={() => setActive(!active)}
+                onClick={disconnect}
+              >
+                <LogoutIcon color="disabled" />
+                <label>Déconnexion</label>
+              </button>
+            ) : (
+              <button
+                className="buttonOptionMenuProfile"
+                onClick={() => setActive(!active)}
+                onClick={disconnect}
+              >
+                <LoginIcon color="disabled" />
+                <label>Connexion</label>
+              </button>
+            )}
           </div>
         </div>
       </div>
