@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './styles/Search.css'
 import search from '../assets/search.png'
-import TexteDefile from './TexteDefile'
 
 export default function Search(props) {
   

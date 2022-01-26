@@ -1,8 +1,7 @@
 import "./styles/Header.css";
 import Lightlogo from "../assets/lightlogo.svg";
 import Blacklogo from "../assets/blacklogo.svg";
-import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import ProfileModal from "./ProfileModal";
 import BurgerMenu from "./BurgerMenu";
 

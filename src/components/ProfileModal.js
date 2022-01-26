@@ -12,14 +12,6 @@ export default function ProfileModal({ active, setActive }) {
     location.reload();
   };
 
-  /*   window.addEventListener("click", function (e) {
-    if (document.getElementById("wrapperModalID").contains(e.target)) {
-      console.log("Clicked in");
-    } else {
-      console.log("Clicked out");
-    }
-  }); */
-
   return (
     <>
       <div id="wrapperModalID" className="wrapperModal">

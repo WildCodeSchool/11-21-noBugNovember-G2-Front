@@ -29,7 +29,6 @@ export default function CardArticle(props) {
       setIsReadMark(true)
     }
   }, [])
-  // useEffect(() => {} ,[props.isRead])
 
   const [openGraph, setOpenGraph] = useState('')
 
