@@ -36,23 +36,25 @@ const Prez = (props) => {
           <object className='visuLien' data={link} height='95%'>
             <div className='visuLien'>
               <embed className='visuLien' src={link} height='100vh'></embed>
-              <div className='messages'>
-                {link.length > 1 ? (
-                  <div>
-                    <a href={link} target='_blank'>
-                      Hélas, le site refuse de s'ouvrir.
-                      <br />
-                      Cliquez ici pour l'ouvrir dans un nouvel onglet !
-                    </a>
-                  </div>
-                ) : (
-                  <div>
-                    Pour commencer, cliquez sur une carte situé à droite
-                  </div>
-                )}{' '}
-              </div>
             </div>
           </object>
+          <div className='messages'>
+            {link.length > 1 ? (
+              <div>
+                <a href={link} target='_blank'>
+                  <h2>
+                    Hélas, le site refuse de s'ouvrir.
+                    <br />
+                    Cliquez ici pour l'ouvrir dans un nouvel onglet !
+                  </h2>
+                </a>
+              </div>
+            ) : (
+              <div>
+                <h2>Pour commencer, cliquez sur une carte à droite</h2>
+              </div>
+            )}
+          </div>
         </div>
         <div className='list'>
           <GalleryPrez

@@ -10,6 +10,7 @@
 }
 
 .frame {
+  position: relative;
   background: none;
   background-color: none;
   grid-area: 1 / 2 / 2 / 6;
@@ -27,6 +28,7 @@ iframe {
 .visuLien {
   height: 100%;
   width: 100%;
+  z-index: 3;
 }
 
 .list {
@@ -38,11 +40,9 @@ iframe {
 }
 
 .messages {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  font-size: 1.5em;
+  position: absolute;
+  z-index: 1;
+  top: 50px;
 }
 
 .messages :link {
