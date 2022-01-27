@@ -1,0 +1,74 @@
+.searchRowbuttonBox {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 55px);
+  z-index: 10000;
+}
+
+.buttonSearch {
+  color: #555;
+  backdrop-filter: blur(10px);
+  border-radius: 55px;
+  box-shadow: 5px 5px 5px var(--shadowColor);
+  flex-direction: row;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 10px;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  width: 50px;
+  transition: width 1s, border-radius 1s, transform 1s;
+}
+
+.active {
+  border-radius: 10px;
+  width: 300px;
+}
+
+.cross {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.buttonSearch img {
+  width: 30px;
+  cursor: pointer;
+}
+
+.searchDate {
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchIconBox {
+  display: flex;
+  justify-content: space-around;
+}
+.buttonselect:hover {
+  opacity: 1;
+}
+
+.searchcache {
+  display: none;
+  opacity: 0;
+  transition: 0.5s linear;
+}
+
+.searchfas {
+  display: flex;
+  justify-content: center;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.searchfas:hover {
+  opacity: 1;
+}
+
+.searchformulaire {
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  opacity: 1;
+}

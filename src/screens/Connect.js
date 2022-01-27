@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
 import axios from 'axios'
-import sha256 from 'crypto-js/sha256'
 import Profil from '../components/Profil.js'
+import { useState, useEffect } from 'react'
+import sha256 from 'crypto-js/sha256'
 import '../App.css'
 import '../components/styles/Connect.css'
 
@@ -31,21 +31,20 @@ const Connect = ({ setAvatar }) => {
 
   const connect = () => {
     if (localStorage.getItem('id_user') === null) {
-      setErrorConnect(false);
-      setIsOut(false);
+      setErrorConnect(false)
+      setIsOut(false)
       axios
         .put('http://localhost:3030/members/connect', {
           name: name,
           password: sha256(password).toString(),
         })
-        .then(response => response.data)
+        .then((response) => response.data)
         .then((data) => setReponse(data))
-        .catch(err => { 
-          if (err.response) { 
-            setErrorConnect(true);
-          }
-          else if (err.request) { 
-            setIsOut(true) 
+        .catch((err) => {
+          if (err.response) {
+            setErrorConnect(true)
+          } else if (err.request) {
+            setIsOut(true)
           }
         })
     } else {
@@ -90,8 +89,7 @@ const Connect = ({ setAvatar }) => {
         />
       ) : (
         <div>
-          <form className='form'>
-            <h2 id='h2Profil'>Connexion</h2>
+          <form className='formConnect'>
             <div className='fieldCollection'>
               <input
                 type='text'
@@ -118,7 +116,7 @@ const Connect = ({ setAvatar }) => {
                 id='gridCo3'
                 onClick={() => connect()}
               >
-                ME CONNECTER
+                Me connecter
               </button>
               {errorConnect && (
                 <p className='inputText' id='gridCo4'>

@@ -1,19 +1,18 @@
 /* Container du composant  */
 .searchContainer {
   position: absolute;
-  z-index: 100000;
+  z-index: 1000;
   bottom: -10px;
   transform: translateY(100%);
   padding: 20px 15px;
-  color: #555;
+  color: var(--thirdColor);
   outline: none;
   font-size: 0.8em;
   border-radius: 32px;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--gradientColor);
   backdrop-filter: blur(20px);
- 
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 15px 15px 15px rgba(0, 0, 0, 0.1),
-    20px 20px 15px rgba(0, 0, 0, 0.1), inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px var(--shadowColor);
+  border: 1px solid;
 }
 
 .searchContainerHide {
@@ -45,7 +44,7 @@
   min-height: 40px;
   border-radius: 32px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .elGrid p:hover {

@@ -1,4 +1,3 @@
-import React from 'react'
 import '../components/styles/TextScroll.css'
 
 export default function TexteDefile({ title }) {
