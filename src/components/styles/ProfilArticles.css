@@ -7,27 +7,16 @@
 }
 
 .profilTableau {
-  margin: auto;
-  display: flex;
-  justify-content: center;
+  margin-bottom: 20px;
 }
 
-table {
-  border-spacing: 0;
-  border: 1px solid;
-  justify-content: center;
+.headerTableau {
+  color: var(--gradientColor);
+  background-color: var(--thirdColor);
+  backdrop-filter: blur(10px);
+  box-shadow: 5px 5px 5px var(--shadowColor);
 }
 
-th {
-  border: 1px solid;
-  justify-content: center;
-  padding: 8px;
-}
-
-.fas {
-  display: unset;
-  font-size: 25px;
-}
-.fas:hover {
-  cursor: pointer;
+.MuiToolbar-root {
+  color: var(--thirdColor);
 }
