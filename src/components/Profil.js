@@ -1,9 +1,9 @@
+import axios from 'axios'
+import ProfilAdmin from './ProfilAdmin'
+import ProfilChangeAvatarAddArticle from './ProfilChangeAvatarAddArticle'
+import ProfilUser from './ProfilUser'
 import { useState, useEffect } from 'react'
 import './styles/Profil.css'
-import ProfilAdmin from './ProfilAdmin'
-import ProfilUser from './ProfilUser'
-import ProfilChangeAvatarAddArticle from './ProfilChangeAvatarAddArticle'
-import axios from 'axios'
 
 const Profil = (props) => {
   const [stokage, setStokage] = useState([])

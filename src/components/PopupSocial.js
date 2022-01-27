@@ -1,14 +1,13 @@
-import React from 'react'
 import './styles/PopupSocial.css'
 import {
-  EmailShareButton,
   EmailIcon,
-  FacebookShareButton,
+  EmailShareButton,
   FacebookIcon,
-  TwitterShareButton,
-  TwitterIcon,
+  FacebookShareButton,
+  LinkedinIcon,
   LinkedinShareButton,
-  LinkedinIcon
+  TwitterIcon,
+  TwitterShareButton,
 } from 'react-share'
 
 export default function PopupSocial(props) {
@@ -22,10 +21,10 @@ export default function PopupSocial(props) {
   }
   return (
     <div className='globalPopupPage' onClick={props.clickClosePartage}>
-      <div id='holderShareActive' onClick={e => e.stopPropagation()}>
+      <div id='holderShareActive' onClick={(e) => e.stopPropagation()}>
         {/* <div className={props.openPartage ? "HolderShareActive" : "HolderShare"} >  */}
         <a id='popupButtonExit' onClick={() => props.clickClosePartage()}>
-         <i class="far fa-times"></i>
+          <i class='far fa-times'></i>
         </a>
         <p> Partagez ! </p>
         <div id='shareSocial'>
@@ -49,7 +48,9 @@ export default function PopupSocial(props) {
         </div>
         <div id='clipboard'>
           <input value={props.urlPartage} id='myInput' />
-          <button onClick={() => CopyClipboard()}><i class="fas fa-copy"></i></button>
+          <button onClick={() => CopyClipboard()}>
+            <i class='fas fa-copy'></i>
+          </button>
         </div>
       </div>
     </div>

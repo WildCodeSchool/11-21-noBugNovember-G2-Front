@@ -1,18 +1,17 @@
-import React from 'react'
-import './styles/GalleryPrez.css'
-import CardArticlePrez from './CardArticlePrez'
-import PopupSocial from './PopupSocial'
+import CardArticlePrez from "./CardArticlePrez";
+import PopupSocial from "./PopupSocial";
+import "./styles/GalleryPrez.css";
 
 const GalleryPrez = (props) => {
   return (
-    <div className='bigGalleryPrez'>
+    <div className="bigGalleryPrez">
       <PopupSocial
         openPartage={props.openPartage}
         urlPartage={props.urlPartage}
         clickClosePartage={props.clickClosePartage}
       />
-      <div className='galleryprez'>
-        {props.articles.map(card => (
+      <div className="galleryprez">
+        {props.articles.map((card) => (
           <CardArticlePrez
             key={card.id}
             id={card.id}
@@ -33,10 +32,9 @@ const GalleryPrez = (props) => {
             setLink={props.setLink}
           />
         ))}
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default GalleryPrez
+export default GalleryPrez;

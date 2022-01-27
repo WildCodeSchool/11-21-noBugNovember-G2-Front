@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
 import axios from 'axios'
-import sha256 from 'crypto-js/sha256'
 import Profil from '../components/Profil.js'
-import TexteDefile from '../components/TexteDefile'
+import { useState, useEffect } from 'react'
+import sha256 from 'crypto-js/sha256'
 import '../App.css'
 import '../components/styles/Connect.css'
 
@@ -32,21 +31,20 @@ const Connect = ({ setAvatar }) => {
 
   const connect = () => {
     if (localStorage.getItem('id_user') === null) {
-      setErrorConnect(false);
-      setIsOut(false);
+      setErrorConnect(false)
+      setIsOut(false)
       axios
         .put('http://localhost:3030/members/connect', {
           name: name,
           password: sha256(password).toString(),
         })
-        .then(response => response.data)
+        .then((response) => response.data)
         .then((data) => setReponse(data))
-        .catch(err => { 
-          if (err.response) { 
-            setErrorConnect(true);
-          }
-          else if (err.request) { 
-            setIsOut(true) 
+        .catch((err) => {
+          if (err.response) {
+            setErrorConnect(true)
+          } else if (err.request) {
+            setIsOut(true)
           }
         })
     } else {
@@ -82,7 +80,6 @@ const Connect = ({ setAvatar }) => {
 
   return (
     <div className='pageConnect'>
-
       {localStorage.getItem('id_user') ? (
         <Profil
           setIsConnected={setIsConnected}

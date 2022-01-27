@@ -1,4 +1,4 @@
-.searchBigContainer{
+.searchBigContainer {
   display: flex;
   padding-top: 50px;
   justify-content: space-around;
@@ -9,10 +9,9 @@
 }
 
 /* Pour Telephone */
-.searchPhone{
+.searchPhone {
   display: none;
 }
-
 
 /* Pour Desktop */
 .searchBoxDesktop {
@@ -29,12 +28,10 @@
   font-size: 1em;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  box-shadow: 5px 5px 5px var(--shadowColor), inset 2px 2px 2px var(--shadowColor);
+  box-shadow: 5px 5px 5px var(--shadowColor),
+    inset 2px 2px 2px var(--shadowColor);
   transition: 0.5s;
 }
-
-
-
 
 /* Supprimer/revenir en arrière */
 .trash2 {
@@ -46,17 +43,18 @@
   cursor: pointer;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  box-shadow: 5px 5px 5px var(--shadowColor), inset 2px 2px 2px var(--shadowColor);
+  box-shadow: 5px 5px 5px var(--shadowColor),
+    inset 2px 2px 2px var(--shadowColor);
   border-radius: 32px;
 }
 
-.trash2Hide{
+.trash2Hide {
   visibility: hidden;
 }
 
 .trash2:hover {
-  box-shadow: 5px 5px 5px var(--shadowColor), inset 2px 2px 2px var(--shadowColor);
-
+  box-shadow: 5px 5px 5px var(--shadowColor),
+    inset 2px 2px 2px var(--shadowColor);
 }
 .trash2 img {
   width: 40px;
@@ -74,8 +72,6 @@
   background: transparent;
 }
 
-
-
 /* Classe pour les boites de la barre (années, semaines, user) */
 .bulle {
   width: 100%;
@@ -84,7 +80,6 @@
   justify-content: flex-start;
   align-items: center;
 }
-
 
 /* Container des users et bouton recherche */
 
@@ -97,7 +92,7 @@
   transition: width 0.1s;
 }
 
-.searchUserBoxOpen {  
+.searchUserBoxOpen {
   width: 200% !important;
 }
 
@@ -111,14 +106,14 @@
   box-shadow: inset 8px 8px 8px transparent;
   cursor: pointer;
   user-select: none;
-  height: 100%; 
-  transition: .1s;
+  height: 100%;
+  transition: 0.1s;
 }
 
 .searchHover:hover {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: inset 8px 8px 8px var(--shadowColor);
-  border-radius: 32px;  
+  border-radius: 32px;
 }
 
 .modalOpen {
@@ -188,17 +183,18 @@
   margin-left: 10px;
 }
 
-
 @media screen and (max-width: 1200px) {
-  .searchBigContainer{
-    width: 80%;}
+  .searchBigContainer {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 1080px) {
-  .searchBoxDesktop{
-   display: none;}
+  .searchBoxDesktop {
+    display: none;
+  }
 
-  .searchPhone{
+  .searchPhone {
     margin: auto;
     display: block;
     position: relative;
@@ -206,19 +202,20 @@
     width: 75%;
     height: 60px;
     display: flex;
-    justify-content:initial;
+    justify-content: initial;
     align-items: center;
     border-radius: 32px;
     color: var(--thirdColor);
-  outline: none;
-  font-size: 1em;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  box-shadow: 5px 5px 5px var(--shadowColor), inset 2px 2px 2px var(--shadowColor);
+    outline: none;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 5px 5px 5px var(--shadowColor),
+      inset 2px 2px 2px var(--shadowColor);
     transition: 0.5s;
   }
 
-  .searchBigContainer{
+  .searchBigContainer {
     display: flex;
     padding-top: 50px;
     justify-content: space-between;
@@ -226,7 +223,6 @@
     width: 50%;
     max-width: 800px;
     margin: 0 auto;
-    font-size: .9em;
+    font-size: 0.9em;
   }
- 
 }

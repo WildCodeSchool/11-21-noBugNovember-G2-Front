@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
-import React from "react";
+import { useState } from "react";
+
 import "./styles/Navbar.css";
 
 export default function Navbar(props) {
-  const [active, setActive] = React.useState(false);
+  const [active, setActive] = useState(false);
 
   return (
     <div>
@@ -12,8 +13,7 @@ export default function Navbar(props) {
           onClick={() => setActive(!active)}
           name="chevron-forward-circle-sharp"
           id={active ? "ion-icon-open" : "ion-icon"}
-        >
-        </ion-icon>
+        ></ion-icon>
         <NavLink className="NavLink" to="/">
           <i className="fas fa-home fa-fw fa-2x"></i>
           <p className={`TextMenu ${active ? "" : "TextMenuOpen"}`}>Accueil</p>

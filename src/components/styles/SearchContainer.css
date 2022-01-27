@@ -44,7 +44,7 @@
   min-height: 40px;
   border-radius: 32px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .elGrid p:hover {

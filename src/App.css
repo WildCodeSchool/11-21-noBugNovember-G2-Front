@@ -17,6 +17,7 @@
   --shadowColor: #c2c3f02f;
   --fontTitle: 'IvyJournal' 400;
   --fontBody: 'Ivyjournal', sans-serif;
+  backface-visibility: hidden;
 }
 
 *,
@@ -38,11 +39,6 @@ a {
   background-attachment: fixed;
   font-style: normal;
   color: var(--thirdColor);
-}
-
-.Ecran {
-  padding-left: 80px;
-  overflow-x: hidden;
 }
 
 input,

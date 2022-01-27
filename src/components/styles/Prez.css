@@ -8,10 +8,9 @@
   margin-right: 250px;
   height: 90vh;
 }
-  
-.frame { 
+
+.frame {
   grid-area: 1 / 1 / 2 / 4;
-  /*background-color: red;*/
   height: 90vh;
   display: flex;
   flex-direction: column;
@@ -21,14 +20,13 @@ iframe {
   height: 90vh;
 }
 
-.list { 
-  grid-area: 1 / 4 / 2 / 5; 
-  /*background-color: blue;*/
+.list {
+  grid-area: 1 / 4 / 2 / 5;
   height: 90vh;
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
-} 
+}
 
 .messages {
   display: flex;
