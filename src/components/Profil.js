@@ -80,14 +80,6 @@ const Profil = (props) => {
           reveal={reveal}
         />
       )}
-      <div className={reveal ? 'buttonSeeMoreProfil' : 'cache'}>
-        <button
-          className='buttonSeeMoreProfil buttonConnect'
-          onClick={seeMoreArticle}
-        >
-          Voir plus
-        </button>
-      </div>
       <div className='messageMobileProfil'>
         <h4 className='textProfilPage'>
           Accédez à plus d'options via notre version desktop !

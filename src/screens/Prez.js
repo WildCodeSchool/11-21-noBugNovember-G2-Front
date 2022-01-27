@@ -31,22 +31,28 @@ const Prez = (props) => {
       </div>
       <div className={isAdmin ? 'ensemble' : 'cache'}>
         <div className='frame'>
-          {/*<iframe name="presentation" id="myframe" sanbox="allow-same-origin" src={link} ></iframe>*/}
-          <object data={link} height='95%'>
-            <embed src={link} height='100vh'></embed>
-            {link.length > 5 ? (
-              <div className='messages'>
+          <object className='visuLien' data={link} height='95%'>
+            <div className='visuLien'>
+              <embed className='visuLien' src={link} height='100vh'></embed>
+            </div>
+          </object>
+          <div className='messages'>
+            {link.length > 1 ? (
+              <div>
                 <a href={link} target='_blank'>
-                  Hélas, le site refuse de s'ouvrir. Cliquez ici pour l'ouvrir
-                  dans un nouvel onglet
+                  <h2>
+                    Hélas, le site refuse de s'ouvrir.
+                    <br />
+                    Cliquez ici pour l'ouvrir dans un nouvel onglet !
+                  </h2>
                 </a>
               </div>
             ) : (
-              <div className='messages'>
-                Pour commencer, cliquez sur une carte situé à droite
+              <div>
+                <h2>Pour commencer, cliquez sur une carte à droite</h2>
               </div>
             )}
-          </object>
+          </div>
         </div>
         <div className='list'>
           <GalleryPrez

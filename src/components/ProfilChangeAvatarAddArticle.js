@@ -8,18 +8,25 @@ const ProfilChangeAvatarAddArticle = (props) => {
   const [article, setArticle] = useState('')
   const [description, setDescription] = useState('')
   const [post, setPost] = useState(false)
+  const [errorArticle, setErrorArticle] = useState('')
+  const [errorAvatar, setErrorAvatar] = useState('')
 
   const changeUrl = (e) => {
     setUpdateAvatar(e.target.value)
   }
   const letsGo = () => {
-    console.log(updateAvatar.type)
-    axios.post('http://localhost:3030/members/avatar/update', {
-      id: localStorage.getItem('id_user'),
-      avatar: updateAvatar,
-    })
-    localStorage.setItem('avatar', updateAvatar)
-    props.setAvatar(updateAvatar)
+    if (updateAvatar) {
+      console.log(updateAvatar.type)
+      axios.post('http://localhost:3030/members/avatar/update', {
+        id: localStorage.getItem('id_user'),
+        avatar: updateAvatar,
+      })
+      localStorage.setItem('avatar', updateAvatar)
+      props.setAvatar(updateAvatar)
+      setErrorAvatar(false)
+    } else {
+      setErrorAvatar(true)
+    }
   }
 
   const changeArticle = (e) => {
@@ -31,18 +38,21 @@ const ProfilChangeAvatarAddArticle = (props) => {
   }
 
   const postArticle = () => {
-    let weekactual = weekNumber(new Date())
-    let yearactual = new Date().getFullYear()
-    axios.post('http://localhost:3030/articles/add', {
-      week: weekactual,
-      year: yearactual,
-      id_users: localStorage.getItem('id_user'),
-      url: article,
-      description: description,
-      likes: 0,
-    })
-    setPost(true)
-    props.setBddChange(!props.bddChange)
+    if (article && description) {
+      let weekactual = weekNumber(new Date())
+      let yearactual = new Date().getFullYear()
+      axios.post('http://localhost:3030/articles/add', {
+        week: weekactual,
+        year: yearactual,
+        id_users: localStorage.getItem('id_user'),
+        url: article,
+        description: description,
+        likes: 0,
+      })
+      setPost(true)
+      setErrorArticle(false)
+      props.setBddChange(!props.bddChange)
+    } else setErrorArticle(true)
   }
 
   const newArticlePlease = () => {
@@ -67,13 +77,28 @@ const ProfilChangeAvatarAddArticle = (props) => {
             onChange={(e) => changeUrl(e)}
             value={updateAvatar}
           ></input>
-          <button
-            type='button'
-            className='buttonConnect buttonUpProfil '
-            onClick={() => letsGo()}
-          >
-            Je change mon avatar
-          </button>
+          {errorAvatar === '' || errorAvatar === true ? (
+            <button
+              type='button'
+              className='buttonConnect buttonUpProfil '
+              onClick={() => letsGo()}
+            >
+              Je change mon avatar
+            </button>
+          ) : (
+            <button
+              type='button'
+              className='buttonConnect buttonUpProfil '
+              onClick={() => letsGo()}
+            >
+              Je ne l'aime toujours pas, vite, un autre !
+            </button>
+          )}
+          {errorAvatar && (
+            <p className='textProfilPage'>
+              ⚠ Vous avez oublié quelque chose avant de cliquer !
+            </p>
+          )}
         </form>
       </div>
       <div className={post ? 'cache' : 'addarticle bloc'}>
@@ -102,6 +127,11 @@ const ProfilChangeAvatarAddArticle = (props) => {
           >
             J'ajoute un article
           </button>
+          {errorArticle && (
+            <p className='textProfilPage'>
+              ⚠ Vous avez oublié quelque chose avant de cliquer !
+            </p>
+          )}
         </form>
       </div>
       <div className={post ? 'alright' : 'cache'}>

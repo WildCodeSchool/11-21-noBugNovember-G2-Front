@@ -1,70 +1,174 @@
 import './styles/ProfilArticles.css'
+import { useState } from 'react'
+import { DataGrid } from '@mui/x-data-grid'
 
 const ProfilArticles = (props) => {
+  const [pageSizeAdmin, setPageSizeAdmin] = useState(10)
+  const [pageSizeUser, setPageSizeUser] = useState(5)
+
   return (
-    <div className='profilTableau'>
-      <table className={props.admin ? 'reveal' : 'cache'}>
-        <thead className={props.admin ? 'reveal' : 'cache'}>
-          <tr className={props.admin ? 'reveal' : 'cache'}>
-            <th colspan='6'>Administration</th>
-          </tr>
-          <tr>
-            <th>Membre</th>
-            <th>Semaine</th>
-            <th>Année</th>
-            <th>URL</th>
-            <th>Description</th>
-            <th>Supprimer</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.bdd.slice(0, props.moreArticle).map((detail) => (
-            <tr>
-              <th>{detail.name}</th>
-              <th>{detail.week}</th>
-              <th>{detail.year}</th>
-              <th>{detail.url}</th>
-              <th>{detail.description}</th>
-              <th>
+    <div>
+      <div className={props.admin ? 'reveal profilTableau' : 'cache'}>
+        <DataGrid
+          style={{ height: 650 }}
+          columns={[
+            {
+              field: 'name',
+              headerName: 'Membre',
+              headerClassName: 'headerTableau',
+              minWidth: 110,
+              flex: 0.5,
+              align: 'left',
+              headerAlign: 'left',
+            },
+            {
+              field: 'week',
+              headerName: 'Semaine',
+              headerClassName: 'headerTableau',
+              type: 'number',
+              minWidth: 60,
+              flex: 0.25,
+              align: 'center',
+              headerAlign: 'center',
+            },
+            {
+              field: 'year',
+              headerName: 'Année',
+              headerClassName: 'headerTableau',
+              type: 'number',
+              minWidth: 75,
+              flex: 0.25,
+              align: 'center',
+              headerAlign: 'center',
+            },
+            {
+              field: 'url',
+              headerName: 'URL',
+              headerClassName: 'headerTableau',
+              minWidth: 120,
+              flex: 2,
+              align: 'left',
+              headerAlign: 'left',
+            },
+            {
+              field: 'description',
+              headerName: 'Description',
+              headerClassName: 'headerTableau',
+              minWidth: 280,
+              flex: 2.5,
+              align: 'left',
+              headerAlign: 'left',
+            },
+            {
+              field: 'supprimer',
+              headerName: 'Supprimer',
+              headerClassName: 'headerTableau',
+              minWidth: 105,
+              flex: 0.5,
+              align: 'center',
+              headerAlign: 'center',
+              renderCell: () => (
                 <i
-                  onClick={() => props.deleteArticle(detail.id)}
+                  onClick={() => props.deleteArticle(props.id)}
                   class='fas fa-times-circle'
                 ></i>
-              </th>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <table className={!props.admin ? 'reveal' : 'cache'}>
-        <thead className={!props.admin ? 'reveal' : 'cache'}>
-          <tr className={!props.admin ? 'reveal' : 'cache'}>
-            <th colspan='5'>Administration</th>
-          </tr>
-          <tr>
-            <th>Semaine</th>
-            <th>Année</th>
-            <th>URL</th>
-            <th>Description</th>
-            <th>Supprimer</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.stokage.slice(0, props.moreArticle).map((detail) => (
-            <tr>
-              <th>{detail.week}</th>
-              <th>{detail.year}</th>
-              <th>{detail.url}</th>
-              <th>{detail.description}</th>
-              <th>
+              ),
+            },
+          ]}
+          sx={{
+            fontFamily: 'var(--fontBody)',
+            color: 'var(--thirdColor)',
+            borderColor: 'var(--firstColor)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '5px 5px 5px var(--shadowColor)',
+            padding: '8px',
+            '& .MuiDataGrid-cell:hover': {
+              color: 'var(--secondColor)',
+            },
+          }}
+          rows={props.bdd}
+          pageSize={pageSizeAdmin}
+          onPageSizeChange={(newPageSize) => setPageSizeAdmin(newPageSize)}
+          rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
+          pagination
+        />{' '}
+      </div>
+      <div className={!props.admin ? 'reveal profilTableau' : 'cache'}>
+        <DataGrid
+          style={{ height: 450 }}
+          columns={[
+            {
+              field: 'week',
+              headerName: 'Semaine',
+              headerClassName: 'headerTableau',
+              type: 'number',
+              minWidth: 60,
+              flex: 0.25,
+              align: 'center',
+              headerAlign: 'center',
+            },
+            {
+              field: 'year',
+              headerName: 'Année',
+              headerClassName: 'headerTableau',
+              type: 'number',
+              minWidth: 75,
+              flex: 0.25,
+              align: 'center',
+              headerAlign: 'center',
+            },
+            {
+              field: 'url',
+              headerName: 'URL',
+              headerClassName: 'headerTableau',
+              minWidth: 120,
+              flex: 2,
+              align: 'left',
+              headerAlign: 'left',
+            },
+            {
+              field: 'description',
+              headerName: 'Description',
+              headerClassName: 'headerTableau',
+              minWidth: 280,
+              flex: 2.5,
+              align: 'left',
+              headerAlign: 'left',
+            },
+            {
+              field: 'supprimer',
+              headerName: 'Supprimer',
+              headerClassName: 'headerTableau',
+              minWidth: 105,
+              flex: 0.5,
+              align: 'center',
+              headerAlign: 'center',
+              renderCell: () => (
                 <i
-                  onClick={() => props.deleteArticle(detail.id)}
+                  onClick={() => props.deleteArticle(props.id)}
                   class='fas fa-times-circle'
                 ></i>
-              </th>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              ),
+            },
+          ]}
+          sx={{
+            fontFamily: 'var(--fontBody)',
+            color: 'var(--thirdColor)',
+            borderColor: 'var(--firstColor)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '5px 5px 5px var(--shadowColor)',
+            padding: '8px',
+            '& .MuiDataGrid-cell:hover': {
+              color: 'var(--thirdColor)',
+            },
+          }}
+          rows={props.stokage}
+          pageSize={pageSizeUser}
+          onPageSizeChange={(newPageSize) => setPageSizeUser(newPageSize)}
+          rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
+          pagination
+        />
+      </div>{' '}
     </div>
   )
 }
