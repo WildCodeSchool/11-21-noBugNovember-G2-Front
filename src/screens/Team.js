@@ -21,7 +21,7 @@ const Team = (props) => {
 
   return (
     <div>
-      <TexteDefile title=' Les news de la semaine |  Les news de la semaine | Les news de la semaine | ' />
+      <TexteDefile title=' les news de la semaine |  les news de la semaine | les news de la semaine | ' />
       <TeamGallery
         articles={tableau}
         setIsFavorite={props.setIsFavorite}
