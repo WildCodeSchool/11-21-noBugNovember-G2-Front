@@ -17,7 +17,7 @@
 /* Pour Desktop */
 .searchBoxDesktop {
   position: relative;
-  z-index: 20000;
+  z-index: 2000;
   width: 90%;
   height: 60px;
   display: flex;
@@ -202,7 +202,7 @@
     margin: auto;
     display: block;
     position: relative;
-    z-index: 20000;
+    z-index: 2000;
     width: 75%;
     height: 60px;
     display: flex;

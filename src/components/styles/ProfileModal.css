@@ -109,6 +109,7 @@ transition: all .3s ease-in;
 @media (max-width: 768px) {
   .wrapperModal {
     position: absolute;
-    top: 90%;
+    top: 72px;
+    z-index: 20001;
   }
 }

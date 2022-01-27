@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import check from '../assets/check.png'
+import check from '../assets/check.svg'
 import FavoriteButton from './FavoriteButton'
 import LikeButton from './LikeButton'
 import './styles/CardArticle.css'
@@ -72,6 +72,7 @@ export default function CardArticle(props) {
               className={isReadMark ? 'checkMarkIcon' : ''}
               src={isReadMark ? check : ''}
               alt=''
+             
             />
           </div>
         </div>

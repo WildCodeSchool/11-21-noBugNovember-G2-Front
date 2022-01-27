@@ -143,14 +143,15 @@ background-color:rgba(0, 0, 0, 0.5);
 .cardDate{
     position: absolute;
     bottom: 0%;
-    right: 0%;
+    right: -3px;
     padding: 7px 10px 5px 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color:rgba(0, 0, 0, 0.7);
+    background-color: var(--gradientColor);
     border-radius:  20px 0px 0px 0px;
-    color: whitesmoke;
+    color: var(--thirdColor);
+    border: 2px solid var(--firstColor);
 }
 
 .cardMember {
@@ -163,15 +164,14 @@ background-color:rgba(0, 0, 0, 0.5);
 .checkMarkIcon {
   width: 50px;
   height: auto;
-  /* position: absolute; */
-  /* bottom: 30%; */
-  /* left: 50%; */
   transform: translate(0%, 40%);
   border-radius: 50%;
-  background-color: rgb(61, 183, 61);
-  border: 3px solid white;
+  background-color: var(--firstColor);
+  border: 3px solid var(--firstColor);
   align-self: center;
   }
+
+  .checkMarkIcon svg {}
 
     /* Bas de la Card */
 

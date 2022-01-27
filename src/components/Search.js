@@ -144,7 +144,7 @@ export default function Search(props) {
             isSearchButton ? "searchButtonOpen searchButton" : "searchButton"
           }
         >
-          <img src={search} alt="search" />
+         <i class="fas fa-search"></i>
           <div
             className={
               isSearchButton
@@ -175,7 +175,7 @@ export default function Search(props) {
           onClick={() => handleFocus()}
           className={"searchButton"}
         >
-          <img src={search} alt="search" />
+          <i id="" class="fas fa-search"></i>
           <div className={"searchRechercherClosed"}></div>
         </button>
       </div>
@@ -187,7 +187,7 @@ export default function Search(props) {
         }
         onClick={() => resetHandleSearch()}
       >
-        <img alt="trash" src={returnIcon} />
+        <i class="fas fa-undo-alt"></i>
       </div>
     </div>
   );
