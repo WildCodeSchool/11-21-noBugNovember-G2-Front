@@ -159,7 +159,7 @@ const ProfilArticles = (props) => {
             boxShadow: '5px 5px 5px var(--shadowColor)',
             padding: '8px',
             '& .MuiDataGrid-cell:hover': {
-              color: 'var(--secondColor)',
+              color: 'var(--thirdColor)',
             },
           }}
           rows={props.stokage}

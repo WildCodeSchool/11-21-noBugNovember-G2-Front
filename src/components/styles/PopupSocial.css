@@ -24,6 +24,12 @@
   border: 3px solid;
 }
 
+@-moz-document url-prefix() {
+  #holderShareActive {
+    background-color: var(--gradientColor);
+  }
+}
+
 #popupButtonExit {
   position: absolute;
   right: 10px;
