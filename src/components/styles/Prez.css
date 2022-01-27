@@ -1,34 +1,41 @@
 .ensemble {
+  background: none;
+  background-color: none;
   display: grid;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(8, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 5px;
   grid-row-gap: 0px;
-  margin-left: 250px;
-  margin-right: 250px;
   height: 90vh;
 }
-  
-.frame { 
-  grid-area: 1 / 1 / 2 / 4;
-  /*background-color: red;*/
+
+.frame {
+  background: none;
+  background-color: none;
+  grid-area: 1 / 2 / 2 / 6;
   height: 90vh;
   display: flex;
   flex-direction: column;
 }
 
 iframe {
+  background: none;
+  background-color: none;
   height: 90vh;
 }
 
-.list { 
-  grid-area: 1 / 4 / 2 / 5; 
-  /*background-color: blue;*/
+.visuLien {
+  height: 100%;
+  width: 100%;
+}
+
+.list {
+  grid-area: 1 / 6 / 2 / 8;
   height: 90vh;
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
-} 
+}
 
 .messages {
   display: flex;
@@ -36,6 +43,10 @@ iframe {
   align-items: center;
   height: 200px;
   font-size: 1.5em;
+}
+
+.messages :link {
+  color: var(--thirdColor);
 }
 
 .ptdr {
