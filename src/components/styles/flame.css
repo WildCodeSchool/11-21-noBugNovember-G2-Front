@@ -1,45 +1,67 @@
+.flame1 {
+  z-index: 1000;
+}
 
-.flame1 {z-index: 1000;}
+.flame1:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px var(--firstColor));
+  animation: scale-alternate 2s ease-in-out infinite;
+}
 
-.flame1:hover{
-    transform:scale(1.1);
-    filter: drop-shadow(0 0 10px var(--firstColor));
-    animation:scale-alternate 2s ease-in-out infinite;
-} 
+.flame2 {
+  position: absolute;
+}
 
-.flame2{position: absolute;}
-
-.counter{
-    opacity: 0;
+.counter {
+  opacity: 0;
 }
 
 .counterAnim {
-   animation-name: upCount;
-   animation-duration: 1200ms;
+  animation-name: upCount;
+  animation-duration: 1200ms;
 }
 
-.hidden {opacity: 0;}
-.show {opacity: 1;}
-
-
-@keyframes upCount{
-    0% {opacity: 0; transform:translateY(20px);}
-    30% {opacity: 1; transform:translateY(-10px);}
-    80% {opacity: 1; transform:translateY(-10px);}
-    100%{opacity: 0; transform:translateY(5px) scale(0.1);}
+.hidden {
+  opacity: 0;
+}
+.show {
+  opacity: 1;
 }
 
-@keyframes scale-alternate{
-    0%,100%{
-     transform:scale(1.1); 
-   }
-   30%,90%{
-     transform:scale(0.90);
-   }
-    45%,60%{
-     transform:scale(0.96);
-   }
-   50%,75%{
-     transform:scale(0.97);
-   }
+@keyframes upCount {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5px) scale(0.1);
+  }
+}
+
+@keyframes scale-alternate {
+  0%,
+  100% {
+    transform: scale(1.1);
+  }
+  30%,
+  90% {
+    transform: scale(0.9);
+  }
+  45%,
+  60% {
+    transform: scale(0.96);
+  }
+  50%,
+  75% {
+    transform: scale(0.97);
+  }
 }

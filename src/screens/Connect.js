@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react'
 import axios from 'axios'
-import sha256 from 'crypto-js/sha256'
 import Profil from '../components/Profil.js'
-import TexteDefile from '../components/TexteDefile'
+import { useState, useEffect } from 'react'
+import sha256 from 'crypto-js/sha256'
 import '../App.css'
 import '../components/styles/Connect.css'
 
 const Connect = ({ setAvatar }) => {
+  const [admin, setAdmin] = useState(false)
+  const [errorConnect, setErrorConnect] = useState(false)
+  const [isConnected, setIsConnected] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
+  const [isOut, setIsOut] = useState(false)
   const [name, setName] = useState()
   const [password, setPassword] = useState()
   const [reponse, setReponse] = useState([])
-  const [isConnected, setIsConnected] = useState(false)
-  const [admin, setAdmin] = useState(false)
-  const [errorConnect, setErrorConnect] = useState(false)
 
   let hein
 
@@ -31,28 +31,26 @@ const Connect = ({ setAvatar }) => {
 
   const connect = () => {
     if (localStorage.getItem('id_user') === null) {
+      setErrorConnect(false)
+      setIsOut(false)
       axios
         .put('http://localhost:3030/members/connect', {
           name: name,
           password: sha256(password).toString(),
         })
         .then((response) => response.data)
-        .then((data) =>
-          data.length == 1 ? setReponse(data) : setErrorConnect(true)
-        )
+        .then((data) => setReponse(data))
+        .catch((err) => {
+          if (err.response) {
+            setErrorConnect(true)
+          } else if (err.request) {
+            setIsOut(true)
+          }
+        })
     } else {
       setIsConnected(true)
     }
   }
-
-  let ignoreClickOnMeElement = document.querySelector('.input')
-  document.addEventListener('click', function (event) {
-    let isClickInsideElement = ignoreClickOnMeElement.contains(event.target)
-    if (!isClickInsideElement && isFocused === true && name.length == 0) {
-      //Do something click is outside specified element
-      setIsFocused(!isFocused)
-    }
-  })
 
   useEffect(() => {
     if (reponse.length == 1) {
@@ -82,7 +80,6 @@ const Connect = ({ setAvatar }) => {
 
   return (
     <div className='pageConnect'>
-
       {localStorage.getItem('id_user') ? (
         <Profil
           setIsConnected={setIsConnected}
@@ -124,6 +121,11 @@ const Connect = ({ setAvatar }) => {
               {errorConnect && (
                 <p className='inputText' id='gridCo4'>
                   ⚠ Mauvais nom d'utilisateur ou mot de passe
+                </p>
+              )}{' '}
+              {isOut && (
+                <p className='inputText' id='gridCo4'>
+                  ⚠ Serveur distant indisponible
                 </p>
               )}{' '}
             </div>

@@ -1,11 +1,10 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import check from '../assets/check.png'
+import axios from 'axios'
+import check from '../assets/check.svg'
 import FavoriteButton from './FavoriteButton'
 import LikeButton from './LikeButton'
-import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
+import './styles/CardArticle.css'
 
 export default function CardArticle(props) {
   const [isReadMark, setIsReadMark] = useState(false)
@@ -52,7 +51,7 @@ export default function CardArticle(props) {
             </div>
             <div className='cardTopTitle'>
               <p className='cardTopTitleP' maxLength='10'>
-                {/*openGraph.title ? openGraph.title : props.description*/ props.name}
+                {props.name}
               </p>
             </div>
             <div className='cardDate'>

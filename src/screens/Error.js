@@ -1,6 +1,5 @@
-import React from 'react'
-import '../components/styles/Error.css'
 import { NavLink } from 'react-router-dom'
+import '../components/styles/Error.css'
 
 export default function Error() {
   return (

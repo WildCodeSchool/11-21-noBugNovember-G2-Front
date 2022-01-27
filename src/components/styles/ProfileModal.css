@@ -61,21 +61,6 @@ transition: all .3s ease-in;
   opacity: 0.5;
 }
 
-/* .bodyProfileModal:hover button {
-  margin: 10px 0px 10px 0px;
-  text-decoration: none;
-  background: none;
-  color: red;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  text-align: start;
-  padding: 0px 0px 0px 8px;
-  outline: none;
-} */
-
 .buttonOptionMenuProfile:hover {
   opacity: 1;
 }
@@ -94,7 +79,6 @@ transition: all .3s ease-in;
   height: 90px;
 }
 
-
 .wrapperUser {
   display: flex;
   position: absolute;
@@ -109,6 +93,7 @@ transition: all .3s ease-in;
 @media (max-width: 768px) {
   .wrapperModal {
     position: absolute;
-    top: 90%;
+    top: 72px;
+    z-index: 20001;
   }
 }

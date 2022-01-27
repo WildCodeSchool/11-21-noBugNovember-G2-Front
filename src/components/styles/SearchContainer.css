@@ -12,7 +12,7 @@
   background: var(--gradientColor);
   backdrop-filter: blur(20px);
   box-shadow: 5px 5px 5px var(--shadowColor);
-    border: 1px solid;
+  border: 1px solid;
 }
 
 .searchContainerHide {
@@ -44,7 +44,7 @@
   min-height: 40px;
   border-radius: 32px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .elGrid p:hover {

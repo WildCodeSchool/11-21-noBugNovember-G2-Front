@@ -1,6 +1,5 @@
-import React from 'react'
-import ProfilArticles from './ProfilArticles'
 import axios from 'axios'
+import ProfilArticles from './ProfilArticles'
 
 const ProfilUser = (props) => {
   const getMyArticles = () => {

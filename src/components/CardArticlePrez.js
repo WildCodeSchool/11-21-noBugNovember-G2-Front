@@ -1,18 +1,14 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import axios from 'axios'
 import check from '../assets/check.png'
 import FavoriteButton from './FavoriteButton'
-import LikeButton from './LikeButton'
-import './styles/CardArticle.css'
 import Im from '../assets/placeholder.jpg'
-import axios from 'axios'
+import LikeButton from './LikeButton'
+import { useEffect, useState } from 'react'
+import './styles/CardArticle.css'
 
 export default function CardArticle(props) {
   const [isReadMark, setIsReadMark] = useState(false)
 
-  const goUrl = () => {
-    window.open(props.url)
-  }
   const showCheck = () => {
     props.setLink(props.url)
     let temp = props.isRead
@@ -20,7 +16,6 @@ export default function CardArticle(props) {
       temp.push(props.id)
       props.changeIsRead(temp)
       setIsReadMark(true)
-      //props.setIsRead(temp)
     }
   }
 
@@ -35,8 +30,8 @@ export default function CardArticle(props) {
   useEffect(() => {
     axios
       .get(`http://localhost:3030/?url=${props.url}`)
-      .then(response => response.data)
-      .then(data => setOpenGraph(data))
+      .then((response) => response.data)
+      .then((data) => setOpenGraph(data))
   }, [])
 
   return (
@@ -53,7 +48,7 @@ export default function CardArticle(props) {
             </div>
             <div className='cardTopTitle'>
               <p className='cardTopTitleP' maxLength='10'>
-              {props.name}
+                {props.name}
               </p>
             </div>
             <div className='cardDate'>
@@ -96,8 +91,7 @@ export default function CardArticle(props) {
               isFavorite={props.isFavorite}
               setIsFavorite={props.setIsFavorite}
             />
-            <LikeButton likes={props.likes}
-              id={props.id}/>
+            <LikeButton likes={props.likes} id={props.id} />
           </div>
         </div>
       </article>

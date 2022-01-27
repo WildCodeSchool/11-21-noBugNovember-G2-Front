@@ -6,7 +6,6 @@ import Search from "../components/Search";
 import TexteDefile from "../components/TexteDefile";
 import { useState, useEffect } from "react";
 
-import "../components/styles/Home.css";
 const Home = (props) => {
   const [result, setResult] = useState([]);
   const [articleSearchFiltered, setArticleSearchFiltered] = useState([]);

@@ -1,62 +1,57 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import Bookmark from "./screens/Bookmark";
-import Connect from "./screens/Connect";
-import Error from "./screens/Error";
-import Header from "./components/Header";
-import Home from "./screens/Home";
-import Navbar from "./components/Navbar";
-import Prez from "./screens/Prez";
-import Team from "./screens/Team";
-import noavatar from "./assets/AvatarPlaceholder.jpg";
-import useLocalStorage from "use-local-storage";
+import Bookmark from './screens/Bookmark'
+import Connect from './screens/Connect'
+import Error from './screens/Error'
+import Header from './components/Header'
+import Home from './screens/Home'
+import Navbar from './components/Navbar'
+import noavatar from './assets/AvatarPlaceholder.jpg'
+import Prez from './screens/Prez'
+import { Routes, Route } from 'react-router-dom'
+import Team from './screens/Team'
+import useLocalStorage from 'use-local-storage'
+import { useEffect, useState } from 'react'
+import './App.css'
 
 function App() {
-  const [isFavorite, setIsFavorite] = useState([]) // id objet API
   const [avatar, setAvatar] = useState(noavatar)
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const [isFavorite, setIsFavorite] = useState([])
+  const [isRead, setIsRead] = useState([])
+  const [openPartage, setOpenPartage] = useState(false)
+  const [urlPartage, setUrlPartage] = useState('')
+  const [theme, setTheme] = useLocalStorage(
+    'theme',
+    defaultDark ? 'dark' : 'light'
+  )
 
+  const changeIsRead = (temp) => setIsRead(temp)
   useEffect(() => {
     if (localStorage.getItem('id_user') !== null) {
       setAvatar(localStorage.getItem('avatar'))
     }
   }, [])
 
-  const [isRead, setIsRead] = useState([])
-  const changeIsRead = (temp) => setIsRead(temp)
-
-  const [openPartage, setOpenPartage] = useState(false)
-  const [urlPartage, setUrlPartage] = useState('')
-
+  const clickClosePartage = () => {
+    setOpenPartage(false)
+  }
   const clickOpenPartage = (url) => {
     setOpenPartage(true)
     setUrlPartage(url)
   }
-  const clickClosePartage = () => {
-    setOpenPartage(false)
-  }
-
-  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  const [theme, setTheme] = useLocalStorage(
-    'theme',
-    defaultDark ? 'dark' : 'light'
-  )
-
-  const switchTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    setTheme(newTheme)
-  }
-
   const disconnect = () => {
     localStorage.clear()
     // eslint-disable-next-line no-restricted-globals
     location.reload()
   }
 
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+  }
+
   return (
     <div id='App' data-theme={theme}>
       <Navbar switchTheme={switchTheme} disconnect={disconnect} />
-      {/* <div className='Ecran'> */}
       <Header
         switchTheme={switchTheme}
         avatar={avatar}
@@ -138,10 +133,9 @@ function App() {
             />
           }
         />
-        <Route path="*" element={<Error />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </div>
-    // </div>
   )
 }
 
