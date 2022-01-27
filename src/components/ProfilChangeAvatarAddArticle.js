@@ -77,7 +77,7 @@ const ProfilChangeAvatarAddArticle = (props) => {
             onChange={(e) => changeUrl(e)}
             value={updateAvatar}
           ></input>
-          {errorAvatar === '' ? (
+          {errorAvatar === '' || errorAvatar === true ? (
             <button
               type='button'
               className='buttonConnect buttonUpProfil '
