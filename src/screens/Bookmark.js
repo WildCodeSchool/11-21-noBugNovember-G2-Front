@@ -86,8 +86,6 @@ const Bookmark2 = props => {
     }
   }, [yearTemp]);
 
-  
-
   // UseEffect de la recherche
   useEffect(() => {
     let articleFilteredTemp = [];
@@ -167,9 +165,6 @@ const Bookmark2 = props => {
 
     setArticleSearchFiltered(articleFilteredTemp);
   }, [searchValue, selectYear, selectWeek, selectUser, bdd]);
-
-
-  
 
   return (
     <div className='bookmark'>
