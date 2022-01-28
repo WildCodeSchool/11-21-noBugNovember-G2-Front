@@ -20,7 +20,11 @@ export default function PopupSocial(props) {
   }
   return (
     <div className='globalPopupPage' onClick={props.clickClosePartage}>
-      <div className='holderShareActive' onClick={(e) => e.stopPropagation()}>
+      <div
+        className='holderShareActive'
+        id='holderShareActivePrez'
+        onClick={(e) => e.stopPropagation()}
+      >
         <a id='popupButtonExit' onClick={() => props.clickClosePartage()}>
           <i class='far fa-times'></i>
         </a>

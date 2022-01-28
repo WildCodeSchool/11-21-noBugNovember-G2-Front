@@ -7,7 +7,7 @@
   z-index: 20000;
 }
 
-#holderShareActive {
+.holderShareActive {
   display: block;
   opacity: 1;
   position: fixed;
@@ -20,14 +20,18 @@
   text-align: center;
   top: 50%;
   left: 50%;
-  transform: translate(calc(-50% + 45px), -50%);
+  transform: translate(-50%, -50%);
   border: 3px solid;
 }
 
 @-moz-document url-prefix() {
-  #holderShareActive {
+  .holderShareActive {
     background-color: var(--gradientColor);
   }
+}
+
+#holderShareActivePrez {
+  background-color: var(--gradientColor);
 }
 
 #popupButtonExit {
