@@ -11,6 +11,7 @@ export default function CardArticle(props) {
 
   const showCheck = () => {
     props.setLink(props.url)
+    props.setIsSelected(props.id)
     let temp = props.isRead
     if (!temp.includes(props.id)) {
       temp.push(props.id)
@@ -36,7 +37,10 @@ export default function CardArticle(props) {
 
   return (
     <>
-      <article className='card' key={props.id}>
+      <article
+        className={`card ${props.id === props.isSelected && `active`}`}
+        key={props.id}
+      >
         <div className='cardContentTop' onClick={() => showCheck()}>
           <div className='cardTopBanner'>
             <div className='cardContainerTopAvatar'>
