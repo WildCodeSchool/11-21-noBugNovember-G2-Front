@@ -1,49 +1,48 @@
-import axios from "axios";
-import Gallery from "../components/Gallery";
-import React from "react";
-import Search from "../components/Search";
+import axios from 'axios'
+import Gallery from '../components/Gallery'
+import React from 'react'
+import Search from '../components/Search'
 
-import TexteDefile from "../components/TexteDefile";
-import { useState, useEffect } from "react";
+import TexteDefile from '../components/TexteDefile'
+import { useState, useEffect } from 'react'
 
 const Home = (props) => {
-  const [result, setResult] = useState([]);
-  const [articleSearchFiltered, setArticleSearchFiltered] = useState([]);
+  const [result, setResult] = useState([])
+  const [articleSearchFiltered, setArticleSearchFiltered] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:3030/articles/read/all").then((response) => {
-      setResult(response.data);
-      setArticleSearchFiltered(response.data); //récupération des données dans un tableau filtrable
-    });
-  }, []);
+    axios.get('http://localhost:3030/articles/read/all').then((response) => {
+      setResult(response.data)
+      setArticleSearchFiltered(response.data) //récupération des données dans un tableau filtrable
+    })
+  }, [])
 
+  // State des ensembles d'années, semaines et users en format tableau
+  const [year, setYear] = useState([])
+  const [week, setWeek] = useState([])
+  const [user, setUser] = useState([])
 
-  // State des ensembles d'années, semaines et users en format tableau 
-  const [year, setYear] = useState([]);
-  const [week, setWeek] = useState([]);
-  const [user, setUser] = useState([]);
-
-  let temp = []; // stock temporaire
-  let tempWeek = []; //stock temporaire tri par semaine
-  let tempYear = []; //stock temporaire tri par annee
-  let tempUser = []; // stock temporaire des élèves
+  let temp = [] // stock temporaire
+  let tempWeek = [] //stock temporaire tri par semaine
+  let tempYear = [] //stock temporaire tri par annee
+  let tempUser = [] // stock temporaire des élèves
 
   //Récupération des années, des numéros de semaines et des élèves
   useEffect(() => {
-    temp = [];
-    tempWeek = [];
-    tempYear = [];
-    tempUser = [];
+    temp = []
+    tempWeek = []
+    tempYear = []
+    tempUser = []
 
     for (let i = 0; i < result.length; i++) {
       if (tempWeek.indexOf(result[i].week) === -1) {
-        tempWeek.push(result[i].week);
+        tempWeek.push(result[i].week)
       }
       if (tempYear.indexOf(result[i].year) === -1) {
-        tempYear.push(result[i].year);
+        tempYear.push(result[i].year)
       }
       if (tempUser.indexOf(result[i].name) === -1) {
-        tempUser.push(result[i].name);
+        tempUser.push(result[i].name)
       }
     }
     setYear(tempYear)
@@ -52,40 +51,38 @@ const Home = (props) => {
   }, [result])
 
   // State du filtre de recherche
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('')
 
   // State des valeur choisies par l'utilisateur
-  const [selectWeek, setSelectWeek] = useState(0);
-  const [selectYear, setSelectYear] = useState(0);
-  const [selectUser, setSelectUser] = useState("");
+  const [selectWeek, setSelectWeek] = useState(0)
+  const [selectYear, setSelectYear] = useState(0)
+  const [selectUser, setSelectUser] = useState('')
 
   //Récupération des semaines en fonction de l'année
-  const [yearTemp, setYearTemp] = useState(0);
+  const [yearTemp, setYearTemp] = useState(0)
 
   useEffect(() => {
-    let tempWeek = [];
+    let tempWeek = []
     if (yearTemp !== 0) {
       result.map((el) => {
         if (tempWeek.indexOf(el.week) === -1 && el.year === yearTemp) {
-          tempWeek.push(el.week);
+          tempWeek.push(el.week)
         }
-      });
+      })
       setWeek(tempWeek)
     } else {
       result.map((el) => {
         if (tempWeek.indexOf(el.week) === -1) {
-          tempWeek.push(el.week);
+          tempWeek.push(el.week)
         }
-      });
+      })
       setWeek(tempWeek)
     }
-  }, [yearTemp]);
-
-  
+  }, [yearTemp])
 
   // UseEffect de la recherche
   useEffect(() => {
-    let articleFilteredTemp = [];
+    let articleFilteredTemp = []
     articleFilteredTemp = result.filter((res) => {
       if (selectUser.length) {
         if (selectWeek !== 0 && selectYear === 0) {
@@ -96,7 +93,7 @@ const Home = (props) => {
               res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
             res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
             res.week === selectWeek
-          );
+          )
         } else if (selectWeek === 0 && selectYear !== 0) {
           return (
             (res.description
@@ -105,7 +102,7 @@ const Home = (props) => {
               res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
             res.name.toLowerCase().includes(selectUser.toLowerCase()) &&
             res.year === selectYear
-          );
+          )
         } else if (selectWeek !== 0 && selectYear !== 0) {
           return (
             (res.description
@@ -123,7 +120,7 @@ const Home = (props) => {
               .includes(searchValue.toLowerCase()) ||
               res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
             res.name.toLowerCase().includes(selectUser.toLowerCase())
-          );
+          )
         }
       } else {
         if (selectWeek !== 0 && selectYear === 0) {
@@ -133,7 +130,7 @@ const Home = (props) => {
               .includes(searchValue.toLowerCase()) ||
               res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
             res.week === selectWeek
-          );
+          )
         } else if (selectWeek === 0 && selectYear !== 0) {
           return (
             (res.description
@@ -141,7 +138,7 @@ const Home = (props) => {
               .includes(searchValue.toLowerCase()) ||
               res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
             res.year === selectYear
-          );
+          )
         } else if (selectWeek !== 0 && selectYear !== 0) {
           return (
             (res.description
@@ -150,19 +147,18 @@ const Home = (props) => {
               res.name.toLowerCase().includes(searchValue.toLowerCase())) &&
             res.year === selectYear &&
             res.week === selectWeek
-          );
+          )
         } else {
           return (
             res.description.toLowerCase().includes(searchValue.toLowerCase()) ||
             res.name.toLowerCase().includes(searchValue.toLowerCase())
-          );
+          )
         }
       }
-    });
+    })
 
-    setArticleSearchFiltered(articleFilteredTemp);
-  }, [searchValue, selectYear, selectWeek, selectUser]);
-
+    setArticleSearchFiltered(articleFilteredTemp)
+  }, [searchValue, selectYear, selectWeek, selectUser])
 
   const [posScroll, setPosScroll] = useState()
 
@@ -229,6 +225,6 @@ const Home = (props) => {
         setPosScroll={setPosScroll}
       />
     </div>
-  );
-};
-export default Home;
+  )
+}
+export default Home

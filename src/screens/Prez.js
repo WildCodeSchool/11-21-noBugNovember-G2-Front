@@ -15,8 +15,10 @@ const Prez = (props) => {
     if (localStorage.getItem('admin') == 1) {
       axios
         .put('http://localhost:3030/articles/search/date', {
-          year: new Date().getFullYear(),
-          week: weekNumber(new Date()),
+          // year: new Date().getFullYear(),
+          // week: weekNumber(new Date()),
+          year: 2022,
+          week: 3,
         })
         .then((response) => response.data)
         .then((data) => setResult(data))
@@ -39,7 +41,7 @@ const Prez = (props) => {
                 className='visuLienEmbed'
                 src={link}
                 height='100vh'
-              ></embed>{' '}
+              ></embed>
             </div>
             {sUsrAg.indexOf('Firefox') > -1 ? (
               link.length > 1 ? (

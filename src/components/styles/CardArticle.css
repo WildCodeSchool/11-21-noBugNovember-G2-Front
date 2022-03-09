@@ -9,7 +9,6 @@
   position: relative;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 35px var(--shadowColor);
-
   border-radius: 15px;
   height: 350px;
   justify-content: space-between;
@@ -20,6 +19,10 @@
   outline: solid 1px var(--firstColor);
   transition: outline 0.2s linear;
   margin: 0.5em;
+}
+
+.active {
+  outline: solid 5px var(--secondColor);
 }
 
 .card:hover {

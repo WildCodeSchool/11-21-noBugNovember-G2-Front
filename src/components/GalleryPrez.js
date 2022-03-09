@@ -1,8 +1,10 @@
 import CardArticlePrez from './CardArticlePrez'
 import PopupSocialPrez from './PopupSocialPrez'
+import { useState } from 'react'
 import './styles/GalleryPrez.css'
 
 const GalleryPrez = (props) => {
+  const [isSelected, setIsSelected] = useState(0)
   return (
     <div className='bigGalleryPrez'>
       <PopupSocialPrez
@@ -30,6 +32,8 @@ const GalleryPrez = (props) => {
             setIsRead={props.setIsRead}
             changeIsRead={props.changeIsRead}
             setLink={props.setLink}
+            isSelected={isSelected}
+            setIsSelected={setIsSelected}
           />
         ))}
       </div>
