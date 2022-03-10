@@ -13,7 +13,7 @@ const Profil = (props) => {
 	const [bddChange, setBddChange] = useState(false);
 
 	const deleteArticle = (params) => {
-		axios.delete('http://localhost:3030/articles/delete', {
+		axios.delete(`${process.env.REACT_APP_API_ROUTE}/articles/delete`, {
 			data: { id: params },
 		}) && setBddChange(!bddChange);
 	};
@@ -31,13 +31,13 @@ const Profil = (props) => {
 	useEffect(() => {
 		if (props.admin && reveal) {
 			axios
-				.get('http://localhost:3030/articles/godmode/read')
+				.get(`${process.env.REACT_APP_API_ROUTE}/articles/godmode/read`)
 				.then((response) => response.data)
 				.then((data) => setBdd(data));
 		}
 		if (!props.admin && reveal) {
 			axios
-				.post('http://localhost:3030/articles/byuser', {
+				.post(`${process.env.REACT_APP_API_ROUTE}/articles/byuser`, {
 					id_users: parseInt(localStorage.getItem('id_user')),
 				})
 				.then((response) => response.data)
